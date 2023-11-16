@@ -1,8 +1,10 @@
+import { URL } from "../libs/axios";
+
 export function Home() {
 	return (
 		<>
 			{" "}
-			<a href="http://localhost:3001/auth/steam">Login In with Steam</a>
+			<a href={`${URL}/auth/steam`}>Log In with Steam</a>
 		</>
 	);
 }
