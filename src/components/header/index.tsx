@@ -1,6 +1,7 @@
 import { DroppedSkins } from "./droppedSkins";
 import { HeaderInfo } from "./info";
 import { MainHeader } from "./mainHeader";
+import { Nav } from "./nav";
 import { TopHeader } from "./topHeader";
 
 export function Header() {
@@ -10,6 +11,7 @@ export function Header() {
 			<MainHeader />
 			<HeaderInfo />
 			<DroppedSkins />
+			<Nav />
 		</header>
 	);
 }
