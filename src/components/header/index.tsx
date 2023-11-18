@@ -1,3 +1,4 @@
+import { DroppedSkins } from "./droppedSkins";
 import { HeaderInfo } from "./info";
 import { MainHeader } from "./mainHeader";
 import { TopHeader } from "./topHeader";
@@ -8,6 +9,7 @@ export function Header() {
 			<TopHeader />
 			<MainHeader />
 			<HeaderInfo />
+			<DroppedSkins />
 		</header>
 	);
 }
