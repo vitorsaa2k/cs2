@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	/* 	body {
+		@apply bg-zinc-900;
+	} */
+	svg {
+		@apply hover:cursor-pointer;
+		@apply hover:fill-white;
+	}
+}

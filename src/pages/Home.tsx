@@ -1,10 +1,10 @@
-import { URL } from "../libs/axios";
+import { Header } from "../components/header";
 
 export function Home() {
 	return (
 		<>
 			{" "}
-			<a href={`${URL}/auth/steam`}>Log In with Steam</a>
+			<Header />
 		</>
 	);
 }
