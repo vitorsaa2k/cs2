@@ -1,4 +1,5 @@
 import { DroppedSkins } from "./droppedSkins";
+import { EventLogo } from "./eventLogo";
 import { HeaderInfo } from "./info";
 import { MainHeader } from "./mainHeader";
 import { Nav } from "./nav";
@@ -12,6 +13,7 @@ export function Header() {
 			<HeaderInfo />
 			<DroppedSkins />
 			<Nav />
+			<EventLogo />
 		</header>
 	);
 }

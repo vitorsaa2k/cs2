@@ -2,7 +2,7 @@ import { NavItem } from "./navItem";
 
 export function Nav() {
 	return (
-		<nav className="flex justify-center items-center gap-12">
+		<nav className="flex justify-center items-center my-3 gap-12">
 			<NavItem>Cases</NavItem>
 			<NavItem>Case Battles</NavItem>
 			<NavItem>Upgrader</NavItem>
