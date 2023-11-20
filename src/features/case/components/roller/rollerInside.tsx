@@ -1,10 +1,6 @@
-import { HTMLAttributes, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { RollerItem } from "./rollerItem";
-
-interface RollerInsideProps extends HTMLAttributes<HTMLDivElement> {
-	items: string[];
-	isRolling: boolean;
-}
+import { RollerInsideProps } from "../../types/components";
 
 export function RollerInside(props: RollerInsideProps) {
 	const itemsContainer = useRef<HTMLDivElement>(null);
