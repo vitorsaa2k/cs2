@@ -3,9 +3,9 @@ import { Header } from "./header";
 
 export function Layout(props: HTMLAttributes<HTMLDivElement>) {
 	return (
-		<>
+		<main className="font-inter">
 			<Header />
 			{props.children}
-		</>
+		</main>
 	);
 }
