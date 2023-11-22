@@ -1,7 +1,10 @@
-export function RollerItem({ name }: { name: string }) {
+import { CaseSkin } from "../../types/api";
+
+export function RollerItem({ item }: { item: CaseSkin }) {
 	return (
 		<div className="w-[100px] h-[100px] border flex items-center justify-center">
-			{name}
+			<img src={item.img} />
+			{/* {item.name} */}
 		</div>
 	);
 }

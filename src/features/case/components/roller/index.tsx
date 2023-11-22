@@ -1,42 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RollerContainer } from "./rollerContainer";
 import { RollerInside } from "./rollerInside";
 import { Line } from "./line";
+import { useParams } from "react-router-dom";
+import { getItems } from "../../../../services/caseApi";
+import { CaseSkin } from "../../types/api";
+import { generateSkinsArray } from "../../../../utils/case/generateSkinsArray";
+import { rollCase } from "../../../../services/rollApi";
 
 export function Roller() {
 	const [isRolling, setIsRolling] = useState(false);
-	const items = [
-		"item1",
-		"item2",
-		"item3",
-		"item4",
-		"item5",
-		"item6",
-		"item7",
-		"item8",
-		"item9",
-		"item10",
-		"item11",
-		"item12",
-		"item13",
-		"item14",
-		"item15",
-		"item16",
-		"item17",
-		"item18",
-		"item19",
-		"item20",
-		"item21",
-		"item22",
-		"item23",
-		"item24",
-		"item25",
-		"item26",
-		"item27",
-		"item28",
-		"item29",
-		"item30",
-	];
+	const { id } = useParams();
+	const [items, setItems] = useState<CaseSkin[]>([]);
+
+	async function roll() {
+		if (id) {
+			const skin = await rollCase(id);
+			const array = [...items];
+			array[70] = skin;
+			setItems(array);
+		}
+	}
+
+	useEffect(() => {
+		id
+			? getItems(id).then(res => setItems(generateSkinsArray(res.skins)))
+			: null;
+	}, [id]);
 	return (
 		<div className="m-3 flex flex-col items-center">
 			<RollerContainer>
@@ -44,7 +34,8 @@ export function Roller() {
 				<Line />
 			</RollerContainer>
 			<button
-				onClick={() => {
+				onClick={async () => {
+					await roll();
 					setIsRolling(true);
 				}}
 			>
