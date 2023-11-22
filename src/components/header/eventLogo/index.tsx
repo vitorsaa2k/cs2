@@ -1,7 +1,8 @@
 export function EventLogo() {
 	return (
-		<div className="min-w-[1500px] min-h-[300px] border border-black flex justify-center items-center m-auto">
-			Skins Mania Event Logo
-		</div>
+		<img
+			src="https://img.muskins.org/root/image/616fa4896b0bebe232c11f0dcd9603820231117183655.png"
+			className=""
+		/>
 	);
 }
