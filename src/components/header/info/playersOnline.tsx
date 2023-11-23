@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { io } from "socket.io-client";
-const socket = io("http://localhost:3004");
+import { socket } from "../../../libs/socketIo";
 
 export function PlayersOnline() {
 	const [playersOnline, setPlayersOnline] = useState(0);
