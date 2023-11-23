@@ -1,10 +1,15 @@
 import { CaseSkin } from "../../types/api";
 
 export function RollerItem({ item }: { item: CaseSkin }) {
+	const parsedName = item.name.split("|");
+	const parsedColor = item.color.toLowerCase();
 	return (
-		<div className="w-[100px] h-[100px] border flex items-center justify-center">
-			<img src={item.img} />
-			{/* {item.name} */}
+		<div
+			className={`w-full h-[400px] bg-${parsedColor}-200 border-x flex flex-col items-center justify-center`}
+		>
+			<img className="max-w-[320px]" src={item.img} />
+			<div>{parsedName[0]}</div>
+			<div>{parsedName[1]}</div>
 		</div>
 	);
 }

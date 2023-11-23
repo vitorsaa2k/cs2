@@ -8,7 +8,7 @@ export function RollerInside(props: RollerInsideProps) {
 	const StartRoll = useCallback(() => {
 		const randomNumber = Math.floor(Math.random() * 50);
 		const randomNumberPlus = Math.floor(Math.random() * 50);
-		const trasnlatePx = 70 * 100 - 450;
+		const trasnlatePx = 70 * 258 - 450;
 		if (itemsContainer.current) {
 			itemsContainer.current.style.transform = `translateX(-${
 				trasnlatePx - randomNumber + randomNumberPlus
@@ -22,14 +22,10 @@ export function RollerInside(props: RollerInsideProps) {
 	return (
 		<div
 			ref={itemsContainer}
-			className="flex absolute top-0 left-0 transition-all duration-[8s] ease-out"
+			className="flex items-center transition-all duration-[8s] ease-out"
 		>
-			{props.items.map((item, index) => {
-				return (
-					<div key={index}>
-						<RollerItem item={item} />;
-					</div>
-				);
+			{props.items.map(item => {
+				return <RollerItem item={item} />;
 			})}
 		</div>
 	);

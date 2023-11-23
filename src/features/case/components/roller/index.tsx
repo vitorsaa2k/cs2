@@ -28,7 +28,7 @@ export function Roller() {
 			: null;
 	}, [id]);
 	return (
-		<div className="m-3 flex flex-col items-center">
+		<div className="m-3 w-full h-full flex flex-col">
 			<RollerContainer>
 				<RollerInside isRolling={isRolling} items={items} />
 				<Line />

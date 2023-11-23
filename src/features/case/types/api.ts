@@ -8,4 +8,5 @@ export type CaseSkin = {
   maxRate: number
   price: number
   img: string
+  color: string
 }

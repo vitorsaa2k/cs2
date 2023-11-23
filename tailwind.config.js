@@ -8,5 +8,6 @@ export default {
 			},
 		},
 	},
+	safelist: ["bg-red-200", "bg-yellow-200"],
 	plugins: [],
 };
