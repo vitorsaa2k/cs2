@@ -16,6 +16,7 @@ export function Case() {
 			maxRate: 0,
 			price: 0,
 			img: "",
+			color: "",
 		},
 	]);
 
