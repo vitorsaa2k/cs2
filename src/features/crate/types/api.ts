@@ -1,8 +1,8 @@
-export type Case = {
-  skins: CaseSkin[]
+export type Crate = {
+  skins: CrateSkin[]
 }
 
-export type CaseSkin = {
+export type CrateSkin = {
   name: string
   minRate: number
   maxRate: number

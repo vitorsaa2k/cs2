@@ -3,11 +3,11 @@ import { NavItem } from "./navItem";
 export function Nav() {
 	return (
 		<nav className="flex justify-center items-center my-3 gap-12">
-			<NavItem>Cases</NavItem>
-			<NavItem>Case Battles</NavItem>
+			<NavItem>Crates</NavItem>
+			<NavItem>Crate Battles</NavItem>
 			<NavItem>Upgrader</NavItem>
 			<NavItem>Event</NavItem>
-			<NavItem>Free Cases</NavItem>
+			<NavItem>Free Crates</NavItem>
 		</nav>
 	);
 }

@@ -1,7 +1,7 @@
 import { PlayersOnline } from "./playersOnline";
 import { TotalAccounts } from "./totalAccounts";
 import { TotalBattles } from "./totalBattles";
-import { TotalCases } from "./totalCases";
+import { TotalCrates } from "./totalCrates";
 import { TotalUpgrades } from "./totalUpgrades";
 
 export function HeaderInfo() {
@@ -10,7 +10,7 @@ export function HeaderInfo() {
 			<PlayersOnline />
 			<TotalAccounts />
 			<TotalBattles />
-			<TotalCases />
+			<TotalCrates />
 			<TotalUpgrades />
 		</div>
 	);
