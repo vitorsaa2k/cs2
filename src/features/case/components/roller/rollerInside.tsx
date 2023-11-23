@@ -8,7 +8,7 @@ export function RollerInside(props: RollerInsideProps) {
 	const StartRoll = useCallback(() => {
 		const randomNumber = Math.floor(Math.random() * 50);
 		const randomNumberPlus = Math.floor(Math.random() * 50);
-		const trasnlatePx = 70 * 258 - 450;
+		const trasnlatePx = 70 * 256 - 450;
 		if (itemsContainer.current) {
 			itemsContainer.current.style.transform = `translateX(-${
 				trasnlatePx - randomNumber + randomNumberPlus
