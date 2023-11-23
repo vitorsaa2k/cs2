@@ -3,7 +3,7 @@ import { CaseItem } from "./caseItem";
 
 export function CaseDesc({ items }: { items: CaseSkin[] }) {
 	return (
-		<div className="grid grid-cols-5">
+		<div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 min-[320px]:grid-cols-2">
 			{items.map(item => {
 				return (
 					<div key={item.name}>
