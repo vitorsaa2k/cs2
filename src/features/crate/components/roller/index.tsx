@@ -3,19 +3,19 @@ import { RollerContainer } from "./rollerContainer";
 import { RollerInside } from "./rollerInside";
 import { Line } from "./line";
 import { useParams } from "react-router-dom";
-import { getItems } from "../../../../services/caseApi";
-import { CaseSkin } from "../../types/api";
-import { generateSkinsArray } from "../../../../utils/case/generateSkinsArray";
-import { rollCase } from "../../../../services/rollApi";
+import { getItems } from "../../../../services/crateApi";
+import { CrateSkin } from "../../types/api";
+import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
+import { rollCrate } from "../../../../services/rollApi";
 
 export function Roller() {
 	const [isRolling, setIsRolling] = useState(false);
 	const { id } = useParams();
-	const [items, setItems] = useState<CaseSkin[]>([]);
+	const [items, setItems] = useState<CrateSkin[]>([]);
 
 	async function roll() {
 		if (id) {
-			const skin = await rollCase(id);
+			const skin = await rollCrate(id);
 			const array = [...items];
 			array[70] = skin;
 			setItems(array);
@@ -39,7 +39,7 @@ export function Roller() {
 					setIsRolling(true);
 				}}
 			>
-				Open Case
+				Open Crate
 			</button>
 			<button
 				onClick={() => {

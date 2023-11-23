@@ -1,14 +1,14 @@
 export function ProductImage({
-	goToCase,
+	goToCrate,
 	src,
 }: {
-	goToCase: () => void;
+	goToCrate: () => void;
 	src: string;
 }) {
 	return (
 		<img
 			src={src}
-			onClick={goToCase}
+			onClick={goToCrate}
 			className="border border-black hover:cursor-pointer"
 		></img>
 	);

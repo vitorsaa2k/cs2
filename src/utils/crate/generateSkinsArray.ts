@@ -1,6 +1,6 @@
-import { CaseSkin } from "../../features/case/types/api";
+import { CrateSkin } from "../../features/crate/types/api";
 
-export function generateSkinsArray(skins: CaseSkin[]) {
+export function generateSkinsArray(skins: CrateSkin[]) {
   const ARRAY_FINAL_LENGTH = 90
   const newArray = []
   for(let i = 0; i < ARRAY_FINAL_LENGTH; i++) {

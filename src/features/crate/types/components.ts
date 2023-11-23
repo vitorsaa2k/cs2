@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
-import { CaseSkin } from "./api";
+import { CrateSkin } from "./api";
 
 export type RollerInsideProps = HTMLAttributes<HTMLDivElement> & {
-	items: CaseSkin[];
+	items: CrateSkin[];
 	isRolling: boolean;
 }

@@ -1,12 +1,12 @@
 export function ProductName({
 	name,
-	goToCase,
+	goToCrate,
 }: {
 	name: string;
-	goToCase: () => void;
+	goToCrate: () => void;
 }) {
 	return (
-		<p className="hover:cursor-pointer inline-block" onClick={goToCase}>
+		<p className="hover:cursor-pointer inline-block" onClick={goToCrate}>
 			{name}
 		</p>
 	);

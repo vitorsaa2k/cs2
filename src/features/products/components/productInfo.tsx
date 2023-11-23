@@ -13,13 +13,13 @@ export function ProductInfo({
 	src: string;
 }) {
 	const navigate = useNavigate();
-	function goToCase() {
-		navigate(`/case/${name}`);
+	function goToCrate() {
+		navigate(`/crate/${name}`);
 	}
 	return (
 		<div>
-			<ProductImage src={src} goToCase={goToCase} />
-			<ProductName goToCase={goToCase} name={name} />
+			<ProductImage src={src} goToCrate={goToCrate} />
+			<ProductName goToCrate={goToCrate} name={name} />
 			<ProductPrice price={price} />
 		</div>
 	);

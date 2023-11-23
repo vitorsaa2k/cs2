@@ -1,4 +1,4 @@
-export function CaseItem({
+export function CrateItem({
 	itemName,
 	price,
 	img,
