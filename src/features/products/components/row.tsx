@@ -15,7 +15,7 @@ export function ProductRow() {
 			<p>Row 1</p>
 			<div className="flex gap-3">
 				<ProductInfo src={images[0]} name="temptress" price="90" />
-				<ProductInfo src={images[1]} name="test" price="90" />
+				<ProductInfo src={images[1]} name="Gloves" price="90" />
 				<ProductInfo src={images[2]} name="test" price="90" />
 				<ProductInfo src={images[3]} name="test" price="90" />
 				<ProductInfo src={images[4]} name="test" price="90" />

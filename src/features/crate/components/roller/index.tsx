@@ -3,7 +3,7 @@ import { RollerContainer } from "./rollerContainer";
 import { RollerInside } from "./rollerInside";
 import { Line } from "./line";
 import { useParams } from "react-router-dom";
-import { getItems } from "../../../../services/crateApi";
+import { getCrate } from "../../../../services/crateApi";
 import { CrateSkin } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
@@ -24,7 +24,7 @@ export function Roller() {
 
 	useEffect(() => {
 		id
-			? getItems(id).then(res => setItems(generateSkinsArray(res.skins)))
+			? getCrate(id).then(res => setItems(generateSkinsArray(res.skins)))
 			: null;
 	}, [id]);
 	return (

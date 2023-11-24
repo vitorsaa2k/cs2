@@ -4,7 +4,7 @@ import { CrateName } from "../features/crate/components/cratePresentation/crateN
 import { Roller } from "../features/crate/components/roller";
 import { CrateDesc } from "../features/crate/components/crateDesc";
 import { useEffect, useState } from "react";
-import { getItems } from "../services/crateApi";
+import { getCrate } from "../services/crateApi";
 import { CrateSkin } from "../features/crate/types/api";
 
 export function Crate() {
@@ -21,7 +21,7 @@ export function Crate() {
 	]);
 
 	useEffect(() => {
-		id ? getItems(id).then(res => setItems(res.skins)) : null;
+		id ? getCrate(id).then(res => setItems(res.skins)) : null;
 	}, [id]);
 
 	return (

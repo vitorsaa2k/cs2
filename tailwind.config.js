@@ -8,6 +8,11 @@ export default {
 			},
 		},
 	},
-	safelist: ["bg-red-200", "bg-yellow-200"],
+	safelist: [
+		"from-red-200",
+		"from-yellow-200",
+		"from-blue-200",
+		"from-purple-200",
+	],
 	plugins: [],
 };

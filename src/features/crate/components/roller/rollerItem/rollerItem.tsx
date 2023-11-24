@@ -1,13 +1,14 @@
-import { CrateSkin } from "../../types/api";
+import { CrateSkin } from "../../../types/api";
+import "./rolleItem.css";
 
 export function RollerItem({ item }: { item: CrateSkin }) {
 	const parsedName = item.name.split("|");
 	const parsedColor = item.color.toLowerCase();
 	return (
 		<div
-			className={`w-full h-[400px] bg-${parsedColor}-200 border-x flex flex-col items-center justify-center`}
+			className={`w-full h-[400px] flex flex-col items-center justify-center rollerItem-${parsedColor}`}
 		>
-			<img className="max-w-[320px]" src={item.img} />
+			<img className="max-w-[250px]" src={item.img} />
 			<div>{parsedName[0]}</div>
 			<div>{parsedName[1]}</div>
 		</div>
