@@ -1,10 +1,14 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getUser } from "../services/userApi";
+import { UserContext } from "../contexts/userContext";
 
 export function RedirectLogin() {
 	const navigate = useNavigate();
-	const { id } = useParams();
+	const [searchParams] = useSearchParams();
+	const id = searchParams.get("userId");
+	const user = useContext(UserContext);
+	console.log();
 
 	useEffect(() => {
 		checkUserAndRedirect();
@@ -12,7 +16,8 @@ export function RedirectLogin() {
 
 	async function checkUserAndRedirect() {
 		const req = await getUser(id!);
-		req.data.error
+		user.setUser(await req.data);
+		(await req.data.error)
 			? navigate("/")
 			: navigate("/profile", { state: { user: req.data } });
 	}
