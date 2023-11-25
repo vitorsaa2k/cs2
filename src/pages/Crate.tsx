@@ -2,23 +2,14 @@ import { useParams } from "react-router-dom";
 import { CrateIcon } from "../features/crate/components/cratePresentation/crateIcon";
 import { CrateName } from "../features/crate/components/cratePresentation/crateName";
 import { Roller } from "../features/crate/components/roller";
-import { CrateDesc } from "../features/crate/components/crateDesc";
 import { useEffect, useState } from "react";
 import { getCrate } from "../services/crateApi";
 import { CrateSkin } from "../features/crate/types/api";
+import CrateDesc from "../features/crate/components/crateDesc";
 
 export function Crate() {
 	const { id } = useParams();
-	const [items, setItems] = useState<CrateSkin[]>([
-		{
-			name: "",
-			minRate: 0,
-			maxRate: 0,
-			price: 0,
-			img: "",
-			color: "",
-		},
-	]);
+	const [items, setItems] = useState<CrateSkin[]>([]);
 
 	useEffect(() => {
 		id ? getCrate(id).then(res => setItems(res.skins)) : null;
