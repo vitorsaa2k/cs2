@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+
 export function Logo() {
-	return <div>Skins Mania Logo</div>;
+	const navigate = useNavigate();
+	return <div onClick={() => navigate("/")}>Skins Mania Logo</div>;
 }
