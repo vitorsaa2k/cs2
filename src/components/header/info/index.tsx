@@ -6,7 +6,7 @@ import { TotalUpgrades } from "./totalUpgrades";
 
 export function HeaderInfo() {
 	return (
-		<div className="flex gap-5 ml-9">
+		<div className="flex flex-col gap-5 md:flex-row">
 			<PlayersOnline />
 			<TotalAccounts />
 			<TotalBattles />
