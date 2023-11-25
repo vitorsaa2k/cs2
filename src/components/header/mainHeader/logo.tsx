@@ -1,3 +1,3 @@
 export function Logo() {
-	return <div>Skins Mania Logo</div>;
+	return <a href="/">Skins Mania Logo</a>;
 }
