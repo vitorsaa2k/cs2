@@ -1,7 +1,7 @@
-import { CrateSkin } from "../../../types/api";
+import { SkinType } from "../../../types/api";
 import "./rolleItem.css";
 
-export function RollerItem({ item }: { item: CrateSkin }) {
+export function RollerItem({ item }: { item: SkinType }) {
 	const parsedName = item.name.split("|");
 	const parsedColor = item.color.toLowerCase();
 	return (

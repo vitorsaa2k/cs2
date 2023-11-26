@@ -14,10 +14,24 @@ export function RollerInside(props: RollerInsideProps) {
 				trasnlatePx - randomNumber + randomNumberPlus
 			}px)`;
 		}
+		setTimeout(() => {
+			if (itemsContainer.current)
+				itemsContainer.current.style.transitionDuration = `0s`;
+		}, 8200);
+	}, []);
+
+	const ResetAnimation = useCallback(() => {
+		if (itemsContainer.current) {
+			itemsContainer.current.style.transform = `translateX(0)`;
+			setTimeout(() => {
+				if (itemsContainer.current)
+					itemsContainer.current.style.transitionDuration = `8s`;
+			}, 100);
+		}
 	}, []);
 	useEffect(() => {
-		props.isRolling ? StartRoll() : null;
-	}, [props.isRolling, StartRoll]);
+		props.isRolling ? StartRoll() : ResetAnimation();
+	}, [props.isRolling, StartRoll, ResetAnimation]);
 
 	return (
 		<div

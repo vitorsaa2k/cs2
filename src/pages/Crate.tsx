@@ -4,12 +4,12 @@ import { CrateName } from "../features/crate/components/cratePresentation/crateN
 import { Roller } from "../features/crate/components/roller";
 import { useEffect, useState } from "react";
 import { getCrate } from "../services/crateApi";
-import { CrateSkin } from "../features/crate/types/api";
+import { SkinType } from "../features/crate/types/api";
 import CrateDesc from "../features/crate/components/crateDesc";
 
 export function Crate() {
 	const { id } = useParams();
-	const [items, setItems] = useState<CrateSkin[]>([]);
+	const [items, setItems] = useState<SkinType[]>([]);
 
 	useEffect(() => {
 		id ? getCrate(id).then(res => setItems(res.skins)) : null;

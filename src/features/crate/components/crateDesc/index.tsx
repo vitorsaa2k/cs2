@@ -1,8 +1,8 @@
-import { CrateSkin } from "../../types/api";
+import { SkinType } from "../../types/api";
 import { CrateItem } from "./crateItem";
 import { ItemsSkeleton } from "./itemsSkeleton";
 
-export default function CrateDesc({ items }: { items: CrateSkin[] }) {
+export default function CrateDesc({ items }: { items: SkinType[] }) {
 	return (
 		<div>
 			{items.length > 0 ? (
