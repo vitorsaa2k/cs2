@@ -4,14 +4,16 @@ import { RollerInside } from "./rollerInside";
 import { Line } from "./line";
 import { useParams } from "react-router-dom";
 import { getCrate } from "../../../../services/crateApi";
-import { CrateSkin } from "../../types/api";
+import { SkinType } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
+import { RollerModal } from "./rollerModal";
 
 export function Roller() {
 	const [isRolling, setIsRolling] = useState(false);
 	const { id } = useParams();
-	const [items, setItems] = useState<CrateSkin[]>([]);
+	const [items, setItems] = useState<SkinType[]>([]);
+	const [showModal, setShowModal] = useState(false);
 
 	async function roll() {
 		if (id) {
@@ -20,6 +22,9 @@ export function Roller() {
 			array[70] = skin;
 			setItems(array);
 		}
+		setTimeout(() => {
+			setShowModal(true);
+		}, 8500);
 	}
 
 	useEffect(() => {
@@ -28,12 +33,14 @@ export function Roller() {
 			: null;
 	}, [id]);
 	return (
-		<div className="w-full m-3 h-full flex flex-col justify-center items-center overflow-hidden">
+		<div className="w-full m-3 h-full gap-2 flex flex-col justify-center items-center overflow-hidden">
 			<RollerContainer>
 				<RollerInside isRolling={isRolling} items={items} />
 				<Line />
 			</RollerContainer>
 			<button
+				className="bg-green-800 disabled:bg-green-950 rounded p-2"
+				disabled={isRolling}
 				onClick={async () => {
 					await roll();
 					setIsRolling(true);
@@ -41,13 +48,16 @@ export function Roller() {
 			>
 				Open Crate
 			</button>
-			<button
-				onClick={() => {
-					setIsRolling(false);
-				}}
-			>
-				Reset
-			</button>
+			{showModal ? (
+				<RollerModal
+					closeModal={() => {
+						setShowModal(false);
+						setIsRolling(false);
+						setItems(generateSkinsArray(items));
+					}}
+					item={items[70]}
+				/>
+			) : null}
 		</div>
 	);
 }
