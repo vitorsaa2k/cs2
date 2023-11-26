@@ -42,8 +42,8 @@ export function Roller() {
 				className="bg-green-800 disabled:bg-green-950 rounded p-2"
 				disabled={isRolling}
 				onClick={async () => {
-					setIsRolling(true);
 					await roll();
+					setIsRolling(true);
 				}}
 			>
 				Open Crate
