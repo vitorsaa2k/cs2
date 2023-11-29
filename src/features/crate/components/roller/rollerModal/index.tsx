@@ -1,6 +1,7 @@
 import { SkinType } from "../../../types/api";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";
+import { decodeEntities } from "../../../../../utils/decodeHTML";
 
 type RollerModalType = {
 	item: SkinType;
@@ -22,8 +23,12 @@ export function RollerModal({ item, closeModal }: RollerModalType) {
 					</button>
 				</div>
 				<div className="p-1 md:p-2 text-center flex items-center flex-col">
-					<h3 className="font-normal text-gray-300">{item.name}</h3>
-					<img src={item.img} />
+					<h3 className="font-normal text-gray-300">
+						{decodeEntities(item.name)}
+					</h3>
+					<img
+						src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
+					/>
 				</div>
 			</div>
 		</div>

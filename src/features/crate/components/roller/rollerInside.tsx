@@ -39,7 +39,11 @@ export function RollerInside(props: RollerInsideProps) {
 			className="flex items-center transition-all duration-[8s] ease-out"
 		>
 			{props.items.map(item => {
-				return <RollerItem item={item} />;
+				return (
+					<div key={item.classid}>
+						<RollerItem item={item} />
+					</div>
+				);
 			})}
 		</div>
 	);

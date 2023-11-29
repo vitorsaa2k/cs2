@@ -1,3 +1,4 @@
+import { decodeEntities } from "../../../../utils/decodeHTML";
 import { SkinType } from "../../types/api";
 import { CrateItem } from "./crateItem";
 import { ItemsSkeleton } from "./itemsSkeleton";
@@ -11,8 +12,8 @@ export default function CrateDesc({ items }: { items: SkinType[] }) {
 						return (
 							<div key={item.name}>
 								<CrateItem
-									img={item.img}
-									itemName={item.name}
+									img={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
+									name={decodeEntities(item.name)}
 									price={item.price}
 								/>
 							</div>
