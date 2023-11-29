@@ -1,3 +1,5 @@
+import { SkinType } from "../features/crate/types/api";
+
 export type UserType = {
 	provider: string;
 	_json: {
@@ -32,4 +34,9 @@ export type UserType = {
 		}
 	];
 	identifier: string;
+};
+
+export type InventoryType = {
+	id: string;
+	inventory: SkinType[];
 };

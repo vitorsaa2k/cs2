@@ -9,10 +9,10 @@ export function UserHeader({ user }: { user: UserType }) {
 	}
 	return (
 		<div className="flex flex-col items-center justify-center">
-			<div className="flex items-center gap-2">
+			<a href="/profile" className="flex items-center gap-2">
 				<img className="rounded-full max-w-[40px]" src={user.photos[0].value} />
 				{user.displayName}
-			</div>
+			</a>
 			<div className="m-2">
 				<button className="bg-red-900 rounded p-1" onClick={LogOut}>
 					Log Out

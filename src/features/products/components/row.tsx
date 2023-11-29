@@ -14,7 +14,7 @@ export function ProductRow() {
 		<div className="m-4 flex flex-col gap-4">
 			<p>Row 1</p>
 			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-				<ProductInfo src={images[0]} name="temptress" price="90" />
+				<ProductInfo src={images[0]} name="Temptress" price="90" />
 				<ProductInfo src={images[1]} name="Gloves" price="90" />
 				<ProductInfo src={images[2]} name="test" price="90" />
 				<ProductInfo src={images[3]} name="test" price="90" />
