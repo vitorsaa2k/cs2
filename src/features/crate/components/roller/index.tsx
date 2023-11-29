@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RollerContainer } from "./rollerContainer";
 import { RollerInside } from "./rollerInside";
 import { Line } from "./line";
@@ -8,6 +8,8 @@ import { SkinType } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
 import { RollerModal } from "./rollerModal";
+import { UserContext } from "../../../../contexts/userContext";
+import { URL } from "../../../../libs/axios";
 
 export function Roller() {
 	const [isRolling, setIsRolling] = useState(false);
@@ -15,16 +17,23 @@ export function Roller() {
 	const [items, setItems] = useState<SkinType[]>([]);
 	const [showModal, setShowModal] = useState(false);
 
+	const userContext = useContext(UserContext);
+
 	async function roll() {
-		if (id) {
-			const skin = await rollCrate(id);
-			const array = [...items];
-			array[70] = skin;
-			setItems(array);
+		if (userContext.user.id.length === 0) {
+			window.location.href = `${URL}/auth/steam`;
+		} else {
+			if (id) {
+				const skin = await rollCrate(id, userContext.user.id);
+				const array = [...items];
+				array[70] = skin;
+				setItems(array);
+			}
+			setTimeout(() => {
+				setShowModal(true);
+			}, 8500);
+			setIsRolling(true);
 		}
-		setTimeout(() => {
-			setShowModal(true);
-		}, 8500);
 	}
 
 	useEffect(() => {
@@ -43,7 +52,6 @@ export function Roller() {
 				disabled={isRolling}
 				onClick={async () => {
 					await roll();
-					setIsRolling(true);
 				}}
 			>
 				Open Crate

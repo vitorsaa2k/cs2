@@ -38,9 +38,9 @@ export function RollerInside(props: RollerInsideProps) {
 			ref={itemsContainer}
 			className="flex items-center transition-all duration-[8s] ease-out"
 		>
-			{props.items.map(item => {
+			{props.items.map((item, index) => {
 				return (
-					<div key={item.classid}>
+					<div key={index}>
 						<RollerItem item={item} />
 					</div>
 				);
