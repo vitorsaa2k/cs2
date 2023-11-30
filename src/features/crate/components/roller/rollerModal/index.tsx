@@ -4,11 +4,11 @@ import { IconContext } from "react-icons";
 import { decodeEntities } from "../../../../../utils/decodeHTML";
 
 type RollerModalType = {
-	item: SkinType;
+	items: SkinType[];
 	closeModal: () => void;
 };
 
-export function RollerModal({ item, closeModal }: RollerModalType) {
+export function RollerModal({ items, closeModal }: RollerModalType) {
 	return (
 		<div className="flex fixed top-0 right-0 left-0 bottom-0 justify-center bg-black/30 items-center w-full">
 			<div className="relative rounded-lg shadow bg-gray-700">
@@ -23,12 +23,18 @@ export function RollerModal({ item, closeModal }: RollerModalType) {
 					</button>
 				</div>
 				<div className="p-1 md:p-2 text-center flex items-center flex-col">
-					<h3 className="font-normal text-gray-300">
-						{decodeEntities(item.name)}
-					</h3>
-					<img
-						src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
-					/>
+					{items.map(item => {
+						return (
+							<>
+								<h3 className="font-normal text-gray-300">
+									{decodeEntities(item.name)}
+								</h3>
+								<img
+									src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
+								/>
+							</>
+						);
+					})}
 				</div>
 			</div>
 		</div>
