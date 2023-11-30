@@ -12,7 +12,7 @@ export function AppRoutes() {
 				<Route path="/" element={<Home />} />
 				<Route path="/user/:id?" element={<RedirectLogin />} />
 				<Route path="/profile" element={<Profile />} />
-				<Route path="/crate/:id" element={<Crate />} />
+				<Route path="/crate/:name" element={<Crate />} />
 			</Routes>
 		</Layout>
 	);
