@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ProductImage } from "./productImage";
 import { ProductName } from "./productName";
 import { ProductPrice } from "./productPrice";
@@ -12,14 +11,10 @@ export function ProductInfo({
 	price: string;
 	src: string;
 }) {
-	const navigate = useNavigate();
-	function goToCrate() {
-		navigate(`/crate/${name}`);
-	}
 	return (
 		<div>
-			<ProductImage src={src} goToCrate={goToCrate} />
-			<ProductName goToCrate={goToCrate} name={name} />
+			<ProductImage name={name} src={src} />
+			<ProductName name={name} />
 			<ProductPrice price={price} />
 		</div>
 	);

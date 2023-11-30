@@ -1,15 +1,7 @@
-export function ProductImage({
-	goToCrate,
-	src,
-}: {
-	goToCrate: () => void;
-	src: string;
-}) {
+export function ProductImage({ src, name }: { src: string; name: string }) {
 	return (
-		<img
-			src={src}
-			onClick={goToCrate}
-			className="border border-black hover:cursor-pointer"
-		></img>
+		<a href={`/crate/${name}`}>
+			<img src={src} className="border border-black hover:cursor-pointer"></img>
+		</a>
 	);
 }

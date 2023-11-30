@@ -1,13 +1,7 @@
-export function ProductName({
-	name,
-	goToCrate,
-}: {
-	name: string;
-	goToCrate: () => void;
-}) {
+export function ProductName({ name }: { name: string }) {
 	return (
-		<p className="hover:cursor-pointer inline-block" onClick={goToCrate}>
+		<a href={`/crate/${name}`} className="hover:cursor-pointer inline-block">
 			{name}
-		</p>
+		</a>
 	);
 }
