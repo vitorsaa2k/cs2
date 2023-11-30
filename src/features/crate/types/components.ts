@@ -7,7 +7,7 @@ import {
 import { SkinType } from "./api";
 
 export type RollerInsideProps = HTMLAttributes<HTMLDivElement> & {
-	items: SkinType[][];
+	items: SkinType[];
 	isRolling: boolean;
 	crateNumber?: number;
 };

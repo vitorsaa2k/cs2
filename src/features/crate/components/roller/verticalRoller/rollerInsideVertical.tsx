@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
-import { RollerInsideProps } from "../../../types/components";
+import { VerticalRollerProps } from "../../../types/components";
 import { ItemsColumn } from "./itemsColumn";
 
-export function VerticalRollerInside(props: RollerInsideProps) {
+export function VerticalRollerInside(props: VerticalRollerProps) {
 	const itemsContainer = useRef<HTMLDivElement>(null);
 	const totalComponents = new Array(props.crateNumber).fill(0);
 
