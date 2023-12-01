@@ -7,7 +7,6 @@ import { UserContext } from "../../../contexts/userContext";
 export function MainHeader() {
 	const userContext = useContext(UserContext);
 	const user = userContext.user;
-	console.log(userContext);
 
 	return (
 		<div className="flex justify-between mx-5">

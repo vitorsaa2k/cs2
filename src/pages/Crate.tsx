@@ -8,12 +8,12 @@ import { SkinType } from "../features/crate/types/api";
 import CrateDesc from "../features/crate/components/crateDesc";
 
 export function Crate() {
-	const { id } = useParams();
+	const { name } = useParams();
 	const [items, setItems] = useState<SkinType[]>([]);
 
 	useEffect(() => {
-		id ? getCrate(id).then(res => setItems(res.skins)) : null;
-	}, [id]);
+		name ? getCrate(name).then(res => setItems(res.skins)) : null;
+	}, [name]);
 
 	return (
 		<div className="flex flex-col items-center m-3">
