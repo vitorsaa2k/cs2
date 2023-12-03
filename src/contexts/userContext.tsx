@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { UserType } from "../types/api";
+import { getUser } from "../services/userApi";
 
 const defaultValue: UserContextType = {
 	user: {
@@ -36,6 +37,7 @@ const defaultValue: UserContextType = {
 			},
 		],
 		identifier: "",
+		balance: 0,
 	},
 	setUser: () => {},
 };
@@ -49,9 +51,10 @@ const UserContext = createContext<UserContextType>(defaultValue);
 function UserContextProvider({ children }: { children: ReactNode }) {
 	const [user, setContextUser] = useState(defaultValue.user);
 
-	function setUser(newUser: UserType) {
-		localStorage.setItem("user", JSON.stringify(newUser));
-		setContextUser(newUser);
+	async function setUser(newUser: UserType) {
+		const req = await getUser(newUser.id);
+		localStorage.setItem("user", JSON.stringify(req.data));
+		setContextUser(await req.data);
 	}
 
 	useEffect(() => {
