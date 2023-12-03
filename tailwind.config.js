@@ -6,6 +6,20 @@ export default {
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
 			},
+			animation: {
+				"slide-up": "slide-up 0.3s ease-out",
+				"opacity-up": "opacity-up 0.3s ease-out",
+			},
+			keyframes: {
+				"slide-up": {
+					"0%": { transform: "translateY(30px)" },
+					"100%": { transform: "translateY(0)" },
+				},
+				"opacity-up": {
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
+			},
 		},
 	},
 	safelist: [

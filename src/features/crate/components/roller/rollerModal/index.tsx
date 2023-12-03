@@ -10,8 +10,8 @@ type RollerModalType = {
 
 export function RollerModal({ items, closeModal }: RollerModalType) {
 	return (
-		<div className="flex fixed top-0 right-0 left-0 bottom-0 justify-center bg-black/30 items-center w-full">
-			<div className="relative rounded-lg shadow bg-gray-700">
+		<div className="flex animate-opacity-up fixed top-0 right-0 left-0 bottom-0 justify-center bg-black/30 items-center w-full">
+			<div className="relative animate-slide-up rounded-lg shadow bg-gray-700">
 				<div className="flex justify-end">
 					<button
 						className="hover:bg-gray-800 m-1 rounded"

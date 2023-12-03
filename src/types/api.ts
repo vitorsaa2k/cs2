@@ -34,6 +34,7 @@ export type UserType = {
 		}
 	];
 	identifier: string;
+	balance: number;
 };
 
 export type InventoryType = {

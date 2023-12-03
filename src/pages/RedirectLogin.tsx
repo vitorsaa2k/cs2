@@ -17,7 +17,7 @@ export function RedirectLogin() {
 	async function checkUserAndRedirect() {
 		const req = await getUser(id!);
 		user.setUser(await req.data);
-		(await req.data.error)
+		(await req.data).id
 			? navigate("/")
 			: navigate("/profile", { state: { user: req.data } });
 	}
