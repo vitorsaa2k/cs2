@@ -14,3 +14,7 @@ export async function createCheckout(
 export async function checkPayment(paymentId: string) {
 	return (await instance.get(`/checkout/${paymentId}`)).data;
 }
+
+export async function getBonus(code: string) {
+	return await instance.get(`/checkout/bonus/${code}`);
+}

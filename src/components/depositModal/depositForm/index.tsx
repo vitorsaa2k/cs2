@@ -10,9 +10,13 @@ export function DepositForm({
 	setCode,
 	code,
 	isSubmitting,
+	setFinalAmount,
+	finalAmount,
 }: {
 	setAmount: Dispatch<SetStateAction<number>>;
 	amount: number;
+	setFinalAmount: Dispatch<SetStateAction<number>>;
+	finalAmount: number;
 	goToCheckout: () => void;
 	setCode: Dispatch<SetStateAction<string>>;
 	code: string;
@@ -28,7 +32,13 @@ export function DepositForm({
 		>
 			<BonusCode code={code} setCode={setCode} />
 			<AmountContainer amount={amount} setAmount={setAmount} />
-			<FinalCheckout isSubmitting={isSubmitting} amount={amount} code={code} />
+			<FinalCheckout
+				setFinalAmount={setFinalAmount}
+				finalAmount={finalAmount}
+				isSubmitting={isSubmitting}
+				amount={amount}
+				code={code}
+			/>
 		</form>
 	);
 }

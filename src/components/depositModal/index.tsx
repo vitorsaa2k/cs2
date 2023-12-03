@@ -15,10 +15,15 @@ export function DepositModal({ onClose }: { onClose: () => void }) {
 	const [amount, setAmount] = useState(2);
 	const [code, setCode] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [finalAmount, setFinalAmount] = useState(amount);
 	const { user } = useContext(UserContext);
 	async function goToCheckout() {
 		setIsSubmitting(true);
-		const req = await createCheckout(paymentMethod, amount, user.id);
+		const req = await createCheckout(
+			paymentMethod,
+			Number(finalAmount),
+			user.id
+		);
 		setIsSubmitting(false);
 		window.open(req.url, "_blank")?.focus();
 		setInterval(async () => {
@@ -47,6 +52,8 @@ export function DepositModal({ onClose }: { onClose: () => void }) {
 						<div className="flex gap-3">
 							<PaymentMethod setPaymentMethod={setPaymentMethod} />
 							<DepositForm
+								setFinalAmount={setFinalAmount}
+								finalAmount={finalAmount}
 								isSubmitting={isSubmitting}
 								amount={amount}
 								code={code}
