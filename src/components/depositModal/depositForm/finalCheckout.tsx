@@ -1,12 +1,7 @@
-import {
-	Dispatch,
-	SetStateAction,
-	useCallback,
-	useEffect,
-	useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TailSpinner } from "../../spinner";
 import { getBonus } from "../../../services/paymentApi";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 export function FinalCheckout({
 	amount,
@@ -23,7 +18,7 @@ export function FinalCheckout({
 }) {
 	const [isUpdating, setIsUpdating] = useState(false);
 
-	const updateFinalAmount = useCallback(async () => {
+	const updateFinalAmount = async () => {
 		setIsUpdating(true);
 		await getBonus(code)
 			.then(res => {
@@ -32,14 +27,12 @@ export function FinalCheckout({
 			.catch(() => {
 				setFinalAmount(amount);
 			});
-		setTimeout(() => {
-			setIsUpdating(false);
-		}, 1000);
-	}, [code, amount, setFinalAmount]);
+		setIsUpdating(false);
+	};
+	const debounceGetBonus = useDebounce(updateFinalAmount, 600);
 	useEffect(() => {
-		updateFinalAmount();
-		return () => {};
-	}, [updateFinalAmount]);
+		debounceGetBonus();
+	}, [amount, code]);
 	return (
 		<div className="border w-full flex flex-col items-center rounded p-2">
 			<p>YOU GET</p>
