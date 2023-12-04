@@ -10,7 +10,7 @@ export function AddAmount({
 	return (
 		<button
 			onClick={() => {
-				setAmount(prevAmount => prevAmount + amountToAdd);
+				setAmount(amountToAdd);
 			}}
 			type="button"
 		>

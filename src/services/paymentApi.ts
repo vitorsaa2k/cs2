@@ -4,10 +4,15 @@ import { instance } from "../libs/axios";
 export async function createCheckout(
 	method: PaymentTypes,
 	amount: number,
-	userId: string
+	userId: string,
+	code: string
 ) {
 	return (
-		await instance.post(`/checkout/${method.toLowerCase()}`, { amount, userId })
+		await instance.post(`/checkout/${method.toLowerCase()}`, {
+			amount,
+			userId,
+			code,
+		})
 	).data;
 }
 

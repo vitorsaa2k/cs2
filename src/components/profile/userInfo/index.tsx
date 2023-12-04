@@ -7,9 +7,8 @@ export function UserInfo() {
 	return (
 		<section className="border m-6 flex">
 			<UserImage src={user.photos[2].value} />
-			<div>
+			<div className="flex items-center">
 				<div>Username: {user.displayName}</div>
-				<div>Id: {user.id}</div>
 			</div>
 		</section>
 	);

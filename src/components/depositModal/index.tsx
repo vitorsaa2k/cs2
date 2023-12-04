@@ -19,11 +19,7 @@ export function DepositModal({ onClose }: { onClose: () => void }) {
 	const { user } = useContext(UserContext);
 	async function goToCheckout() {
 		setIsSubmitting(true);
-		const req = await createCheckout(
-			paymentMethod,
-			Number(finalAmount),
-			user.id
-		);
+		const req = await createCheckout(paymentMethod, amount, user.id, code);
 		setIsSubmitting(false);
 		window.open(req.url, "_blank")?.focus();
 		setInterval(async () => {
@@ -37,30 +33,32 @@ export function DepositModal({ onClose }: { onClose: () => void }) {
 		<>
 			{createPortal(
 				<Modal>
-					<div className="mt-10 animate-slide-up bg-slate-700 p-5 rounded">
-						<div className="relative">
-							<DepositHeader />
-							<button
-								className="absolute right-0 translate-y-[-200%] hover:bg-slate-800 rounded"
-								onClick={onClose}
-							>
-								<IconContext.Provider value={{ size: "32" }}>
-									<PiX />
-								</IconContext.Provider>
-							</button>
-						</div>
-						<div className="flex gap-3">
-							<PaymentMethod setPaymentMethod={setPaymentMethod} />
-							<DepositForm
-								setFinalAmount={setFinalAmount}
-								finalAmount={finalAmount}
-								isSubmitting={isSubmitting}
-								amount={amount}
-								code={code}
-								setCode={setCode}
-								goToCheckout={goToCheckout}
-								setAmount={setAmount}
-							/>
+					<div className="flex flex-col justify-start items-center">
+						<div className="mt-10 animate-slide-up bg-slate-700 p-5 rounded">
+							<div className="relative">
+								<DepositHeader />
+								<button
+									className="absolute right-0 translate-y-[-200%] hover:bg-slate-800 rounded"
+									onClick={onClose}
+								>
+									<IconContext.Provider value={{ size: "32" }}>
+										<PiX />
+									</IconContext.Provider>
+								</button>
+							</div>
+							<div className="flex gap-3">
+								<PaymentMethod setPaymentMethod={setPaymentMethod} />
+								<DepositForm
+									setFinalAmount={setFinalAmount}
+									finalAmount={finalAmount}
+									isSubmitting={isSubmitting}
+									amount={amount}
+									code={code}
+									setCode={setCode}
+									goToCheckout={goToCheckout}
+									setAmount={setAmount}
+								/>
+							</div>
 						</div>
 					</div>
 				</Modal>,

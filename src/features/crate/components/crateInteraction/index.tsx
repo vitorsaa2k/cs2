@@ -20,7 +20,7 @@ export function CrateInteraction(props: CrateInteractionProps) {
 						)
 					}
 				/>
-				<p>{props.crateNumber}</p>
+				<p className="m-1 w-[8px]">{props.crateNumber}</p>
 			</div>
 			<button
 				className="bg-green-800 disabled:bg-green-950 rounded p-2"

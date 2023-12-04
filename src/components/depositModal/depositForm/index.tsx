@@ -24,7 +24,7 @@ export function DepositForm({
 }) {
 	return (
 		<form
-			className="flex flex-col w-[600px] items-center"
+			className="flex flex-col gap-6 w-[600px] items-center"
 			onSubmit={e => {
 				e.preventDefault();
 				goToCheckout();

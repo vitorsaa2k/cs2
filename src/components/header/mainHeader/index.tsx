@@ -15,9 +15,12 @@ export function MainHeader() {
 		<div className="flex justify-between mx-5">
 			<Logo />
 			<div className="flex items-center gap-2">
-				<div onClick={() => setShowModal(true)}>
-					<DepositButton />
-				</div>
+				{user.id.length > 0 ? (
+					<div onClick={() => setShowModal(true)}>
+						<DepositButton />
+					</div>
+				) : null}
+
 				{user.displayName.length > 0 ? (
 					<UserHeader user={user} />
 				) : (

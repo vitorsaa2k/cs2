@@ -5,7 +5,6 @@ export function Home() {
 		<div className="flex flex-col items-center justify-center">
 			{" "}
 			<ProductRow />
-			<ProductRow />
 		</div>
 	);
 }

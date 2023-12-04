@@ -4,6 +4,7 @@ import { SkinsPayment } from "./skinsPayment";
 import { PaymentTypes } from "../types/payment";
 import { ZenPayment } from "./zenPayment";
 import { CryptoPayment } from "./cryptoPayment";
+import { PaymentMethodBox } from "./paymentMethodBox";
 
 export function PaymentMethod({
 	setPaymentMethod,
@@ -16,38 +17,38 @@ export function PaymentMethod({
 	}
 	return (
 		<div className="flex flex-col gap-2">
-			<div
-				onClick={() => {
-					setIndex(0);
-					paymentMethod("Stripe");
-				}}
+			<PaymentMethodBox
+				index={0}
+				method="Stripe"
+				paymentMethod={paymentMethod}
+				setIndex={setIndex}
 			>
 				<CardPayment index={index} />
-			</div>
-			<div
-				onClick={() => {
-					setIndex(1);
-					paymentMethod("Skins");
-				}}
+			</PaymentMethodBox>
+			<PaymentMethodBox
+				index={1}
+				method="Skins"
+				paymentMethod={paymentMethod}
+				setIndex={setIndex}
 			>
 				<SkinsPayment index={index} />
-			</div>
-			<div
-				onClick={() => {
-					setIndex(2);
-					paymentMethod("Zen");
-				}}
+			</PaymentMethodBox>
+			<PaymentMethodBox
+				index={2}
+				method="Zen"
+				paymentMethod={paymentMethod}
+				setIndex={setIndex}
 			>
 				<ZenPayment index={index} />
-			</div>
-			<div
-				onClick={() => {
-					setIndex(3);
-					paymentMethod("Crypto");
-				}}
+			</PaymentMethodBox>
+			<PaymentMethodBox
+				index={3}
+				method="Crypto"
+				paymentMethod={paymentMethod}
+				setIndex={setIndex}
 			>
 				<CryptoPayment index={index} />
-			</div>
+			</PaymentMethodBox>
 		</div>
 	);
 }

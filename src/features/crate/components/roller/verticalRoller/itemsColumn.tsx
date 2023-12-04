@@ -3,7 +3,7 @@ import { RollerItem } from "./rollerItemVertical/rollerItemVertical";
 
 export function ItemsColumn({ items }: { items: SkinType[] }) {
 	return (
-		<div>
+		<div className="w-full">
 			{items.map((item, index) => {
 				return (
 					<div key={index}>

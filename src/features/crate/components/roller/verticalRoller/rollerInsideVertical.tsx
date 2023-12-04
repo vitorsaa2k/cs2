@@ -37,11 +37,11 @@ export function VerticalRollerInside(props: VerticalRollerProps) {
 	return (
 		<div
 			ref={itemsContainer}
-			className="flex w-full items-center justify-between transition-all duration-[8s] ease-out"
+			className="flex w-full items-center justify-center transition-all duration-[8s] ease-out"
 		>
 			{totalComponents.map((_, index) => {
 				return (
-					<div key={index}>
+					<div className="w-full" key={index}>
 						<ItemsColumn items={props.items[index]} />
 					</div>
 				);

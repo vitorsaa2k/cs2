@@ -23,19 +23,15 @@ export function Roller() {
 	const userContext = useContext(UserContext);
 
 	function resetAllSkinsArray() {
-		name
-			? getCrate(name).then(res => {
-					const verticalSkins = [
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-					];
-					setItems(generateSkinsArray(res.skins));
-					setVerticalItems(verticalSkins);
-			  })
-			: null;
+		const verticalSkins = [
+			generateSkinsArray(items),
+			generateSkinsArray(items),
+			generateSkinsArray(items),
+			generateSkinsArray(items),
+			generateSkinsArray(items),
+		];
+		setItems(generateSkinsArray(items));
+		setVerticalItems(verticalSkins);
 	}
 
 	async function roll() {
