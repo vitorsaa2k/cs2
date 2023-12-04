@@ -14,6 +14,7 @@ import { VerticalRoller } from "./verticalRoller";
 export function Roller() {
 	const { name } = useParams();
 	const [isRolling, setIsRolling] = useState(false);
+	const [isFetching, setIsFetching] = useState(false);
 	const [items, setItems] = useState<SkinType[]>([]);
 	const [verticalItems, setVerticalItems] = useState<SkinType[][]>([[]]);
 	const [showModal, setShowModal] = useState(false);
@@ -39,8 +40,9 @@ export function Roller() {
 			window.location.href = `${URL}/auth/steam`;
 		} else {
 			if (name) {
+				setIsFetching(true);
 				const skins = await rollCrate(name, userContext.user.id, crateNumber);
-				const array = [...items];
+				const array = items;
 				array[70] = skins[0];
 				setDrawnSkins(skins);
 				setItems(array);
@@ -52,6 +54,7 @@ export function Roller() {
 			}
 			setTimeout(() => {
 				setShowModal(true);
+				setIsFetching(false);
 			}, 8500);
 			setIsRolling(true);
 		}
@@ -84,7 +87,7 @@ export function Roller() {
 				/>
 			)}
 			<CrateInteraction
-				disabled={isRolling}
+				disabled={isFetching}
 				onClick={roll}
 				setCrateNumber={setCrateNumber}
 				crateNumber={crateNumber}
