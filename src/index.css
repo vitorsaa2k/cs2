@@ -8,8 +8,12 @@
 		@apply bg-zinc-900;
 		@apply font-inter;
 	}
-	svg {
-		@apply hover:cursor-pointer;
-		@apply hover:fill-white;
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	input[type="number"] {
+		-moz-appearance: textfield;
 	}
 }
