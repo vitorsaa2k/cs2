@@ -28,7 +28,7 @@ export function PreviewRow({ skin }: { skin: SkinCrate }) {
 				<input
 					value={percentage}
 					type="number"
-					className="bg-transparent max-w-[40px] text-center outline-none border rounded"
+					className="bg-transparent max-w-[50px] text-center outline-none border rounded"
 					placeholder="%"
 					onChange={updatePercentage}
 				/>
