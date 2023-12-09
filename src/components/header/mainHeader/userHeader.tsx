@@ -1,11 +1,11 @@
 import { UserType } from "../../../types/api";
 import { URL } from "../../../libs/axios";
+import { queryClient } from "../../../libs/queryClient";
 
 export function UserHeader({ user }: { user: UserType }) {
 	async function LogOut() {
-		window.history.replaceState({}, document.title);
+		queryClient.resetQueries({ queryKey: ["user"] });
 		window.location.href = `${URL}/auth/logout`;
-		localStorage.removeItem("user");
 	}
 	return (
 		<div className="flex flex-col items-center justify-center">

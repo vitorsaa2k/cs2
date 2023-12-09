@@ -2,10 +2,9 @@ import { DepositHeader } from "./depositHeader";
 import { createPortal } from "react-dom";
 import { PaymentMethod } from "./paymentMethod/paymentMethod";
 import { Modal } from "../modal";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { PaymentTypes } from "./types/payment";
 import { checkPayment, createCheckout } from "../../services/paymentApi";
-import { UserContext } from "../../contexts/userContext";
 import { DepositForm } from "./depositForm";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";
@@ -16,10 +15,9 @@ export function DepositModal({ onClose }: { onClose: () => void }) {
 	const [code, setCode] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [finalAmount, setFinalAmount] = useState(amount);
-	const { user } = useContext(UserContext);
 	async function goToCheckout() {
 		setIsSubmitting(true);
-		const req = await createCheckout(paymentMethod, amount, user.id, code);
+		const req = await createCheckout(paymentMethod, amount, code);
 		setIsSubmitting(false);
 		window.open(req.url, "_blank")?.focus();
 		setInterval(async () => {
