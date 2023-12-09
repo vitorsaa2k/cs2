@@ -16,8 +16,8 @@ export function SkinSearch() {
 			setIsFetching(true);
 			const skins = await getSkinByName(skinName);
 			setSkinsArray(skins);
-			setIsFetching(false);
 		}
+		setIsFetching(false);
 	}
 
 	const searchDebounce = useDebounce(searchOnDb, 600);
@@ -38,9 +38,7 @@ export function SkinSearch() {
 						setSkinName(e.currentTarget.value);
 					}}
 				/>
-				{isFetching && skinsArray.length == 0 ? (
-					<TailSpinner height={20} width={20} visible />
-				) : null}
+				{isFetching ? <TailSpinner height={20} width={20} visible /> : null}
 			</label>
 			<div className="max-h-[300px] overflow-auto overflow-x-hidden">
 				{skinsArray.map((skin, index) => {

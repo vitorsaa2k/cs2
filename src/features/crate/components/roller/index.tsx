@@ -1,12 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCrate } from "../../../../services/crateApi";
 import { SkinType } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
 import { RollerModal } from "./rollerModal";
-import { UserContext } from "../../../../contexts/userContext";
-import { URL } from "../../../../libs/axios";
 import { CrateInteraction } from "../crateInteraction";
 import { HorizontalRoller } from "./horizontalRoller";
 import { VerticalRoller } from "./verticalRoller";
@@ -21,8 +19,6 @@ export function Roller() {
 	const [crateNumber, setCrateNumber] = useState(1);
 	const [drawnSkins, setDrawnSkins] = useState<SkinType[]>([]);
 
-	const userContext = useContext(UserContext);
-
 	function resetAllSkinsArray() {
 		const verticalSkins = [
 			generateSkinsArray(items),
@@ -36,28 +32,24 @@ export function Roller() {
 	}
 
 	async function roll() {
-		if (userContext.user.id.length === 0) {
-			window.location.href = `${URL}/auth/steam`;
-		} else {
-			if (name) {
-				setIsFetching(true);
-				const skins = await rollCrate(name, userContext.user.id, crateNumber);
-				const array = items;
-				array[70] = skins[0];
-				setDrawnSkins(skins);
-				setItems(array);
-				const verticalItemsClone = verticalItems;
-				skins.forEach((skin, index) => {
-					verticalItemsClone[index][70] = skin;
-				});
-				setVerticalItems(verticalItemsClone);
-			}
-			setTimeout(() => {
-				setShowModal(true);
-				setIsFetching(false);
-			}, 8500);
-			setIsRolling(true);
+		if (name) {
+			setIsFetching(true);
+			const skins = await rollCrate(name, crateNumber);
+			const array = items;
+			array[70] = skins[0];
+			setDrawnSkins(skins);
+			setItems(array);
+			const verticalItemsClone = verticalItems;
+			skins.forEach((skin, index) => {
+				verticalItemsClone[index][70] = skin;
+			});
+			setVerticalItems(verticalItemsClone);
 		}
+		setTimeout(() => {
+			setShowModal(true);
+			setIsFetching(false);
+		}, 8500);
+		setIsRolling(true);
 	}
 
 	useEffect(() => {

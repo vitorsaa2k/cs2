@@ -1,15 +1,18 @@
-import { useContext } from "react";
-import { UserContext } from "../../../contexts/userContext";
 import { UserImage } from "./userImage";
+import { useGetUser } from "../../../hooks/useQuery";
 
 export function UserInfo() {
-	const { user } = useContext(UserContext);
+	const { data: user } = useGetUser();
 	return (
 		<section className="border m-6 flex">
-			<UserImage src={user.photos[2].value} />
-			<div className="flex items-center">
-				<div>Username: {user.displayName}</div>
-			</div>
+			{user ? (
+				<>
+					<UserImage src={user.photos[2].value} />
+					<div className="flex items-center">
+						<div>Username: {user?.displayName}</div>
+					</div>
+				</>
+			) : null}
 		</section>
 	);
 }
