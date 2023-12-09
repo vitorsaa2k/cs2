@@ -9,6 +9,7 @@ import { useGetUser } from "../../../hooks/useQuery";
 export function MainHeader() {
 	const [showModal, setShowModal] = useState(false);
 	const { data: user, isLoading } = useGetUser();
+	console.log(user);
 	return (
 		<div className="flex justify-between mx-5">
 			<Logo />
