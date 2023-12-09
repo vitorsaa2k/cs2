@@ -4,8 +4,9 @@ import { queryClient } from "../../../libs/queryClient";
 
 export function UserHeader({ user }: { user: UserType }) {
 	async function LogOut() {
-		queryClient.resetQueries({ queryKey: ["user"] });
 		window.location.href = `${URL}/auth/logout`;
+		queryClient.resetQueries({ queryKey: ["user"] });
+		queryClient.removeQueries({ queryKey: ["user"] });
 	}
 	return (
 		<div className="flex flex-col items-center justify-center">
