@@ -3,7 +3,6 @@ import {
 	ReactNode,
 	SetStateAction,
 	createContext,
-	useEffect,
 	useState,
 } from "react";
 
@@ -23,12 +22,6 @@ function DepositModalProvider({ children }: { children: ReactNode }) {
 	const [showDepositModal, setShowDepositModal] = useState(
 		defaultValue.showDepositModal
 	);
-	useEffect(() => {
-		const localCrate = localStorage.getItem("crate");
-		if (localCrate) {
-			setShowDepositModal(JSON.parse(localCrate));
-		}
-	}, []);
 	return (
 		<DepositModalContext.Provider
 			value={{

@@ -16,3 +16,7 @@ export async function getUserPublicSeeds() {
 export async function getServerSeedHistory() {
 	return (await instance.get("/user/seeds/history")).data;
 }
+
+export async function sellAllUserSkins() {
+	return (await instance.get("/user/inventory/sell/all")).data;
+}

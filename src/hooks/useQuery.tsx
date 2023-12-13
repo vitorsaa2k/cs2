@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getServerSeedHistory, getUser } from "../services/userApi";
-import { UserType } from "../types/api";
+import {
+	getServerSeedHistory,
+	getUser,
+	getUserInventory,
+} from "../services/userApi";
+import { InventoryType, UserType } from "../types/api";
 import { Seed } from "../features/provablyFair/types/api";
 import { getCrate } from "../services/crateApi";
 import { CrateType } from "../features/crate/types/api";
@@ -25,6 +29,14 @@ export function useGetCrateByName(name: string) {
 	const query = useQuery<CrateType>({
 		queryKey: ["crate"],
 		queryFn: () => getCrate(name),
+	});
+	return query;
+}
+
+export function useGetUserInventory() {
+	const query = useQuery<InventoryType>({
+		queryKey: ["inventory"],
+		queryFn: getUserInventory,
 	});
 	return query;
 }
