@@ -5,6 +5,7 @@ export type CrateType = {
 	skins: SkinType[];
 };
 export type SkinType = {
+	rollId: string;
 	name: string;
 	rarity_color: string;
 	price: number;

@@ -8,3 +8,11 @@ export async function getUser() {
 export async function getUserInventory() {
 	return (await instance.get<Promise<InventoryType>>(`/user/inventory`)).data;
 }
+
+export async function getUserPublicSeeds() {
+	return (await instance.get("/user/seeds")).data;
+}
+
+export async function getServerSeedHistory() {
+	return (await instance.get("/user/seeds/history")).data;
+}
