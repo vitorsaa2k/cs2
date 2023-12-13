@@ -1,13 +1,14 @@
 import { Logo } from "./logo";
 import { LoginButton } from "./loginButton";
 import { UserHeader } from "./userHeader";
-import { useState } from "react";
+import { useContext } from "react";
 import { DepositButton } from "./depositButton";
 import { DepositModal } from "../../depositModal";
 import { useGetUser } from "../../../hooks/useQuery";
+import { DepositModalContext } from "../../../contexts/depositModalContext";
 
 export function MainHeader() {
-	const [showModal, setShowModal] = useState(false);
+	const modal = useContext(DepositModalContext);
 	const { data: user, isLoading } = useGetUser();
 	return (
 		<div className="flex justify-between mx-5">
@@ -16,7 +17,7 @@ export function MainHeader() {
 				{isLoading ? null : (
 					<>
 						{user ? (
-							<div onClick={() => setShowModal(true)}>
+							<div onClick={() => modal.setShowDepositModal(true)}>
 								<DepositButton />
 							</div>
 						) : null}
@@ -25,7 +26,13 @@ export function MainHeader() {
 					</>
 				)}
 			</div>
-			{showModal && <DepositModal onClose={() => setShowModal(false)} />}
+			{modal.showDepositModal && (
+				<DepositModal
+					onClose={() => {
+						modal.setShowDepositModal(false);
+					}}
+				/>
+			)}
 		</div>
 	);
 }

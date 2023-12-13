@@ -8,6 +8,7 @@ import { RollerModal } from "./rollerModal";
 import { CrateInteraction } from "../crateInteraction";
 import { HorizontalRoller } from "./horizontalRoller";
 import { VerticalRoller } from "./verticalRoller";
+import { queryClient } from "../../../../libs/queryClient";
 
 export function Roller() {
 	const { name } = useParams();
@@ -48,6 +49,7 @@ export function Roller() {
 		setTimeout(() => {
 			setShowModal(true);
 			setIsFetching(false);
+			queryClient.invalidateQueries({ queryKey: ["user"] });
 		}, 8500);
 		setIsRolling(true);
 	}
