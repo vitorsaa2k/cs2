@@ -3,7 +3,9 @@ import { CrateSimulation } from "../features/dashboard/types";
 import { instance } from "../libs/axios";
 
 export async function getCrate(name: string) {
-	return (await instance.get<Promise<CrateType>>(`/crate/${name}`)).data;
+	return (
+		await instance.get<Promise<CrateType>>(`/crate/${name.replace(/\s+/g, "")}`)
+	).data;
 }
 
 export async function simulateCrateOpening(
