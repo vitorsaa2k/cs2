@@ -8,3 +8,7 @@ export async function rollCrate(name: string, crateNumber: number) {
 		})
 	).data;
 }
+
+export async function getRollById(rollId: string) {
+	return (await instance.get(`/crate/roll/${rollId}`)).data;
+}
