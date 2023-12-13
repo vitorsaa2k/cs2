@@ -19,7 +19,7 @@ export function CrateInteraction(props: CrateInteractionProps) {
 			? userHasBalance
 				? 0
 				: Number((props.crateNumber * crate.price - user?.balance).toFixed(2))
-			: null;
+			: 0;
 	return (
 		<section className="flex gap-7">
 			<div className="flex items-center justify-center gap-1">
