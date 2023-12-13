@@ -16,7 +16,7 @@ export function ProductRow() {
 			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
 				<ProductInfo src={images[0]} name="Temptress" price="90" />
 				<ProductInfo src={images[1]} name="Gloves" price="90" />
-				<ProductInfo src={images[2]} name="test" price="90" />
+				<ProductInfo src={images[2]} name="Green Start" price="2.56" />
 				<ProductInfo src={images[3]} name="test" price="90" />
 				<ProductInfo src={images[4]} name="test" price="90" />
 				<ProductInfo src={images[5]} name="test" price="90" />

@@ -2,8 +2,12 @@ import { CrateInteractionProps } from "../../types/components";
 import { PlusButton } from "./plusButton";
 import { MinusButton } from "./minusButton";
 import { TailSpinner } from "../../../../components/spinner";
+import { useGetCrateByName } from "../../../../hooks/useQuery";
+import { useParams } from "react-router-dom";
 
 export function CrateInteraction(props: CrateInteractionProps) {
+	const { name } = useParams();
+	const { data: crate } = useGetCrateByName(name ?? "");
 	return (
 		<section className="flex gap-7">
 			<div className="flex items-center justify-center gap-1">
@@ -33,7 +37,9 @@ export function CrateInteraction(props: CrateInteractionProps) {
 				{props.disabled ? (
 					<TailSpinner height={24} width={30} visible />
 				) : (
-					"Open Crate"
+					`Open Crate $${
+						crate?.price ? crate?.price * props.crateNumber : "0.00"
+					}`
 				)}
 			</button>
 		</section>

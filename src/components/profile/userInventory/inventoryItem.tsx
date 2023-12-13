@@ -17,6 +17,7 @@ export function InventoryItem({ item }: { item: SkinType }) {
 					className="max-w-[250px]"
 					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
 				/>
+				<p>${item.price}</p>
 			</div>
 			<div
 				onClick={() =>
