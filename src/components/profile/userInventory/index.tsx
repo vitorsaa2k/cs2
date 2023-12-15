@@ -14,12 +14,13 @@ export function UserInventory() {
 			queryClient.invalidateQueries({ queryKey: ["user"] });
 		},
 	});
-	const totalToSell = Number(
-		inventory?.inventory
-			.map(item => item.price)
-			.reduce((prevValue, currValue) => prevValue + currValue, 0)
-			.toFixed(2)
-	);
+	const totalToSell =
+		Number(
+			inventory?.inventory
+				.map(item => item.price)
+				.reduce((prevValue, currValue) => prevValue + currValue, 0)
+				.toFixed(2)
+		) || 0;
 
 	return (
 		<div>
