@@ -6,6 +6,7 @@ import { useGetCrateByName, useGetUser } from "../../../../hooks/useQuery";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { DepositModalContext } from "../../../../contexts/depositModalContext";
+import { URL } from "../../../../libs/axios";
 
 export function CrateInteraction(props: CrateInteractionProps) {
 	const { name } = useParams();
@@ -43,23 +44,37 @@ export function CrateInteraction(props: CrateInteractionProps) {
 			</div>
 			<button
 				className={`${
-					userHasBalance ? "bg-green-800" : "bg-red-800"
+					user ? (userHasBalance ? "bg-green-800" : "bg-red-800") : "bg-red-800"
 				} disabled:bg-green-950 transition-all rounded flex justify-center min-w-[103px] p-2`}
 				onClick={
-					userHasBalance ? props.onClick : () => modal.setShowDepositModal(true)
+					user
+						? userHasBalance
+							? props.onClick
+							: () => modal.setShowDepositModal(true)
+						: () => {
+								window.location.href = `${URL}/auth/steam`;
+						  }
 				}
 				disabled={props.disabled}
 			>
 				{props.disabled ? (
 					<TailSpinner height={24} width={30} visible />
 				) : (
-					`${userHasBalance ? "Open Case" : "Add to open"} 
-					$${
-						userHasBalance
-							? crate
-								? crate?.price * props.crateNumber
-								: "0.00"
-							: remainigToOpen
+					`${
+						user
+							? userHasBalance
+								? "Open Case"
+								: "Add to open"
+							: "Login to open"
+					} 
+					${
+						user
+							? userHasBalance
+								? crate
+									? `$${crate.price * props.crateNumber}`
+									: "0.00"
+								: remainigToOpen
+							: ""
 					}`
 				)}
 			</button>
