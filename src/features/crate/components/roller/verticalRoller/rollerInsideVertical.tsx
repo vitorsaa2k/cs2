@@ -7,13 +7,9 @@ export function VerticalRollerInside(props: VerticalRollerProps) {
 	const totalComponents = new Array(props.crateNumber).fill(0);
 
 	const StartRoll = useCallback(() => {
-		const randomNumber = Math.floor(Math.random() * 125);
-		const randomNumberPlus = Math.floor(Math.random() * 125);
-		const trasnlatePx = 70 * 150 - 400;
+		const trasnlatePx = 70 * 150 - 500;
 		if (itemsContainer.current) {
-			itemsContainer.current.style.transform = `translateY(-${
-				trasnlatePx - randomNumber + randomNumberPlus
-			}px)`;
+			itemsContainer.current.style.transform = `translateY(-${trasnlatePx}px)`;
 		}
 		setTimeout(() => {
 			if (itemsContainer.current)
