@@ -20,3 +20,7 @@ export async function getServerSeedHistory() {
 export async function sellAllUserSkins() {
 	return (await instance.get("/user/inventory/sell/all")).data;
 }
+
+export async function sellSkins(rollId: string[]) {
+	return (await instance.post("/user/inventory/sell", { skins: rollId })).data;
+}
