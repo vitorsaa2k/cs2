@@ -9,6 +9,7 @@ export default {
 			animation: {
 				"slide-up": "slide-up 0.3s ease-out",
 				"opacity-up": "opacity-up 0.3s ease-out",
+				"opacity-down": "opacity-down 0.3s ease-out",
 			},
 			keyframes: {
 				"slide-up": {
@@ -18,6 +19,10 @@ export default {
 				"opacity-up": {
 					"0%": { opacity: "0" },
 					"100%": { opacity: "1" },
+				},
+				"opacity-down": {
+					"0%": { opacity: "1" },
+					"100%": { opacity: "0" },
 				},
 			},
 		},

@@ -72,8 +72,8 @@ export function CrateInteraction(props: CrateInteractionProps) {
 							? userHasBalance
 								? crate
 									? `$${crate.price * props.crateNumber}`
-									: "0.00"
-								: remainigToOpen
+									: "$0.00"
+								: `$${remainigToOpen}`
 							: ""
 					}`
 				)}
