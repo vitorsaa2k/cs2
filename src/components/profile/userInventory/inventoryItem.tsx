@@ -25,7 +25,7 @@ export function InventoryItem({ item }: { item: SkinType }) {
 				/>
 				<button
 					onClick={sellInventorySkin}
-					className="bg-green-800 hidden group-hover:block group-hover:animate-opacity-up animate-opacity-down group-hover:absolute bottom-0 left-0 right-0 w-full py-1"
+					className="bg-green-800 opacity-0 group-hover:opacity-100 group-hover:animate-opacity-up animate-opacity-down absolute bottom-0 w-full py-1"
 				>
 					Sell ${item.price}
 				</button>
