@@ -1,4 +1,8 @@
 import { useRef } from "react";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 946d905b91ff6922ec142d506f4463cc3c9172be
 
 export function Drop({name}: {name: string}){
     const dropDiv = useRef<HTMLDivElement>(null);
