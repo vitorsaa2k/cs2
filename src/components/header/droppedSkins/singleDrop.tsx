@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
-import { DropInfo } from "./dropInfo";
+import { useRef } from "react";
+
 
 export function Drop({name}: {name: string}){
     const dropDiv = useRef<HTMLDivElement>(null);
