@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Drop } from "./singleDrop";
 import { RecentDropsProps } from "./types";
 
