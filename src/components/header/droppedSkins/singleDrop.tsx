@@ -1,9 +1,4 @@
 import { useRef } from "react";
-<<<<<<< HEAD
-=======
-
->>>>>>> 946d905b91ff6922ec142d506f4463cc3c9172be
-
 export function Drop({name}: {name: string}){
     const dropDiv = useRef<HTMLDivElement>(null);
     const contentDiv = useRef<HTMLDivElement>(null);
@@ -20,7 +15,6 @@ export function Drop({name}: {name: string}){
             userDiv.current?.classList.replace("opacity-0","opacity-100")
             }
         }
-        // setTimeout()
     const handleHoverQuit = ()=>{
         if(dropDiv && contentDiv.current ){
             contentDiv.current.style.transform = "translateY(2.5rem)"
