@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
-import { DropInfo } from "./dropInfo";
+import { useRef } from "react";
 
 export function Drop({name}: {name: string}){
     const dropDiv = useRef<HTMLDivElement>(null);
@@ -12,14 +11,14 @@ export function Drop({name}: {name: string}){
 			}
     },8)
     const handleHoverEnter = ()=>{
-        if(dropDiv && contentDiv && userDiv){
+        if(dropDiv && contentDiv.current && userDiv){
             contentDiv.current.style.transform = "translateY(-2.5rem)"
             userDiv.current?.classList.replace("opacity-0","opacity-100")
             }
         }
         // setTimeout()
     const handleHoverQuit = ()=>{
-        if(dropDiv && contentDiv ){
+        if(dropDiv && contentDiv.current ){
             contentDiv.current.style.transform = "translateY(2.5rem)"
              }
          }
@@ -30,7 +29,7 @@ export function Drop({name}: {name: string}){
            <div ref={contentDiv} className="h-full translate-y-10 transition-all duration-[0.18s]">
             {/* DropInfo */}
             <div className="h-2/4 bg-blue-800 w-20">
-                Photo
+                {name}
             </div>
             {/* UserInfo */}
             <div ref={ userDiv } className="h-2/4 w-20 bg-green-800 opacity-0">

@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import { Drop } from "./singleDrop";
 import { RecentDropsProps } from "./types";
 
 export function DropsRow(props: RecentDropsProps) {
     return( 
         <div className="flex flex-row-reverse overflow-hidden" >
-            {props.items.map((value, index)=>{
+            {props.items.map((value)=>{
                  return(
                  <Drop name={value}/>
                  )
