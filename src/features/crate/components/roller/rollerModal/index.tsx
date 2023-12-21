@@ -1,4 +1,4 @@
-import { SkinType } from "../../../types/api";
+import { DrawnSkin } from "../../../types/api";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { decodeEntities } from "../../../../../utils/decodeHTML";
@@ -8,7 +8,7 @@ import { useState } from "react";
 import { queryClient } from "../../../../../libs/queryClient";
 
 type RollerModalType = {
-	items: SkinType[];
+	items: DrawnSkin[];
 	closeModal: () => void;
 };
 

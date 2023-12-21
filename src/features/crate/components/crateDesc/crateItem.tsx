@@ -1,7 +1,7 @@
 import { parseItemNameExterior } from "../../../../utils/crate/parseItemName";
-import { SkinType } from "../../types/api";
+import { CrateSkin } from "../../types/api";
 
-export function CrateItem({ item }: { item: SkinType }) {
+export function CrateItem({ item }: { item: CrateSkin }) {
 	const itemName = parseItemNameExterior(item.name);
 	const itemChance = ((item.maxRate - item.minRate) / 10000).toFixed(2);
 	return (
