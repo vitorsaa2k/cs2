@@ -1,25 +1,27 @@
 import { useRef } from "react";
+import { DroppedItem } from "./droppedItem";
+import { LiveDropItem } from "../../../features/crate/types/api";
 
-export function Drop({ name }: { name: string }) {
-	console.log(name);
+export function Drop({ item }: { item: LiveDropItem }) {
 	const dropDiv = useRef<HTMLDivElement>(null);
 	const contentDiv = useRef<HTMLDivElement>(null);
 	const userDiv = useRef<HTMLDivElement>(null);
 	setTimeout(() => {
 		if (dropDiv.current) {
-			dropDiv.current.style.transform = "translateY(0)";
+			dropDiv.current.style.transform = `translateY(0)`;
 		}
 	}, 8);
 	const handleHoverEnter = () => {
 		if (dropDiv && contentDiv && userDiv && contentDiv.current) {
-			contentDiv.current.style.transform = "translateY(-2.5rem)";
+			contentDiv.current.style.transform = "translateY(-8rem)";
 			userDiv.current?.classList.replace("opacity-0", "opacity-100");
 		}
 	};
 	// setTimeout()
 	const handleHoverQuit = () => {
 		if (dropDiv && contentDiv && contentDiv.current) {
-			contentDiv.current.style.transform = "translateY(2.5rem)";
+			contentDiv.current.style.transform = "translateY(0)";
+			userDiv.current?.classList.replace("opacity-100", "opacity-0");
 		}
 	};
 
@@ -28,18 +30,21 @@ export function Drop({ name }: { name: string }) {
 			ref={dropDiv}
 			onMouseEnter={handleHoverEnter}
 			onMouseLeave={handleHoverQuit}
-			className="h-40 w-20 bg-red-800 flex flex-col tx-xs 
-        transition-all duration-[0.40s] ease-out -translate-y-16 overflow-hidden"
+			className={`flex flex-col text-xs transition-all duration-[1s] -translate-y-16 ease-out`}
 		>
-			<div
-				ref={contentDiv}
-				className="h-full translate-y-10 transition-all duration-[0.18s]"
-			>
-				{/* DropInfo */}
-				<div className="h-2/4 bg-blue-800 w-20">Photo</div>
-				{/* UserInfo */}
-				<div ref={userDiv} className="h-2/4 w-20 bg-green-800 opacity-0">
-					User
+			<div ref={contentDiv} className="transition-all duration-[0.18s]">
+				<DroppedItem item={item} />
+				<div
+					ref={userDiv}
+					className="w-full h-full absolute transition-all duration-[0.18s] opacity-0"
+				>
+					<a
+						className="w-full h-full flex flex-col justify-center items-center gap-2"
+						href={`/user/${item.userId}`}
+					>
+						<img className="max-w-[64px] rounded" src={`${item.userIcon}`} />
+						{item.userDisplayName}
+					</a>
 				</div>
 			</div>
 		</div>
