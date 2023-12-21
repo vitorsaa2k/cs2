@@ -25,6 +25,7 @@ export function DropsRow({ items }: { items: LiveDropItem[] }) {
 				<animated.div
 					key={key}
 					className={`overflow-hidden ${shouldShow ? "block" : "hidden"}`}
+					// @ts-expect-error known error for useTransition/useSpring, reference: https://github.com/pmndrs/react-spring/issues/1102
 					style={{
 						transform: x.to((x: number) => `translate3d(${x}px,0,0)`),
 						...rest,
