@@ -2,7 +2,10 @@ import { CrateInteractionProps } from "../../types/components";
 import { PlusButton } from "./plusButton";
 import { MinusButton } from "./minusButton";
 import { TailSpinner } from "../../../../components/spinner";
-import { useGetCrateByName, useGetUser } from "../../../../hooks/useQuery";
+import {
+	useGetCrateByName,
+	useGetLoggedUser,
+} from "../../../../hooks/useQuery";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { DepositModalContext } from "../../../../contexts/depositModalContext";
@@ -10,7 +13,7 @@ import { URL } from "../../../../libs/axios";
 
 export function CrateInteraction(props: CrateInteractionProps) {
 	const { name } = useParams();
-	const { data: user } = useGetUser();
+	const { data: user } = useGetLoggedUser();
 	const { data: crate } = useGetCrateByName(name ?? "");
 	const modal = useContext(DepositModalContext);
 	const userHasBalance =

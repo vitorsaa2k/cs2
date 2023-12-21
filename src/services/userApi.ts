@@ -24,3 +24,15 @@ export async function sellAllUserSkins() {
 export async function sellSkins(rollId: string[]) {
 	return (await instance.post("/user/inventory/sell", { skins: rollId })).data;
 }
+
+export async function getUserById(userId: string) {
+	return (await instance.get<Promise<UserType>>(`/user/public/${userId}`)).data;
+}
+
+export async function getUserInventoryById(userId: string) {
+	return (
+		await instance.get<Promise<InventoryType>>(
+			`/user/inventory/public/${userId}`
+		)
+	).data;
+}

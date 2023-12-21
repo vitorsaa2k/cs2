@@ -1,8 +1,8 @@
-import { SkinType } from "../../types/api";
+import { CrateSkin } from "../../types/api";
 import { CrateItem } from "./crateItem";
 import { ItemsSkeleton } from "./itemsSkeleton";
 
-export default function CrateDesc({ items }: { items: SkinType[] }) {
+export default function CrateDesc({ items }: { items: CrateSkin[] }) {
 	const invertedItems = [...items].reverse();
 	return (
 		<div>

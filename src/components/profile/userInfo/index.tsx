@@ -1,15 +1,19 @@
 import { UserImage } from "./userImage";
-import { useGetUser } from "../../../hooks/useQuery";
+import { useGetLoggedUser } from "../../../hooks/useQuery";
 
 export function UserInfo() {
-	const { data: user } = useGetUser();
+	const { data: user } = useGetLoggedUser();
 	return (
-		<section className="border m-6 flex">
+		<section className="border min-w-[840px] p-12 rounded m-6 flex">
 			{user ? (
 				<>
 					<UserImage src={user.photos[2].value} />
-					<div className="flex items-center">
-						<div>Username: {user?.displayName}</div>
+					<div className="flex w-full border p-2 m-4 rounded flex-col items-start">
+						<div>
+							<p className="text-xl">{user?.displayName}</p>
+							<p>${user.balance}</p>
+						</div>
+						<div></div>
 					</div>
 				</>
 			) : null}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCrate } from "../../../../services/crateApi";
-import { SkinType } from "../../types/api";
+import { CrateSkin, DrawnSkin } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
 import { RollerModal } from "./rollerModal";
@@ -14,11 +14,11 @@ export function Roller() {
 	const { name } = useParams();
 	const [isRolling, setIsRolling] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
-	const [items, setItems] = useState<SkinType[]>([]);
-	const [verticalItems, setVerticalItems] = useState<SkinType[][]>([[]]);
+	const [items, setItems] = useState<CrateSkin[]>([]);
+	const [verticalItems, setVerticalItems] = useState<CrateSkin[][]>([[]]);
 	const [showModal, setShowModal] = useState(false);
 	const [crateNumber, setCrateNumber] = useState(1);
-	const [drawnSkins, setDrawnSkins] = useState<SkinType[]>([]);
+	const [drawnSkins, setDrawnSkins] = useState<DrawnSkin[]>([]);
 
 	function resetAllSkinsArray() {
 		const verticalSkins = [
