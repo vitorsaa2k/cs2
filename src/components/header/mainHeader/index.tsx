@@ -4,12 +4,12 @@ import { UserHeader } from "./userHeader";
 import { useContext } from "react";
 import { DepositButton } from "./depositButton";
 import { DepositModal } from "../../depositModal";
-import { useGetUser } from "../../../hooks/useQuery";
+import { useGetLoggedUser } from "../../../hooks/useQuery";
 import { DepositModalContext } from "../../../contexts/depositModalContext";
 
 export function MainHeader() {
 	const modal = useContext(DepositModalContext);
-	const { data: user, isLoading } = useGetUser();
+	const { data: user, isLoading } = useGetLoggedUser();
 	return (
 		<div className="flex justify-between mx-5">
 			<Logo />

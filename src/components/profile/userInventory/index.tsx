@@ -1,12 +1,12 @@
 import { sellAllUserSkins } from "../../../services/userApi";
 import { InventoryItem } from "./inventoryItem";
 import { queryClient } from "../../../libs/queryClient";
-import { useGetUserInventory } from "../../../hooks/useQuery";
+import { useGetLoggedUserInventory } from "../../../hooks/useQuery";
 import { TailSpinner } from "../../spinner";
 import { useMutation } from "@tanstack/react-query";
 
 export function UserInventory() {
-	const { data: inventory } = useGetUserInventory();
+	const { data: inventory } = useGetLoggedUserInventory();
 	const sellAllSkins = useMutation({
 		mutationFn: sellAllUserSkins,
 		onSuccess: () => {

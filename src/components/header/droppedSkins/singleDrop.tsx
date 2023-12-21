@@ -40,7 +40,7 @@ export function Drop({ item }: { item: LiveDropItem }) {
 				>
 					<a
 						className="w-full h-full flex flex-col justify-center items-center gap-2"
-						href={`/user/${item.userId}`}
+						href={`/profile/${item.userId}`}
 					>
 						<img className="max-w-[64px] rounded" src={`${item.userIcon}`} />
 						{item.userDisplayName}
