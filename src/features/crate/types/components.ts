@@ -4,10 +4,10 @@ import {
 	HTMLAttributes,
 	SetStateAction,
 } from "react";
-import { SkinType } from "./api";
+import { CrateSkin } from "./api";
 
 export type RollerInsideProps = HTMLAttributes<HTMLDivElement> & {
-	items: SkinType[];
+	items: CrateSkin[];
 	isRolling: boolean;
 	crateNumber?: number;
 };
@@ -18,12 +18,12 @@ export type CrateInteractionProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export type RollerProps = {
-	items: SkinType[];
+	items: CrateSkin[];
 	isRolling: boolean;
 };
 
 export type VerticalRollerProps = {
-	items: SkinType[][];
+	items: CrateSkin[][];
 	isRolling: boolean;
 	crateNumber: number;
 };

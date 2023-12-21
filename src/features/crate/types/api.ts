@@ -2,7 +2,7 @@ export type CrateType = {
 	name: string;
 	limitRate: number;
 	price: number;
-	skins: SkinType[];
+	skins: CrateSkin[];
 };
 
 export type CrateSkin = SkinType & {

@@ -17,7 +17,6 @@ export function DroppedSkins() {
 			skinList: LiveDropItem[];
 			bestSkins: LiveDropItem[];
 		}) => {
-			console.log(skinList);
 			setBestDrops(bestSkins.concat(bestDrops.slice(0, 20)));
 			setDrops(skinList.concat(drops.slice(0, 20)));
 		},
