@@ -1,12 +1,12 @@
 import { PiShieldCheck } from "react-icons/pi";
-import { SkinType } from "../../../features/crate/types/api";
+import { DrawnSkin } from "../../../features/crate/types/api";
 import { parseItemNameExterior } from "../../../utils/crate/parseItemName";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
 
-export function InventoryItem({ item }: { item: SkinType }) {
+export function InventoryItem({ item }: { item: DrawnSkin }) {
 	const navigate = useNavigate();
 	const itemName = parseItemNameExterior(item.name);
 	async function sellInventorySkin() {

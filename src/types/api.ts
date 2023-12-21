@@ -1,4 +1,4 @@
-import { SkinType } from "../features/crate/types/api";
+import { DrawnSkin } from "../features/crate/types/api";
 
 export type UserType = {
 	provider: string;
@@ -39,5 +39,5 @@ export type UserType = {
 
 export type InventoryType = {
 	id: string;
-	inventory: SkinType[];
+	inventory: DrawnSkin[];
 };

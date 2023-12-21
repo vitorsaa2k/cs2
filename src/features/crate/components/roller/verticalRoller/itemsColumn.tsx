@@ -1,7 +1,7 @@
-import { SkinType } from "../../../types/api";
+import { CrateSkin } from "../../../types/api";
 import { RollerItem } from "./rollerItemVertical/rollerItemVertical";
 
-export function ItemsColumn({ items }: { items: SkinType[] }) {
+export function ItemsColumn({ items }: { items: CrateSkin[] }) {
 	return (
 		<div className="w-full">
 			{items.map((item, index) => {
