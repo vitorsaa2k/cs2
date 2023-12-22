@@ -6,6 +6,12 @@ export type Seed = {
 	dateRange: string;
 };
 
+export type PublicSeed = {
+	clientSeed: string;
+	publicHash: string;
+	nonce: number;
+};
+
 export type RollType = {
 	clientSeed: string;
 	serverSeed: string;

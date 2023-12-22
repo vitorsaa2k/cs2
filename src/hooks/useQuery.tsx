@@ -5,9 +5,10 @@ import {
 	getUserById,
 	getUserInventory,
 	getUserInventoryById,
+	getUserPublicSeeds,
 } from "../services/userApi";
 import { InventoryType, UserType } from "../types/api";
-import { Seed } from "../features/provablyFair/types/api";
+import { PublicSeed, Seed } from "../features/provablyFair/types/api";
 import { getCrate } from "../services/crateApi";
 import { CrateType } from "../features/crate/types/api";
 
@@ -23,6 +24,14 @@ export function useGetServerSeeds() {
 	const query = useQuery<Seed[]>({
 		queryKey: ["serverSeeds"],
 		queryFn: getServerSeedHistory,
+	});
+	return query;
+}
+
+export function useGetUserPublicSeeds() {
+	const query = useQuery<PublicSeed>({
+		queryKey: ["publicSeeds"],
+		queryFn: getUserPublicSeeds,
 	});
 	return query;
 }
