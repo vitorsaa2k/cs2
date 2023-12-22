@@ -9,7 +9,7 @@ export function PlayersOnline() {
 		setInterval(() => {
 			socket.emit("sendOnlineUser");
 		}, 3000);
-	}, [onlineUsers]);
+	}, []);
 
 	return <p>{onlineUsers.length ?? 0} Online</p>;
 }
