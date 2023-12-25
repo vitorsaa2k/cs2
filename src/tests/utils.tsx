@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
-import * as React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { userMock } from "./mocks/userMock";
 import { crateMock } from "./mocks/crateMock";

@@ -19,7 +19,7 @@ export const userMock = {
 		personastateflags: 1,
 	},
 	id: "123",
-	displayName: "string",
+	displayName: "testUser",
 	photos: [
 		{
 			value: "string",
