@@ -37,7 +37,7 @@ export function VerticalRollerInside(props: VerticalRollerProps) {
 		>
 			{totalComponents.map((_, index) => {
 				return (
-					<div className="w-full" key={index}>
+					<div aria-label="Items column" className="w-full" key={index}>
 						<ItemsColumn items={props.items[index]} />
 					</div>
 				);

@@ -11,6 +11,9 @@ export const handlers = [
 	http.get("http://localhost:3001/crate/testCrate", () => {
 		return HttpResponse.json(crateMock);
 	}),
+	http.post("http://localhost:3001/crate/open/testCrate", () => {
+		return HttpResponse.json([crateMock.skins[0]]);
+	}),
 ];
 
 const createTestQueryClient = () =>

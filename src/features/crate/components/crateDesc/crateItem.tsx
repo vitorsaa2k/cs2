@@ -5,7 +5,10 @@ export function CrateItem({ item }: { item: CrateSkin }) {
 	const itemName = parseItemNameExterior(item.name);
 	const itemChance = ((item.maxRate - item.minRate) / 10000).toFixed(2);
 	return (
-		<div className="bg-zinc-600 rounded -z-10 relative m-3 flex flex-col items-center w-[160px] justify-around text-white">
+		<div
+			aria-label="Crate item"
+			className="bg-zinc-600 rounded -z-10 relative m-3 flex flex-col items-center w-[160px] justify-around text-white"
+		>
 			<div className="flex flex-col items-center">
 				<div className="text-sm">{itemName[0]}</div>
 				<div className="text-sm">{itemName[1]}</div>
