@@ -22,17 +22,9 @@ export type UserType = {
 	};
 	id: string;
 	displayName: string;
-	photos: [
-		{
-			value: string;
-		},
-		{
-			value: string;
-		},
-		{
-			value: string;
-		}
-	];
+	photos: {
+		value: string;
+	}[];
 	identifier: string;
 	balance: number;
 };
