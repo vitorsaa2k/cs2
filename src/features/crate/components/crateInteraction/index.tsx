@@ -48,7 +48,7 @@ export function CrateInteraction(props: CrateInteractionProps) {
 			<button
 				className={`${
 					user ? (userHasBalance ? "bg-green-800" : "bg-red-800") : "bg-red-800"
-				} disabled:bg-green-950 transition-all rounded flex justify-center min-w-[103px] p-2`}
+				} disabled:bg-green-950 transition-all rounded flex justify-center min-w-[156px] p-2`}
 				onClick={
 					user
 						? userHasBalance
