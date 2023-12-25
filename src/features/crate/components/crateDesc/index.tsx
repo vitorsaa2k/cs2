@@ -2,11 +2,11 @@ import { CrateSkin } from "../../types/api";
 import { CrateItem } from "./crateItem";
 import { ItemsSkeleton } from "./itemsSkeleton";
 
-export default function CrateDesc({ items }: { items: CrateSkin[] }) {
-	const invertedItems = [...items].reverse();
+export default function CrateDesc({ items }: { items?: CrateSkin[] }) {
+	const invertedItems = items ? [...items].reverse() : null;
 	return (
 		<div>
-			{invertedItems.length > 0 ? (
+			{invertedItems ? (
 				<div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 min-[320px]:grid-cols-2">
 					{invertedItems.map((item, i) => {
 						return (

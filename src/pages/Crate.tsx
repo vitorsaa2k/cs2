@@ -11,10 +11,10 @@ export function Crate() {
 
 	return (
 		<div className="flex flex-col items-center m-3">
-			<CrateName name={crate?.name || "Crate Name"} />
+			<CrateName name={name || "Crate Name"} />
 			<CrateIcon />
-			<Roller />
-			<CrateDesc items={crate?.skins ?? []} />
+			<Roller skins={crate?.skins} />
+			<CrateDesc items={crate?.skins} />
 		</div>
 	);
 }

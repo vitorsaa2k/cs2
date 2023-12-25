@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getCrate } from "../../../../services/crateApi";
 import { CrateSkin, DrawnSkin } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
@@ -10,7 +9,7 @@ import { HorizontalRoller } from "./horizontalRoller";
 import { VerticalRoller } from "./verticalRoller";
 import { queryClient } from "../../../../libs/queryClient";
 
-export function Roller() {
+export function Roller({ skins }: { skins?: CrateSkin[] }) {
 	const { name } = useParams();
 	const [isRolling, setIsRolling] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
@@ -21,15 +20,17 @@ export function Roller() {
 	const [drawnSkins, setDrawnSkins] = useState<DrawnSkin[]>([]);
 
 	function resetAllSkinsArray() {
-		const verticalSkins = [
-			generateSkinsArray(items),
-			generateSkinsArray(items),
-			generateSkinsArray(items),
-			generateSkinsArray(items),
-			generateSkinsArray(items),
-		];
-		setItems(generateSkinsArray(items));
-		setVerticalItems(verticalSkins);
+		if (skins) {
+			const verticalSkins = [
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+			];
+			setItems(generateSkinsArray(skins));
+			setVerticalItems(verticalSkins);
+		}
 	}
 
 	async function roll() {
@@ -55,20 +56,18 @@ export function Roller() {
 	}
 
 	useEffect(() => {
-		name
-			? getCrate(name).then(res => {
-					const verticalSkins = [
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-						generateSkinsArray(res.skins),
-					];
-					setItems(generateSkinsArray(res.skins));
-					setVerticalItems(verticalSkins);
-			  })
-			: null;
-	}, [name]);
+		if (skins) {
+			const verticalSkins = [
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+				generateSkinsArray(skins),
+			];
+			setItems(generateSkinsArray(skins));
+			setVerticalItems(verticalSkins);
+		}
+	}, [skins]);
 	return (
 		<div className="w-full m-3 h-full gap-2 flex flex-col justify-center items-center overflow-hidden">
 			{crateNumber === 1 ? (
