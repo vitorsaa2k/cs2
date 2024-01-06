@@ -8,7 +8,7 @@ export function ProductInfo({
 	src,
 }: {
 	name: string;
-	price: string;
+	price: number;
 	src: string;
 }) {
 	return (

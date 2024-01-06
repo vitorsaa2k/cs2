@@ -33,3 +33,17 @@ export type InventoryType = {
 	id: string;
 	inventory: DrawnSkin[];
 };
+
+export type Section = {
+	name: string;
+	layoutVariant: string;
+	crates: SectionCrate[];
+};
+
+export type SectionCrate = {
+	name: string;
+	price: number;
+	isActive: boolean;
+	img: string;
+	isNew: boolean;
+};
