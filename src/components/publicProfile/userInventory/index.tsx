@@ -11,8 +11,6 @@ export function UserInventory() {
 		.sort((a: DrawnSkin, b: DrawnSkin) => a.price - b.price)
 		.reverse()[0];
 
-	console.log(bestSkin);
-
 	return (
 		<div>
 			<div className="flex justify-end">

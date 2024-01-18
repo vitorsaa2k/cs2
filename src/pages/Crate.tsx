@@ -8,7 +8,6 @@ import { useGetCrateByName } from "../hooks/useQuery";
 export function Crate() {
 	const { name } = useParams();
 	const { data: crate } = useGetCrateByName(name ?? "");
-	console.log(name);
 
 	return (
 		<div className="flex flex-col items-center m-3">

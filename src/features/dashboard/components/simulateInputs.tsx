@@ -30,7 +30,6 @@ export function SimulateInputs() {
 		);
 		crate.setSimulationResults(req);
 		setIsFetching(false);
-		console.log(req);
 	}
 
 	return (
