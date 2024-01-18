@@ -1,6 +1,15 @@
-export function ProductName({ name }: { name: string }) {
+export function ProductName({
+	name,
+	crateId,
+}: {
+	name: string;
+	crateId: string;
+}) {
 	return (
-		<a href={`/crate/${name}`} className="hover:cursor-pointer inline-block">
+		<a
+			href={`/crate/${name}?=${crateId}`}
+			className="hover:cursor-pointer inline-block"
+		>
 			{name}
 		</a>
 	);

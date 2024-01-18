@@ -41,6 +41,7 @@ export type Section = {
 };
 
 export type SectionCrate = {
+	crateId: string;
 	name: string;
 	price: number;
 	isActive: boolean;

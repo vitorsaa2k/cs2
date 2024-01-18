@@ -1,6 +1,14 @@
-export function ProductImage({ src, name }: { src: string; name: string }) {
+export function ProductImage({
+	src,
+	name,
+	crateId,
+}: {
+	src: string;
+	name: string;
+	crateId: string;
+}) {
 	return (
-		<a href={`/crate/${name}`}>
+		<a href={`/crate/${name}?crateId=${crateId}`}>
 			<img
 				src={src}
 				className={`border border-black ${
