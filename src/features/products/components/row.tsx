@@ -10,6 +10,7 @@ export function ProductRow({ section }: { section: Section }) {
 					return (
 						<ProductInfo
 							src={crate.img}
+							crateId={crate.crateId}
 							name={crate.name}
 							price={crate.price}
 						/>

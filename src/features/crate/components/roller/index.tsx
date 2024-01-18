@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { CrateSkin, DrawnSkin } from "../../types/api";
 import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
 import { rollCrate } from "../../../../services/rollApi";
@@ -10,7 +10,7 @@ import { VerticalRoller } from "./verticalRoller";
 import { queryClient } from "../../../../libs/queryClient";
 
 export function Roller({ skins }: { skins?: CrateSkin[] }) {
-	const { name } = useParams();
+	const [searchParams] = useSearchParams();
 	const [isRolling, setIsRolling] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
 	const [items, setItems] = useState<CrateSkin[]>([]);
@@ -34,9 +34,10 @@ export function Roller({ skins }: { skins?: CrateSkin[] }) {
 	}
 
 	async function roll() {
-		if (name) {
+		const crateId = searchParams.get("crateId");
+		if (crateId) {
 			setIsFetching(true);
-			const skins = await rollCrate(name, crateNumber);
+			const skins = await rollCrate(crateId, crateNumber);
 			const array = items;
 			array[70] = skins[0];
 			setDrawnSkins(skins);

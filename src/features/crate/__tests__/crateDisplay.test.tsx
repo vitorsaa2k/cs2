@@ -4,12 +4,21 @@ import { Crate } from "../../../pages/Crate";
 import { waitFor } from "@testing-library/react";
 import { crateMock } from "../../../tests/mocks/crateMock";
 
+const searchParams: { [key: string]: string } = { crateId: "1" };
+
 beforeAll(() => {
 	vi.mock("react-router-dom", () => ({
 		...vi.importActual("react-router-dom"),
 		useParams: () => ({
 			name: crateMock.name,
 		}),
+		useSearchParams: () => [
+			{
+				get: (key: string) => {
+					return searchParams[key];
+				},
+			},
+		],
 	}));
 });
 

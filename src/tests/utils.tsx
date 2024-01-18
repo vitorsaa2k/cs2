@@ -11,7 +11,7 @@ export const handlers = [
 	http.get("http://localhost:3001/crate/testCrate", () => {
 		return HttpResponse.json(crateMock);
 	}),
-	http.post("http://localhost:3001/crate/open/testCrate", () => {
+	http.post("http://localhost:3001/crate/open/1", () => {
 		return HttpResponse.json([crateMock.skins[0]]);
 	}),
 ];

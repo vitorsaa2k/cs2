@@ -1,9 +1,9 @@
 import { DrawnSkin } from "../features/crate/types/api";
 import { instance } from "../libs/axios";
 
-export async function rollCrate(name: string, crateNumber: number) {
+export async function rollCrate(crateId: string, crateNumber: number) {
 	return (
-		await instance.post<DrawnSkin[]>(`/crate/open/${name}`, {
+		await instance.post<DrawnSkin[]>(`/crate/open/${crateId}`, {
 			crateNumber,
 		})
 	).data;
