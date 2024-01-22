@@ -7,7 +7,7 @@ export function CrateName({
 }) {
 	return (
 		<a
-			href={`/crate/${name}?=${crateId}`}
+			href={`/crate/${name}?crateId=${crateId}`}
 			className="hover:cursor-pointer inline-block"
 		>
 			{name}
