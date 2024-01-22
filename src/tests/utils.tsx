@@ -8,7 +8,7 @@ export const handlers = [
 	http.get("http://localhost:3001/user", () => {
 		return HttpResponse.json(userMock);
 	}),
-	http.get("http://localhost:3001/crate/testCrate", () => {
+	http.get("http://localhost:3001/crate/1", () => {
 		return HttpResponse.json(crateMock);
 	}),
 	http.post("http://localhost:3001/crate/open/1", () => {

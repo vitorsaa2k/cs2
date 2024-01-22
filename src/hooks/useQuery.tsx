@@ -9,7 +9,7 @@ import {
 } from "../services/userApi";
 import { InventoryType, UserType } from "../types/api";
 import { PublicSeed, Seed } from "../features/provablyFair/types/api";
-import { getCrate } from "../services/crateApi";
+import { getCrateById } from "../services/crateApi";
 import { CrateType } from "../features/crate/types/api";
 
 export function useGetLoggedUser() {
@@ -36,10 +36,10 @@ export function useGetUserPublicSeeds() {
 	return query;
 }
 
-export function useGetCrateByName(name: string) {
+export function useGetCrateById(crateId: string) {
 	const query = useQuery<CrateType>({
 		queryKey: ["crate"],
-		queryFn: () => getCrate(name),
+		queryFn: () => getCrateById(crateId),
 	});
 	return query;
 }

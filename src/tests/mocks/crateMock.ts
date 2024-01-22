@@ -1,6 +1,7 @@
 import { CrateType } from "../../features/crate/types/api";
 
 export const crateMock: CrateType = {
+	crateId: "1",
 	name: "testCrate",
 	price: 55,
 	limitRate: 3,
