@@ -7,7 +7,7 @@ import { server } from "../../../../setupTests";
 import { HttpResponse, http } from "msw";
 import { userMock } from "../../../tests/mocks/userMock";
 
-const searchParams: { [key: string]: string } = { crateId: "1" };
+const searchParams: { [key: string]: string } = { crateId: crateMock.crateId };
 
 beforeAll(() => {
 	vi.mock("react-router-dom", () => ({

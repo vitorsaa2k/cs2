@@ -1,4 +1,5 @@
 export type CrateType = {
+	crateId: string;
 	name: string;
 	limitRate: number;
 	price: number;

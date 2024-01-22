@@ -2,19 +2,17 @@ import { CrateInteractionProps } from "../../types/components";
 import { PlusButton } from "./plusButton";
 import { MinusButton } from "./minusButton";
 import { TailSpinner } from "../../../../components/spinner";
-import {
-	useGetCrateByName,
-	useGetLoggedUser,
-} from "../../../../hooks/useQuery";
-import { useParams } from "react-router-dom";
+import { useGetCrateById, useGetLoggedUser } from "../../../../hooks/useQuery";
+import { useSearchParams } from "react-router-dom";
 import { useContext } from "react";
 import { DepositModalContext } from "../../../../contexts/depositModalContext";
 import { URL } from "../../../../libs/axios";
 
 export function CrateInteraction(props: CrateInteractionProps) {
-	const { name } = useParams();
+	const [urlSearchParams] = useSearchParams();
+	const crateId = urlSearchParams.get("crateId");
 	const { data: user } = useGetLoggedUser();
-	const { data: crate } = useGetCrateByName(name ?? "");
+	const { data: crate } = useGetCrateById(crateId ?? "");
 	const modal = useContext(DepositModalContext);
 	const userHasBalance =
 		crate && user ? props.crateNumber * crate.price < user?.balance : null;
