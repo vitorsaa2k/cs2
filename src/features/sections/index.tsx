@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAllSections } from "../../services/productsApi";
+import { getAllSections } from "../../services/sectionsApi";
 import { Section } from "../../types/api";
 import { ProductRow } from "./components/row";
 
-export function Products() {
+export function Sections() {
 	const [sections, setSections] = useState<Section[]>([]);
 	async function loadSections() {
 		const prods = await getAllSections();

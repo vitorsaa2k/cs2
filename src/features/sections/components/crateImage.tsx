@@ -1,4 +1,4 @@
-export function ProductImage({
+export function CrateImage({
 	src,
 	name,
 	crateId,

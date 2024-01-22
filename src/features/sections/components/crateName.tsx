@@ -1,4 +1,4 @@
-export function ProductName({
+export function CrateName({
 	name,
 	crateId,
 }: {

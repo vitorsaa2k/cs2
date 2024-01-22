@@ -1,5 +1,5 @@
 import { Section } from "../../../types/api";
-import { ProductInfo } from "./productInfo";
+import { ProductInfo } from "./crateInfo";
 
 export function ProductRow({ section }: { section: Section }) {
 	return (
