@@ -1,5 +1,5 @@
 import { Section } from "../../../types/api";
-import { ProductInfo } from "./crateInfo";
+import { CrateInfo } from "./crateInfo";
 
 export function ProductRow({ section }: { section: Section }) {
 	return (
@@ -8,7 +8,8 @@ export function ProductRow({ section }: { section: Section }) {
 			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
 				{section.crates.map(crate => {
 					return (
-						<ProductInfo
+						<CrateInfo
+							key={crate.crateId}
 							src={crate.img}
 							crateId={crate.crateId}
 							name={crate.name}

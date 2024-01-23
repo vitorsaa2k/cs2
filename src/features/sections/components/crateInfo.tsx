@@ -2,7 +2,7 @@ import { CrateImage } from "./crateImage";
 import { CrateName } from "./crateName";
 import { CratePrice } from "./cratePrice";
 
-export function ProductInfo({
+export function CrateInfo({
 	crateId,
 	name,
 	price,
