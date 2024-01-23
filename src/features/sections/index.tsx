@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-import { getAllSections } from "../../services/sectionsApi";
-import { Section } from "../../types/api";
 import { ProductRow } from "./components/row";
+import { useGetAllSections } from "../../hooks/useQuery";
+import { TailSpinner } from "../../components/spinner";
 
 export function Sections() {
-	const [sections, setSections] = useState<Section[]>([]);
-	async function loadSections() {
-		const prods = await getAllSections();
-		setSections(prods);
-	}
-	useEffect(() => {
-		loadSections();
-	}, []);
+	const { data: sections, error } = useGetAllSections();
+	if (error) return <pre>An error ocurred</pre>;
+	if (!sections) return <TailSpinner height={30} width={30} visible />;
+
 	return sections.map(section => {
 		return <ProductRow key={section.name} section={section} />;
 	});

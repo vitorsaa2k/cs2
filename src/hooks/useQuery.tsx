@@ -7,10 +7,11 @@ import {
 	getUserInventoryById,
 	getUserPublicSeeds,
 } from "../services/userApi";
-import { InventoryType, UserType } from "../types/api";
+import { InventoryType, Section, UserType } from "../types/api";
 import { PublicSeed, Seed } from "../features/provablyFair/types/api";
 import { getCrateById } from "../services/crateApi";
 import { CrateType } from "../features/crate/types/api";
+import { getAllSections } from "../services/sectionsApi";
 
 export function useGetLoggedUser() {
 	const query = useQuery<UserType>({
@@ -64,6 +65,15 @@ export function useGetUserById(userId: string) {
 	const query = useQuery<UserType>({
 		queryKey: ["publicUser"],
 		queryFn: () => getUserById(userId),
+	});
+	return query;
+}
+
+export function useGetAllSections() {
+	const query = useQuery<Section[]>({
+		queryKey: ["publicUser"],
+		queryFn: () => getAllSections(),
+		retry: true,
 	});
 	return query;
 }
