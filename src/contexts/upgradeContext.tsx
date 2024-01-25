@@ -13,6 +13,7 @@ function reducer(
 ): UpgradeType {
 	switch (action.type) {
 		case ActionTypes.ADD_USER_SKIN:
+			console.log(action.payload.rollId);
 			return {
 				...state,
 				userSkins: [...state.userSkins, action.payload as DrawnSkin],
@@ -21,7 +22,7 @@ function reducer(
 			return {
 				...state,
 				userSkins: state.userSkins.filter(
-					skin => skin.name !== action.payload.name
+					skin => skin.rollId !== action.payload.rollId
 				),
 			};
 		case ActionTypes.ADD_UPGRADE_SKIN:
