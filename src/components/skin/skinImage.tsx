@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { SkinType } from "../../features/crate/types/api";
 
-interface SkinImageProps extends HTMLAttributes<HTMLDivElement> {
+interface SkinImageProps extends HTMLAttributes<HTMLImageElement> {
 	skin: SkinType;
 }
 
