@@ -15,7 +15,10 @@ function reducer(
 		case ActionTypes.ADD_USER_SKIN:
 			return {
 				...state,
-				userSkins: [...state.userSkins, action.payload as DrawnSkin],
+				userSkins:
+					state.userSkins.length !== 6
+						? [...state.userSkins, action.payload as DrawnSkin]
+						: state.userSkins,
 			};
 		case ActionTypes.REMOVE_USER_SKIN:
 			return {
@@ -27,7 +30,10 @@ function reducer(
 		case ActionTypes.ADD_UPGRADE_SKIN:
 			return {
 				...state,
-				skinsUpgrade: [...state.skinsUpgrade, action.payload as SkinType],
+				skinsUpgrade:
+					state.skinsUpgrade.length !== 6
+						? [...state.skinsUpgrade, action.payload as SkinType]
+						: state.skinsUpgrade,
 			};
 		case ActionTypes.REMOVE_UPGRADE_SKIN:
 			return {

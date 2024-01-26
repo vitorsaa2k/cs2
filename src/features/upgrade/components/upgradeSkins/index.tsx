@@ -3,11 +3,11 @@ import { UpgradeContext } from "../../../../contexts/upgradeContext";
 import { SkinsWrapper } from "../skinsWrapper";
 import { SelectedItems } from "../selectedItems";
 
-export function UserSelectedSkins() {
+export function UpgradeSkins() {
 	const upgradeContext = useContext(UpgradeContext);
 	return (
 		<SkinsWrapper>
-			<SelectedItems skins={upgradeContext.state.userSkins} />
+			<SelectedItems skins={upgradeContext.state.skinsUpgrade} />
 		</SkinsWrapper>
 	);
 }

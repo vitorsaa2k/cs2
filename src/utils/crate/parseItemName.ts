@@ -20,7 +20,8 @@ export function parseItemNameStar(name: string) {
 
 export function parseItemNameExterior(name: string) {
 	const parsedName = decodeEntities(name).split("|");
-	const index = parsedName[1].indexOf("(");
+	const index = parsedName[1]?.indexOf("(");
+	if (!index) return parsedName;
 	parsedName.push(parsedName[1].substring(index, parsedName[1].length));
 	if (parsedName[0][0] == "★") {
 		parsedName[0] = parsedName[0].substring(2, parsedName[0].length);
