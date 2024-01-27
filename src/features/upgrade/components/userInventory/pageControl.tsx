@@ -1,21 +1,22 @@
 import { useContext, useEffect, useState } from "react";
-import { getUserInventoryByPage } from "../../../../services/userApi";
 import { UpgradeContext } from "../../../../contexts/upgradeContext";
 import { ActionTypes } from "../../contextTypes";
+import { useGetInventoryByPage } from "../../../../hooks/useQuery/inventory";
 
 export function InventoryPageControl() {
 	const [page, setPage] = useState(1);
 	const upgradeContext = useContext(UpgradeContext);
+	const { data: inventory } = useGetInventoryByPage(page);
 	useEffect(() => {
-		getUserInventoryByPage(page).then(data =>
+		if (inventory) {
 			upgradeContext.dispatch({
 				type: ActionTypes.UPDATE_USER_INVENTORY,
-				payload: data.inventory,
-			})
-		);
+				payload: inventory.inventory,
+			});
+		}
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
-	}, [page]);
+	}, [inventory]);
 	return (
 		<div className="flex">
 			<button
