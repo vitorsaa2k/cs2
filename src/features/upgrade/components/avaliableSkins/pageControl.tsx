@@ -19,7 +19,7 @@ export function InventoryPageControl() {
 		);
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
-	}, [page]);
+	}, [page, upgradeContext.state.userSkins]);
 	return (
 		<div className="flex">
 			<button
