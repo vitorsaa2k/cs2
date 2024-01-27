@@ -58,6 +58,13 @@ function reducer(
 				...state,
 				successChance: action.payload,
 			};
+		case ActionTypes.RESET_UPGRADER:
+			return {
+				...state,
+				successChance: 0,
+				userSkins: [],
+				skinsUpgrade: [],
+			};
 		default:
 			return state;
 	}

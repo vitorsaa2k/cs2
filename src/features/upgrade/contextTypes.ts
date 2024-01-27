@@ -9,6 +9,7 @@ export enum ActionTypes {
 	UPDATE_AVALIABLE_SKINS = "UPDATE_AVALIABLE_SKINS",
 	UPDATE_USER_INVENTORY = "UPDATE_USER_INVENTORY",
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
+	RESET_UPGRADER = "RESET_UPGRADER",
 }
 
 export interface AddUserSkinAction {
@@ -39,6 +40,9 @@ export interface UpdateUserInventoryAction {
 	type: ActionTypes.UPDATE_USER_INVENTORY;
 	payload: DrawnSkin[];
 }
+export interface ResetUpgraderAction {
+	type: ActionTypes.RESET_UPGRADER;
+}
 
 export type Actions =
 	| AddUserSkinAction
@@ -47,7 +51,8 @@ export type Actions =
 	| RemoveUpgradeSkinAction
 	| UpdateSuccessChanceAction
 	| UpdateAvaliableSkinsAction
-	| UpdateUserInventoryAction;
+	| UpdateUserInventoryAction
+	| ResetUpgraderAction;
 
 export interface UpgradeType {
 	userSkins: DrawnSkin[];
