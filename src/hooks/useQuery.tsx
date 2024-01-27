@@ -3,11 +3,9 @@ import {
 	getServerSeedHistory,
 	getUser,
 	getUserById,
-	getUserInventory,
-	getUserInventoryById,
 	getUserPublicSeeds,
 } from "../services/userApi";
-import { InventoryType, Section, UserType } from "../types/api";
+import { Section, UserType } from "../types/api";
 import { PublicSeed, Seed } from "../features/provablyFair/types/api";
 import { getCrateById } from "../services/crateApi";
 import { CrateType } from "../features/crate/types/api";
@@ -41,22 +39,6 @@ export function useGetCrateById(crateId: string) {
 	const query = useQuery<CrateType>({
 		queryKey: ["crate"],
 		queryFn: () => getCrateById(crateId),
-	});
-	return query;
-}
-
-export function useGetLoggedUserInventory() {
-	const query = useQuery<InventoryType>({
-		queryKey: ["inventory"],
-		queryFn: getUserInventory,
-	});
-	return query;
-}
-
-export function useGetUserInventoryById(userId: string) {
-	const query = useQuery<InventoryType>({
-		queryKey: ["publicInventory"],
-		queryFn: () => getUserInventoryById(userId),
 	});
 	return query;
 }

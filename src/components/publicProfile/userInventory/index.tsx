@@ -1,5 +1,5 @@
 import { DrawnSkin } from "../../../features/crate/types/api";
-import { useGetUserInventoryById } from "../../../hooks/useQuery";
+import { useGetUserInventoryById } from "../../../hooks/useQuery/inventory";
 import { BestSkin } from "./bestSkin";
 import { InventoryItem } from "./inventoryItem";
 import { useParams } from "react-router-dom";

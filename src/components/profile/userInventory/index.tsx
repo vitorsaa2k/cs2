@@ -1,7 +1,7 @@
 import { sellAllUserSkins } from "../../../services/userApi";
 import { InventoryItem } from "./inventoryItem";
 import { queryClient } from "../../../libs/queryClient";
-import { useGetLoggedUserInventory } from "../../../hooks/useQuery";
+import { useGetLoggedUserInventory } from "../../../hooks/useQuery/inventory";
 import { TailSpinner } from "../../spinner";
 import { useMutation } from "@tanstack/react-query";
 
