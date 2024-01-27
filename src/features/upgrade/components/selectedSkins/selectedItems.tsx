@@ -1,6 +1,6 @@
-import { SkinImage } from "../../../components/skin/skinImage";
-import { parseItemNameExterior } from "../../../utils/crate/parseItemName";
-import { DrawnSkin, SkinType } from "../../crate/types/api";
+import { parseItemNameExterior } from "../../../../utils/crate/parseItemName";
+import { DrawnSkin, SkinType } from "../../../crate/types/api";
+import { SkinsImages } from "./skinsImages";
 
 export function SelectedItems({ skins }: { skins: DrawnSkin[] | SkinType[] }) {
 	const skinName =
@@ -9,12 +9,7 @@ export function SelectedItems({ skins }: { skins: DrawnSkin[] | SkinType[] }) {
 		<div className="flex flex-col h-full justify-between items-center">
 			<div></div>
 			<div className="flex flex-wrap">
-				{skins.map(skin => (
-					<SkinImage
-						className={`max-w-[${skins.length === 1 ? 16 : 10}rem]`}
-						skin={skin}
-					/>
-				))}
+				<SkinsImages skins={skins} />
 			</div>
 			<div className="flex justify-between w-full mb-2">
 				<div className="ml-2">

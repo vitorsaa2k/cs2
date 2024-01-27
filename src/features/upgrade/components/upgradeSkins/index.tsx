@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { UpgradeContext } from "../../../../contexts/upgradeContext";
-import { SkinsWrapper } from "../skinsWrapper";
-import { SelectedItems } from "../selectedItems";
+import { SelectedSkinsWrapper } from "../selectedSkinsWrapper";
+import { SelectedItems } from "../selectedSkins/selectedItems";
 
 export function UpgradeSkins() {
 	const upgradeContext = useContext(UpgradeContext);
 	return (
-		<SkinsWrapper>
+		<SelectedSkinsWrapper>
 			<SelectedItems skins={upgradeContext.state.skinsUpgrade} />
-		</SkinsWrapper>
+		</SelectedSkinsWrapper>
 	);
 }

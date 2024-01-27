@@ -11,12 +11,13 @@ function reducer(
 	state: UpgradeType = initialValue,
 	action: Actions
 ): UpgradeType {
+	const maxSkinsToUpgrade = 20;
 	switch (action.type) {
 		case ActionTypes.ADD_USER_SKIN:
 			return {
 				...state,
 				userSkins:
-					state.userSkins.length !== 6
+					state.userSkins.length !== maxSkinsToUpgrade
 						? [...state.userSkins, action.payload as DrawnSkin]
 						: state.userSkins,
 			};
@@ -31,7 +32,7 @@ function reducer(
 			return {
 				...state,
 				skinsUpgrade:
-					state.skinsUpgrade.length !== 6
+					state.skinsUpgrade.length !== maxSkinsToUpgrade
 						? [...state.skinsUpgrade, action.payload as SkinType]
 						: state.skinsUpgrade,
 			};
