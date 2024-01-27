@@ -11,12 +11,13 @@ export function InventoryPageControl() {
 			.map(s => s.price)
 			.reduce((prevValue, currValue) => prevValue + currValue, 0) * 1.5;
 	useEffect(() => {
-		getSkinByRange(maxPrice, page).then(data =>
+		getSkinByRange(maxPrice, page).then(data => {
+			if (!data) return;
 			upgradeContext.dispatch({
 				type: ActionTypes.UPDATE_AVALIABLE_SKINS,
 				payload: data,
-			})
-		);
+			});
+		});
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
 	}, [page, upgradeContext.state.userSkins]);
