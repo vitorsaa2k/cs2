@@ -16,7 +16,7 @@ export function UpgradeButton() {
 		queryClient.invalidateQueries({ queryKey: ["inventory"] });
 	}
 	return (
-		<button className="bg-green-400 px-8 py-3 rounded" onClick={excuteUpgrade}>
+		<button className="bg-green-900 px-8 py-3 rounded" onClick={excuteUpgrade}>
 			Upgrade
 		</button>
 	);
