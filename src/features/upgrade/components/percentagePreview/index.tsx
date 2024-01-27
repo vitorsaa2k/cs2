@@ -22,8 +22,11 @@ export function PercentagePreview() {
 
 	return (
 		<div className="flex items-center">
-			<div className="w-[10rem] h-[10rem] bg-white rounded-full"></div>
-			<p>{upgradeContext.state.successChance?.toFixed(2)}</p>
+			<div className="w-[12rem] h-[12rem] border flex items-center justify-center rounded-full">
+				<p className="">
+					{upgradeContext.state.successChance?.toFixed(2) ?? 0}%
+				</p>
+			</div>
 		</div>
 	);
 }
