@@ -9,7 +9,8 @@ export function InventoryPageControl() {
 	const maxPrice =
 		upgradeContext.state.userSkins
 			.map(s => s.price)
-			.reduce((prevValue, currValue) => prevValue + currValue, 0) * 1.5;
+			.reduce((prevValue, currValue) => prevValue + currValue, 0) *
+		upgradeContext.state.multiplier;
 	useEffect(() => {
 		getSkinByRange(maxPrice, page).then(data => {
 			if (!data) return;
@@ -20,7 +21,7 @@ export function InventoryPageControl() {
 		});
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
-	}, [page, upgradeContext.state.userSkins]);
+	}, [page, upgradeContext.state.userSkins, upgradeContext.state.multiplier]);
 	return (
 		<div className="flex">
 			<button

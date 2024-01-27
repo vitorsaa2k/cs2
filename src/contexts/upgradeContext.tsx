@@ -65,6 +65,11 @@ function reducer(
 				userSkins: [],
 				skinsUpgrade: [],
 			};
+		case ActionTypes.UPDATE_MULTIPLIER:
+			return {
+				...state,
+				multiplier: action.payload,
+			};
 		default:
 			return state;
 	}
@@ -76,6 +81,7 @@ const initialValue: UpgradeType = {
 	avaliableSkins: [],
 	skinsUpgrade: [],
 	successChance: 0,
+	multiplier: 1.5,
 };
 const initialContextValue: UpgradeContextType = {
 	state: initialValue,
