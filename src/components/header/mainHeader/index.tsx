@@ -4,7 +4,7 @@ import { UserHeader } from "./userHeader";
 import { useContext } from "react";
 import { DepositButton } from "./depositButton";
 import { DepositModal } from "../../depositModal";
-import { useGetLoggedUser } from "../../../hooks/useQuery";
+import { useGetLoggedUser } from "../../../hooks/useQuery/user";
 import { DepositModalContext } from "../../../contexts/depositModalContext";
 
 export function MainHeader() {

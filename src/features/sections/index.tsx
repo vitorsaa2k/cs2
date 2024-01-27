@@ -1,5 +1,5 @@
 import { ProductRow } from "./components/row";
-import { useGetAllSections } from "../../hooks/useQuery";
+import { useGetAllSections } from "../../hooks/useQuery/sections";
 import { TailSpinner } from "../../components/spinner";
 
 export function Sections() {

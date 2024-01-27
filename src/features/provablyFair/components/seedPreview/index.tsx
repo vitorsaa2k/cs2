@@ -5,7 +5,7 @@ import { PublicHash } from "./publicHash";
 import { SecretSalt } from "./secretSalt";
 import { ServerSeed } from "./serverSeed";
 import { ServerSeedHistoryModal } from "./serverModal";
-import { useGetUserPublicSeeds } from "../../../../hooks/useQuery";
+import { useGetUserPublicSeeds } from "../../../../hooks/useQuery/seeds";
 import { TailSpinner } from "../../../../components/spinner";
 
 export function SeedPreview() {

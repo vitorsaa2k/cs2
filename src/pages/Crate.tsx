@@ -3,7 +3,7 @@ import { CrateIcon } from "../features/crate/components/cratePresentation/crateI
 import { CrateName } from "../features/crate/components/cratePresentation/crateName";
 import { Roller } from "../features/crate/components/roller";
 import CrateDesc from "../features/crate/components/crateDesc";
-import { useGetCrateById } from "../hooks/useQuery";
+import { useGetCrateById } from "../hooks/useQuery/crate";
 
 export function Crate() {
 	const { name } = useParams();

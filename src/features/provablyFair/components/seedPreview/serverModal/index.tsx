@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { Modal } from "../../../../../components/modal";
-import { useGetServerSeeds } from "../../../../../hooks/useQuery";
+import { useGetServerSeeds } from "../../../../../hooks/useQuery/seeds";
 import { SeedsModal } from "./seedsModal";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";

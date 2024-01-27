@@ -1,5 +1,5 @@
 import { UserImage } from "./userImage";
-import { useGetLoggedUser } from "../../../hooks/useQuery";
+import { useGetLoggedUser } from "../../../hooks/useQuery/user";
 
 export function UserInfo() {
 	const { data: user } = useGetLoggedUser();
