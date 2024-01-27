@@ -5,7 +5,7 @@ export function CryptoPayment({ index }: { index: number }) {
 				index === 3 ? "border-yellow-500" : ""
 			} justify-center items-center w-[250px] h-[150px]`}
 		>
-			<img src="https://key-drop.com/uploads/payment/methods/Crypto11.png?v117"></img>
+			<img src="https://key-drop.com/uploads/payment/methods/Crypto11.png?v119"></img>
 		</div>
 	);
 }

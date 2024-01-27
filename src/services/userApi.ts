@@ -10,6 +10,12 @@ export async function getUserInventory() {
 	return (await instance.get<Promise<InventoryType>>(`/user/inventory`)).data;
 }
 
+export async function getUserInventoryByPage(page: number) {
+	return (
+		await instance.get<Promise<InventoryType>>(`/user/inventory?page=${page}`)
+	).data;
+}
+
 export async function getUserPublicSeeds() {
 	return (await instance.get<Promise<PublicSeed>>("/user/seeds")).data;
 }
