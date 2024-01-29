@@ -11,9 +11,17 @@ export function UpgradeButton() {
 		await upgrade(
 			upgradeContext.state.userSkins,
 			upgradeContext.state.skinsUpgrade
-		);
-		upgradeContext.dispatch({ type: ActionTypes.RESET_UPGRADER });
-		queryClient.invalidateQueries({ queryKey: ["inventory"] });
+		).then(data => {
+			console.log(data);
+			upgradeContext.dispatch({
+				type: ActionTypes.UPDATE_RESULT,
+				payload: data ? true : false,
+			});
+			setTimeout(() => {
+				upgradeContext.dispatch({ type: ActionTypes.RESET_UPGRADER });
+				queryClient.invalidateQueries({ queryKey: ["inventory"] });
+			}, 8200);
+		});
 	}
 	return (
 		<button className="bg-green-900 px-8 py-3 rounded" onClick={excuteUpgrade}>

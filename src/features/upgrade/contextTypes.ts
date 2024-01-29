@@ -11,6 +11,7 @@ export enum ActionTypes {
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
 	RESET_UPGRADER = "RESET_UPGRADER",
 	UPDATE_MULTIPLIER = "UPDATE_MULTIPLIER",
+	UPDATE_RESULT = "UPDATE_RESULT",
 }
 
 export interface AddUserSkinAction {
@@ -48,6 +49,10 @@ export interface UpdateMultiplierAction {
 export interface ResetUpgraderAction {
 	type: ActionTypes.RESET_UPGRADER;
 }
+export interface UpdateResultAction {
+	type: ActionTypes.UPDATE_RESULT;
+	payload: boolean | null;
+}
 
 export type Actions =
 	| AddUserSkinAction
@@ -58,7 +63,8 @@ export type Actions =
 	| UpdateAvaliableSkinsAction
 	| UpdateUserInventoryAction
 	| ResetUpgraderAction
-	| UpdateMultiplierAction;
+	| UpdateMultiplierAction
+	| UpdateResultAction;
 
 export interface UpgradeType {
 	userSkins: DrawnSkin[];
@@ -67,6 +73,7 @@ export interface UpgradeType {
 	skinsUpgrade: SkinType[];
 	successChance: number;
 	multiplier: 1.5 | 2 | 5 | 10 | 20;
+	hasWon: boolean | null;
 }
 
 export interface UpgradeContextType {

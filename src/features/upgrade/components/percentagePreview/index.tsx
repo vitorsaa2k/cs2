@@ -24,7 +24,6 @@ export function PercentagePreview() {
 	return (
 		<div className="flex relative items-center">
 			<Circle chance={upgradeContext.state.successChance} />
-			<div className="rounded-full"></div>
 		</div>
 	);
 }

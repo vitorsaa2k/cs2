@@ -61,6 +61,7 @@ function reducer(
 		case ActionTypes.RESET_UPGRADER:
 			return {
 				...state,
+				hasWon: null,
 				successChance: 0,
 				userSkins: [],
 				skinsUpgrade: [],
@@ -69,6 +70,11 @@ function reducer(
 			return {
 				...state,
 				multiplier: action.payload,
+			};
+		case ActionTypes.UPDATE_RESULT:
+			return {
+				...state,
+				hasWon: action.payload,
 			};
 		default:
 			return state;
@@ -82,6 +88,7 @@ const initialValue: UpgradeType = {
 	skinsUpgrade: [],
 	successChance: 0,
 	multiplier: 1.5,
+	hasWon: null,
 };
 const initialContextValue: UpgradeContextType = {
 	state: initialValue,
