@@ -25,24 +25,23 @@ export function Triangle() {
 				baseRotation + (hasWon ? wonRotation : lostRotation)
 			}deg`;
 			setTimeout(() => {
-				if (triangleContainerRef.current)
-					triangleContainerRef.current.style.transitionDuration = "0s";
-				resetTriangle();
-			}, 8200);
+				if (triangleContainerRef.current) resetTriangle();
+			}, 8100);
 		}
 	}, [hasWon, upgradeContext.state.successChance]);
 
 	const handleAnimation = useCallback(() => {
-		if (typeof hasWon !== "boolean") return resetTriangle();
+		if (typeof hasWon !== "boolean") return;
 		excuteAnimation();
 	}, [hasWon, excuteAnimation]);
 
 	function resetTriangle() {
 		if (triangleContainerRef.current) {
-			triangleContainerRef.current.style.rotate = "0deg";
 			setTimeout(() => {
-				if (triangleContainerRef.current)
-					triangleContainerRef.current.style.transitionDuration = "8s";
+				if (triangleContainerRef.current) {
+					triangleContainerRef.current.style.transitionDuration = "0s";
+					triangleContainerRef.current.style.rotate = "0deg";
+				}
 			}, 100);
 		}
 	}

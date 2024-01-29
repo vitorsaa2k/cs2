@@ -1,6 +1,5 @@
 import { parseItemNameFull } from "../../../../../../utils/crate/parseItemName";
 import { CrateSkin } from "../../../../types/api";
-import "./rolleItem.css";
 
 export function RollerItem({ item }: { item: CrateSkin }) {
 	const parsedColor = item.color.toLowerCase();

@@ -1,8 +1,24 @@
+import { useMemo } from "react";
 import { CrateSkin } from "../../../features/crate/types/api";
 import { parseItemNameFull } from "../../../utils/crate/parseItemName";
 
 export function DroppedItem({ item }: { item: CrateSkin }) {
-	const parsedColor = item.color.toLowerCase();
+	const parsedColor = useMemo(() => {
+		switch (item.rarity_color) {
+			case "5e98d9":
+				return "blue";
+			case "8847ff":
+				return "purple";
+			case "eb4b4b":
+				return "red";
+			case "d32ce6":
+				return "pink";
+			case "e4ae39":
+				return "yellow";
+			default:
+				return "blue";
+		}
+	}, [item.rarity_color]);
 
 	const itemName = parseItemNameFull(item.name);
 	return (
