@@ -1,5 +1,5 @@
 import { UserImage } from "./userImage";
-import { useGetUserById } from "../../../hooks/useQuery";
+import { useGetUserById } from "../../../hooks/useQuery/user";
 import { useParams } from "react-router-dom";
 
 export function UserInfo() {
