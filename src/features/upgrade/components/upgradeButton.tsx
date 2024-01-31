@@ -28,7 +28,12 @@ export function UpgradeButton() {
 	}
 	return (
 		<button
-			disabled={isFetching}
+			disabled={
+				isFetching ||
+				typeof upgradeContext.state.hasWon === "boolean" ||
+				upgradeContext.state.userSkins.length === 0 ||
+				upgradeContext.state.skinsUpgrade.length === 0
+			}
 			className="bg-green-800 disabled:bg-green-950 px-8 py-3 rounded"
 			onClick={excuteUpgrade}
 		>

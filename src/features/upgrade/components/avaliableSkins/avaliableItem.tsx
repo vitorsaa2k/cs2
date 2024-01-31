@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { SkinType } from "../../../crate/types/api";
 import { UpgradeContext } from "../../../../contexts/upgradeContext";
 import { ActionTypes } from "../../contextTypes";
-import { SelectableItem } from "../selectableItem";
+import { SelectableItem } from "../selectableItem/selectableItem";
 
 export function AvaliableItem({ skin }: { skin: SkinType }) {
 	const upgradeContext = useContext(UpgradeContext);

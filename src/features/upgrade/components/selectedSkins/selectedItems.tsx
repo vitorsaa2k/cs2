@@ -1,10 +1,9 @@
-import { parseItemNameExterior } from "../../../../utils/crate/parseItemName";
+import { parseItemNameFull } from "../../../../utils/crate/parseItemName";
 import { DrawnSkin, SkinType } from "../../../crate/types/api";
 import { SkinsImages } from "./skinsImages";
 
 export function SelectedItems({ skins }: { skins: DrawnSkin[] | SkinType[] }) {
-	const skinName =
-		skins.length !== 0 ? parseItemNameExterior(skins[0].name) : "";
+	const skinName = skins.length !== 0 ? parseItemNameFull(skins[0].name) : "";
 	return (
 		<div className="flex flex-col h-full justify-between items-center">
 			<div></div>

@@ -1,14 +1,21 @@
 import { PiShieldCheck } from "react-icons/pi";
 import { DrawnSkin } from "../../../features/crate/types/api";
-import { parseItemNameExterior } from "../../../utils/crate/parseItemName";
+import { parseItemNameFull } from "../../../utils/crate/parseItemName";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
+import { SkinExterior } from "../../../features/upgrade/components/selectableItem/skinExterior";
 
-export function InventoryItem({ item }: { item: DrawnSkin }) {
+export function InventoryItem({
+	item,
+	isPublic,
+}: {
+	item: DrawnSkin;
+	isPublic?: boolean;
+}) {
 	const navigate = useNavigate();
-	const itemName = parseItemNameExterior(item.name);
+	const itemName = parseItemNameFull(item.name);
 	async function sellInventorySkin() {
 		await sellSkins([item.rollId]);
 		queryClient.invalidateQueries({ queryKey: ["inventory"] });
@@ -18,17 +25,21 @@ export function InventoryItem({ item }: { item: DrawnSkin }) {
 			<div className="flex group relative flex-col items-center">
 				<p>{itemName[0]}</p>
 				<p>{itemName[1]}</p>
-				<p>{itemName[2]}</p>
+				<SkinExterior skin={item} />
 				<img
 					className="max-w-[250px]"
 					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
 				/>
-				<button
-					onClick={sellInventorySkin}
-					className="bg-green-800 opacity-0 group-hover:opacity-100 group-hover:animate-opacity-up animate-opacity-down absolute bottom-0 w-full py-1"
-				>
-					Sell ${item.price}
-				</button>
+				{isPublic ? (
+					<div></div>
+				) : (
+					<button
+						onClick={sellInventorySkin}
+						className="bg-green-800 opacity-0 group-hover:opacity-100 group-hover:animate-opacity-up animate-opacity-down absolute bottom-0 w-full py-1"
+					>
+						Sell ${item.price}
+					</button>
+				)}
 			</div>
 			<div
 				onClick={() =>
