@@ -1,14 +1,15 @@
 import { PiShieldCheck } from "react-icons/pi";
 import { DrawnSkin } from "../../../features/crate/types/api";
-import { parseItemNameExterior } from "../../../utils/crate/parseItemName";
+import { parseItemNameFull } from "../../../utils/crate/parseItemName";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
+import { SkinExterior } from "../../../features/upgrade/components/selectableItem/skinExterior";
 
 export function InventoryItem({ item }: { item: DrawnSkin }) {
 	const navigate = useNavigate();
-	const itemName = parseItemNameExterior(item.name);
+	const itemName = parseItemNameFull(item.name);
 	async function sellInventorySkin() {
 		await sellSkins([item.rollId]);
 		queryClient.invalidateQueries({ queryKey: ["inventory"] });
@@ -18,7 +19,7 @@ export function InventoryItem({ item }: { item: DrawnSkin }) {
 			<div className="flex group relative flex-col items-center">
 				<p>{itemName[0]}</p>
 				<p>{itemName[1]}</p>
-				<p>{itemName[2]}</p>
+				<SkinExterior skin={item} />
 				<img
 					className="max-w-[250px]"
 					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}

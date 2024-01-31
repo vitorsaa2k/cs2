@@ -6,9 +6,9 @@ export function SkinsImages({ skins }: { skins: SkinType[] }) {
 	return skins.map(skin => (
 		<SkinImage
 			className={clsx({
-				"max-w-[16rem]": skins.length === 1,
-				"max-w-[10rem]": skins.length > 1,
-				"max-w-[6rem]": skins.length > 6,
+				"max-w-[256px]": skins.length === 1,
+				"max-w-[148px]": skins.length > 1,
+				"max-w-[88px]": skins.length > 6,
 			})}
 			skin={skin}
 		/>
