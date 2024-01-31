@@ -7,7 +7,13 @@ import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
 import { SkinExterior } from "../../../features/upgrade/components/selectableItem/skinExterior";
 
-export function InventoryItem({ item }: { item: DrawnSkin }) {
+export function InventoryItem({
+	item,
+	isPublic,
+}: {
+	item: DrawnSkin;
+	isPublic?: boolean;
+}) {
 	const navigate = useNavigate();
 	const itemName = parseItemNameFull(item.name);
 	async function sellInventorySkin() {
@@ -24,12 +30,16 @@ export function InventoryItem({ item }: { item: DrawnSkin }) {
 					className="max-w-[250px]"
 					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
 				/>
-				<button
-					onClick={sellInventorySkin}
-					className="bg-green-800 opacity-0 group-hover:opacity-100 group-hover:animate-opacity-up animate-opacity-down absolute bottom-0 w-full py-1"
-				>
-					Sell ${item.price}
-				</button>
+				{isPublic ? (
+					<div></div>
+				) : (
+					<button
+						onClick={sellInventorySkin}
+						className="bg-green-800 opacity-0 group-hover:opacity-100 group-hover:animate-opacity-up animate-opacity-down absolute bottom-0 w-full py-1"
+					>
+						Sell ${item.price}
+					</button>
+				)}
 			</div>
 			<div
 				onClick={() =>
