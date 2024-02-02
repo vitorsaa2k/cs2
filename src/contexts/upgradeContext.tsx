@@ -46,7 +46,10 @@ function reducer(
 		case ActionTypes.UPDATE_AVALIABLE_SKINS:
 			return {
 				...state,
-				avaliableSkins: action.payload as SkinType[],
+				avaliableSkins: {
+					skins: action.payload,
+					isFetching: state.avaliableSkins.isFetching,
+				},
 			};
 		case ActionTypes.UPDATE_USER_INVENTORY:
 			return {
@@ -76,6 +79,14 @@ function reducer(
 				...state,
 				hasWon: action.payload,
 			};
+		case ActionTypes.UPDATE_AVALIABLE_FETCH:
+			return {
+				...state,
+				avaliableSkins: {
+					skins: state.avaliableSkins.skins,
+					isFetching: action.payload,
+				},
+			};
 		default:
 			return state;
 	}
@@ -84,7 +95,7 @@ function reducer(
 const initialValue: UpgradeType = {
 	userSkins: [],
 	userInventory: [],
-	avaliableSkins: [],
+	avaliableSkins: { skins: [], isFetching: false },
 	skinsUpgrade: [],
 	successChance: 0,
 	multiplier: 1.5,

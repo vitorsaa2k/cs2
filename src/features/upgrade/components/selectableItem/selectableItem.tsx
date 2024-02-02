@@ -10,25 +10,23 @@ interface SelectableItemProps extends HTMLAttributes<HTMLDivElement> {
 	isSelected?: boolean;
 }
 
-export function SelectableItem(props: SelectableItemProps) {
+export function SelectableItem({
+	isSelected,
+	skin,
+	...props
+}: SelectableItemProps) {
 	return (
 		<div
 			{...props}
 			className={`flex flex-col relative min-h-[13rem] max-w-[130px] items-center justify-around hover:cursor-pointer border rounded ${
-				props.isSelected ? "border-green-400 border-2" : ""
+				isSelected ? "border-green-400 border-2" : ""
 			}`}
 		>
-			<SkinImage className="max-w-[128px]" skin={props.skin} />
-			<SkinExterior
-				className="absolute top-0 left-0 text-xs m-1"
-				skin={props.skin}
-			/>
-			<SkinPrice
-				className="absolute top-0 right-0 text-xs m-1"
-				skin={props.skin}
-			/>
+			<SkinImage className="max-w-[128px]" skin={skin} />
+			<SkinExterior className="absolute top-0 left-0 text-xs m-1" skin={skin} />
+			<SkinPrice className="absolute top-0 right-0 text-xs m-1" skin={skin} />
 			<div className="flex flex-col items-center">
-				<SkinName name={props.skin.name} />
+				<SkinName name={skin.name} />
 			</div>
 		</div>
 	);

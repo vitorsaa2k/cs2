@@ -1,4 +1,5 @@
 import { parseItemNameFull } from "../../../../utils/crate/parseItemName";
+import { formatPrice } from "../../../../utils/formatPrice";
 import { DrawnSkin, SkinType } from "../../../crate/types/api";
 import { SkinsImages } from "./skinsImages";
 
@@ -16,16 +17,18 @@ export function SelectedItems({ skins }: { skins: DrawnSkin[] | SkinType[] }) {
 						<p>{skins.length} selected items</p>
 					) : (
 						<>
-							<p>{skinName[0]}</p>
-							<p>{skinName[1]}</p>
+							<p>
+								{skinName[0]} {skinName[1]}
+							</p>
 						</>
 					)}
 				</div>
 				<p className="bg-zinc-900 flex rounded-s p-1 items-center">
-					$
-					{skins
-						.map(s => s.price)
-						.reduce((prevValue, currValue) => prevValue + currValue, 0)}
+					{formatPrice(
+						skins
+							.map(s => s.price)
+							.reduce((prevValue, currValue) => prevValue + currValue, 0)
+					)}
 				</p>
 			</div>
 		</div>

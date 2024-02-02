@@ -12,6 +12,7 @@ export enum ActionTypes {
 	RESET_UPGRADER = "RESET_UPGRADER",
 	UPDATE_MULTIPLIER = "UPDATE_MULTIPLIER",
 	UPDATE_RESULT = "UPDATE_RESULT",
+	UPDATE_AVALIABLE_FETCH = "UPDATE_AVALIABLE_FETCH",
 }
 
 export interface AddUserSkinAction {
@@ -53,6 +54,10 @@ export interface UpdateResultAction {
 	type: ActionTypes.UPDATE_RESULT;
 	payload: boolean | null;
 }
+export interface UpdateAvaliableFetchAction {
+	type: ActionTypes.UPDATE_AVALIABLE_FETCH;
+	payload: boolean;
+}
 
 export type Actions =
 	| AddUserSkinAction
@@ -64,12 +69,13 @@ export type Actions =
 	| UpdateUserInventoryAction
 	| ResetUpgraderAction
 	| UpdateMultiplierAction
-	| UpdateResultAction;
+	| UpdateResultAction
+	| UpdateAvaliableFetchAction;
 
 export interface UpgradeType {
 	userSkins: DrawnSkin[];
 	userInventory: DrawnSkin[];
-	avaliableSkins: SkinType[];
+	avaliableSkins: { skins: SkinType[]; isFetching: boolean };
 	skinsUpgrade: SkinType[];
 	successChance: number;
 	multiplier: 1.5 | 2 | 5 | 10 | 20;

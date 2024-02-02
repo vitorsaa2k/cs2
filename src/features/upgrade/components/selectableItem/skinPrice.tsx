@@ -6,8 +6,8 @@ interface SkinPriceProps extends HTMLAttributes<HTMLParagraphElement> {
 	skin: SkinType;
 }
 
-export function SkinPrice(props: SkinPriceProps) {
-	const price = formatPrice(props.skin.price);
+export function SkinPrice({ skin, ...props }: SkinPriceProps) {
+	const price = formatPrice(skin.price);
 
 	return <p {...props}>{price}</p>;
 }
