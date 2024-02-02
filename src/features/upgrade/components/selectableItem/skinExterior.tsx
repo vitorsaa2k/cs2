@@ -6,8 +6,8 @@ interface SkinExteriorProps extends HTMLAttributes<HTMLParagraphElement> {
 	skin: SkinType;
 }
 
-export function SkinExterior(props: SkinExteriorProps) {
-	const parsedSkin = parseItemNameExterior(props.skin.name);
+export function SkinExterior({ skin, ...props }: SkinExteriorProps) {
+	const parsedSkin = parseItemNameExterior(skin.name);
 	const skinName = useMemo(() => {
 		switch (parsedSkin.exterior) {
 			case "Factory New":

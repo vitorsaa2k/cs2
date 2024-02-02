@@ -6,10 +6,15 @@ import { Wrapper } from "../skinsSection/wrapper";
 export function AvaliableItemsList() {
 	const upgradeContext = useContext(UpgradeContext);
 	return (
-		<Wrapper>
-			{upgradeContext.state.avaliableSkins.map(skin => (
-				<AvaliableItem key={skin.name} skin={skin} />
-			))}
-		</Wrapper>
+		<div className="relative">
+			<Wrapper>
+				{upgradeContext.state.avaliableSkins.skins.map(skin => (
+					<AvaliableItem key={skin.name} skin={skin} />
+				))}
+			</Wrapper>
+			{upgradeContext.state.avaliableSkins.isFetching && (
+				<div className="w-full h-full absolute top-0 rounded animate-opacity-up bg-black/50"></div>
+			)}
+		</div>
 	);
 }

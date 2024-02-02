@@ -18,7 +18,6 @@ export function parseItemNameFull(name: string) {
 	}
 	parsedName[1] = parsedName[1].substring(0 + 1, index - 1);
 	if (parsedName[1].length > 15) {
-		console.log(parsedName[1]);
 		parsedName[1] = parsedName[1].substring(0, 15);
 		parsedName[1] = parsedName[1] + "...";
 	}

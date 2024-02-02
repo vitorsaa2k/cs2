@@ -15,7 +15,9 @@ export function Circle({ chance }: { chance: number }) {
 			className="w-[16rem] h-[16rem] flex items-center justify-center rounded-full transition-all mx-6 border"
 		>
 			<Triangle />
-			<p className="text-green-700">{chance?.toFixed(2) ?? 0}%</p>
+			<p className="text-green-700 text-4xl font-semibold">
+				{chance?.toFixed(2) ?? 0}%
+			</p>
 		</div>
 	);
 }

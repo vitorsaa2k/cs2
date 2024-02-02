@@ -6,10 +6,12 @@ import { Wrapper } from "../skinsSection/wrapper";
 export function Inventory() {
 	const upgradeContext = useContext(UpgradeContext);
 	return (
-		<Wrapper>
-			{upgradeContext.state.userInventory.map(skin => (
-				<InventoryItem key={skin.rollId} skin={skin} />
-			))}
-		</Wrapper>
+		<div className="relative">
+			<Wrapper>
+				{upgradeContext.state.userInventory.map(skin => (
+					<InventoryItem key={skin.rollId} skin={skin} />
+				))}
+			</Wrapper>
+		</div>
 	);
 }
