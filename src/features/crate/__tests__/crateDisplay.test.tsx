@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, test, vi } from "vitest";
 import { renderWithClient } from "../../../tests/utils";
-import { Crate } from "../../../pages/Crate";
+import Crate from "../../../pages/Crate";
 import { waitFor } from "@testing-library/react";
 import { crateMock } from "../../../tests/mocks/crateMock";
 
