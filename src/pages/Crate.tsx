@@ -5,7 +5,7 @@ import { Roller } from "../features/crate/components/roller";
 import CrateDesc from "../features/crate/components/crateDesc";
 import { useGetCrateById } from "../hooks/useQuery/crate";
 
-export function Crate() {
+export default function Crate() {
 	const { name } = useParams();
 	const [urlSearchParams] = useSearchParams();
 	const crateId = urlSearchParams.get("crateId");

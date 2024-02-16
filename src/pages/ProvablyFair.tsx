@@ -3,7 +3,7 @@ import { ProvablyFairIntroduction } from "../features/provablyFair/components/in
 import { SeedPreview } from "../features/provablyFair/components/seedPreview";
 import { CheckRoll } from "../features/provablyFair/components/checkRoll";
 
-export function ProvablyFair() {
+export default function ProvablyFair() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const checkRoll = searchParams.get("checkRoll");
 	return (

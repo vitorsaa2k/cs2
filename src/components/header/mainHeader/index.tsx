@@ -1,11 +1,12 @@
 import { Logo } from "./logo";
 import { LoginButton } from "./loginButton";
 import { UserHeader } from "./userHeader";
-import { useContext } from "react";
+import { lazy, useContext } from "react";
 import { DepositButton } from "./depositButton";
-import { DepositModal } from "../../depositModal";
 import { useGetLoggedUser } from "../../../hooks/useQuery/user";
 import { DepositModalContext } from "../../../contexts/depositModalContext";
+
+const DepositModal = lazy(() => import("../../depositModal"));
 
 export function MainHeader() {
 	const modal = useContext(DepositModalContext);
