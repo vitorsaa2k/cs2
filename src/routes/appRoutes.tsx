@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Profile } from "../pages/Profile";
-import { Crate } from "../pages/Crate";
-import { ProvablyFair } from "../pages/ProvablyFair";
-import { PublicProfile } from "../pages/PublicProfile";
-import { Upgrade } from "../pages/Upgrade";
+import { lazy } from "react";
 
+const Home = lazy(() => import("../pages/Home"));
+const Profile = lazy(() => import("../pages/Profile"));
+const PublicProfile = lazy(() => import("../pages/PublicProfile"));
+const Crate = lazy(() => import("../pages/Crate"));
+const ProvablyFair = lazy(() => import("../pages/ProvablyFair"));
+const Upgrade = lazy(() => import("../pages/Upgrade"));
 export function AppRoutes() {
 	return (
 		<Routes>

@@ -3,7 +3,7 @@ import { ControlSection } from "../features/upgrade/components/controlSection";
 import { SkinsSection } from "../features/upgrade/components/skinsSection/skinsSection";
 import { UpgradeSection } from "../features/upgrade/components/upgradeSection";
 
-export function Upgrade() {
+export default function Upgrade() {
 	return (
 		<UpgradeContextProvider>
 			<UpgradeSection />

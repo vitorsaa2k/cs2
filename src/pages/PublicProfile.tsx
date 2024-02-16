@@ -1,5 +1,5 @@
 import { FullProfile } from "../components/publicProfile";
 
-export function PublicProfile() {
+export default function PublicProfile() {
 	return <FullProfile />;
 }

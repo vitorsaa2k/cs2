@@ -1,5 +1,5 @@
 import { FullProfile } from "../components/profile";
 
-export function Profile() {
+export default function Profile() {
 	return <FullProfile />;
 }

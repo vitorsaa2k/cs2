@@ -9,7 +9,7 @@ import { DepositForm } from "./depositForm";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";
 
-export function DepositModal({ onClose }: { onClose: () => void }) {
+export default function DepositModal({ onClose }: { onClose: () => void }) {
 	const [paymentMethod, setPaymentMethod] = useState<PaymentTypes>("Stripe");
 	const [amount, setAmount] = useState(2);
 	const [code, setCode] = useState("");
