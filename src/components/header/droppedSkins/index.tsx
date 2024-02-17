@@ -42,6 +42,12 @@ export function DroppedSkins() {
 		}
 	}
 	useEffect(() => {
+		socket.connect();
+		return () => {
+			socket.disconnect();
+		};
+	}, []);
+	useEffect(() => {
 		socket.on("updateLiveDrop", addDrop);
 
 		return () => {
