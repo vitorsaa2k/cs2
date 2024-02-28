@@ -7,7 +7,7 @@ export default function CrateDesc({ items }: { items?: CrateSkin[] }) {
 	return (
 		<div>
 			{invertedItems ? (
-				<div className="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 min-[320px]:grid-cols-2">
+				<div className="flex flex-wrap justify-center max-w-7xl ">
 					{invertedItems.map((item, i) => {
 						return (
 							<div key={i}>
