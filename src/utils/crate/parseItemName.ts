@@ -1,6 +1,6 @@
 import { decodeEntities } from "../decodeHTML";
 
-export function parseItemNameFull(name: string) {
+export function parseItemNameFull(name: string, maxChars: number = 15) {
 	const parsedName = decodeEntities(name).split("|");
 	const index = parsedName[1]?.indexOf("(");
 	if (!index) {
@@ -17,8 +17,8 @@ export function parseItemNameFull(name: string) {
 		);
 	}
 	parsedName[1] = parsedName[1].substring(0 + 1, index - 1);
-	if (parsedName[1].length > 15) {
-		parsedName[1] = parsedName[1].substring(0, 15);
+	if (parsedName[1].length > maxChars) {
+		parsedName[1] = parsedName[1].substring(0, maxChars);
 		parsedName[1] = parsedName[1] + "...";
 	}
 	return parsedName;

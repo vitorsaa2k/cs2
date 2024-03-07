@@ -55,7 +55,7 @@ export function DroppedSkins() {
 		};
 	}, [addDrop]);
 	return (
-		<div className="flex border border-black overflow-hidden min-h-[130px]">
+		<div className="flex overflow-hidden h-[124px]">
 			<div className="flex flex-col items-center">
 				<button
 					className={`flex w-full h-full px-5 flex-col items-center justify-center hover:bg-white/25 ${
@@ -78,7 +78,7 @@ export function DroppedSkins() {
 					Best
 				</button>
 			</div>
-			<div className="border-black w-full relative flex items-center justify-start overflow-hidden">
+			<div className="w-full relative overflow-hidden">
 				{shouldShowBestDrops ? (
 					<DropsRow items={bestDrops} />
 				) : (

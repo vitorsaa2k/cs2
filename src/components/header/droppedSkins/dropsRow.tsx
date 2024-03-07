@@ -3,11 +3,11 @@ import { Drop } from "./singleDrop";
 import { LiveDropItem } from "../../../features/crate/types/api";
 
 export function DropsRow({ items }: { items: LiveDropItem[] }) {
-	const width = 128;
+	const width = 198;
 	const transitions = useTransition(
 		items.map((data, i) => ({ ...data, x: i * width })),
 		{
-			from: { x: -128, position: "absolute", opacity: 0 },
+			from: { x: -width, position: "absolute", opacity: 0 },
 			leave: { width: 0, opacity: 0 },
 			enter: ({ x }) => ({ x, opacity: 1 }),
 			update: ({ x }) => ({ x }),

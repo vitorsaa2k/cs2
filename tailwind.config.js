@@ -3,6 +3,13 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
+			colors: {
+				"red-item": "#FF445D",
+				"yellow-item": "#DCAE64",
+				"pink-item": "#DF5DEE",
+				"purple-item": "#A41AFF",
+				"blue-item": "#4482FF",
+			},
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
 			},
@@ -28,10 +35,11 @@ export default {
 		},
 	},
 	safelist: [
-		"from-red-200",
-		"from-yellow-200",
-		"from-blue-200",
-		"from-purple-200",
+		"border-b-red-item",
+		"border-b-purple-item",
+		"border-b-pink-item",
+		"border-b-yellow-item",
+		"border-b-blue-item",
 	],
 	plugins: [],
 };
