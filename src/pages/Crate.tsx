@@ -4,6 +4,7 @@ import { CrateName } from "../features/crate/components/cratePresentation/crateN
 import { Roller } from "../features/crate/components/roller";
 import CrateDesc from "../features/crate/components/crateDesc";
 import { useGetCrateById } from "../hooks/useQuery/crate";
+import { CrateContextProvider } from "../features/crate/context/crateContext/crateContext";
 
 export default function Crate() {
 	const { name } = useParams();
@@ -12,11 +13,13 @@ export default function Crate() {
 	const { data: crate } = useGetCrateById(crateId ?? "");
 
 	return (
-		<div className="flex flex-col items-center m-3">
-			<CrateName name={name || "Crate Name"} />
-			<CrateIcon />
-			<Roller skins={crate?.skins} />
-			<CrateDesc items={crate?.skins} />
-		</div>
+		<CrateContextProvider>
+			<div className="flex flex-col items-center m-3">
+				<CrateName name={name || "Crate Name"} />
+				<CrateIcon />
+				<Roller skins={crate?.skins} />
+				<CrateDesc items={crate?.skins} />
+			</div>
+		</CrateContextProvider>
 	);
 }

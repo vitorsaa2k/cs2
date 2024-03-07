@@ -1,9 +1,11 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { RollerItem } from "./rollerItem/rollerItem";
 import { RollerInsideProps } from "../../types/components";
+import { CrateContext } from "../../context/crateContext/crateContext";
 
 export function RollerInside(props: RollerInsideProps) {
 	const itemsContainer = useRef<HTMLDivElement>(null);
+	const { drawnSkins } = useContext(CrateContext).state;
 
 	const StartRoll = useCallback(() => {
 		const randomNumber = Math.floor(Math.random() * 125);
@@ -30,8 +32,8 @@ export function RollerInside(props: RollerInsideProps) {
 		}
 	}, []);
 	useEffect(() => {
-		props.isRolling ? StartRoll() : ResetAnimation();
-	}, [props.isRolling, StartRoll, ResetAnimation]);
+		drawnSkins ? StartRoll() : ResetAnimation();
+	}, [drawnSkins, StartRoll, ResetAnimation]);
 
 	return (
 		<div

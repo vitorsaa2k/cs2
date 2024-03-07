@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { VerticalRollerProps } from "../../../types/components";
 import { ItemsColumn } from "./itemsColumn";
+import { CrateContext } from "../../../context/crateContext/crateContext";
 
 export function VerticalRollerInside(props: VerticalRollerProps) {
 	const itemsContainer = useRef<HTMLDivElement>(null);
 	const totalComponents = new Array(props.crateNumber).fill(0);
-
+	const { drawnSkins } = useContext(CrateContext).state;
 	const StartRoll = useCallback(() => {
 		const trasnlatePx = 70 * 150 - 500;
 		if (itemsContainer.current) {
@@ -27,8 +28,8 @@ export function VerticalRollerInside(props: VerticalRollerProps) {
 		}
 	}, []);
 	useEffect(() => {
-		props.isRolling ? StartRoll() : ResetAnimation();
-	}, [props.isRolling, StartRoll, ResetAnimation]);
+		drawnSkins ? StartRoll() : ResetAnimation();
+	}, [drawnSkins, StartRoll, ResetAnimation]);
 
 	return (
 		<div

@@ -1,10 +1,8 @@
 import { animated, useTransition } from "@react-spring/web";
 import { Drop } from "./singleDrop";
 import { LiveDropItem } from "../../../features/crate/types/api";
-import { useState } from "react";
 
 export function DropsRow({ items }: { items: LiveDropItem[] }) {
-	const [shouldShow, setShouldShow] = useState(false);
 	const width = 128;
 	const transitions = useTransition(
 		items.map((data, i) => ({ ...data, x: i * width })),
@@ -16,15 +14,13 @@ export function DropsRow({ items }: { items: LiveDropItem[] }) {
 			key: (item: LiveDropItem) => item?.rollId,
 		}
 	);
-	setTimeout(() => {
-		setShouldShow(true);
-	}, 800);
+
 	return (
 		<>
 			{transitions(({ x, ...rest }, item, { key }) => (
 				<animated.div
 					key={key}
-					className={`overflow-hidden ${shouldShow ? "block" : "hidden"}`}
+					className={"overflow-hidden"}
 					// @ts-expect-error known error for useTransition/useSpring, reference: https://github.com/pmndrs/react-spring/issues/1102
 					style={{
 						transform: x.to((x: number) => `translate3d(${x}px,0,0)`),

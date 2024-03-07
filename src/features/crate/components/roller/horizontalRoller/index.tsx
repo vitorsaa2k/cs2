@@ -3,10 +3,10 @@ import { Line } from "../line";
 import { RollerContainer } from "../rollerContainer";
 import { RollerInside } from "../rollerInside";
 
-export function HorizontalRoller({ isRolling, items }: RollerProps) {
+export function HorizontalRoller({ items }: RollerProps) {
 	return (
 		<RollerContainer>
-			<RollerInside isRolling={isRolling} items={items} />
+			<RollerInside items={items} />
 			<Line />
 		</RollerContainer>
 	);

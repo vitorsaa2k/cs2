@@ -6,6 +6,7 @@ import { renderWithClient } from "../../../tests/utils";
 import { server } from "../../../../setupTests";
 import { HttpResponse, http } from "msw";
 import { userMock } from "../../../tests/mocks/userMock";
+import { CrateContextProvider } from "../context/crateContext/crateContext";
 
 const searchParams: { [key: string]: string } = { crateId: crateMock.crateId };
 
@@ -25,10 +26,16 @@ beforeAll(() => {
 	}));
 });
 
+const RollerComponent = (
+	<CrateContextProvider>
+		<Roller skins={crateMock.skins} />
+	</CrateContextProvider>
+);
+
 describe("crate interaction buttons", async () => {
 	test("click on PLUS button should switch to vertical items component", async () => {
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
-		const plusButton = result.getByRole("button", { name: /plus button/i });
+		const result = renderWithClient(RollerComponent);
+		const plusButton = result.getByLabelText("Plus button");
 		const horizontalRoller = result.getByLabelText("Roller container");
 		await userEvent.click(plusButton);
 		const verticalRoller = result.getByLabelText(/vertical roller container/i);
@@ -37,7 +44,7 @@ describe("crate interaction buttons", async () => {
 	});
 
 	test("click on PLUS button 4 times should show 5 items column", async () => {
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const plusButton = result.getByRole("button", { name: /plus button/i });
 		const horizontalRoller = result.getByLabelText(/roller container/i);
 		await userEvent.click(plusButton);
@@ -50,7 +57,7 @@ describe("crate interaction buttons", async () => {
 	});
 
 	test("click on PLUS button more than 4 times should show 5 items column", async () => {
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const plusButton = result.getByRole("button", { name: /plus button/i });
 		const horizontalRoller = result.getByLabelText(/roller container/i);
 		await userEvent.click(plusButton);
@@ -66,7 +73,7 @@ describe("crate interaction buttons", async () => {
 	});
 
 	test("click on MINUS button 4 times or more should show HorizontalRoller", async () => {
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const minusButton = result.getByRole("button", { name: /minus button/i });
 		const plusButton = result.getByRole("button", { name: /plus button/i });
 		await userEvent.click(plusButton);
@@ -86,7 +93,7 @@ describe("crate interaction buttons", async () => {
 				return HttpResponse.error();
 			})
 		);
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const button = result.getByRole("button", {
 			name: "Login to open",
 		});
@@ -95,7 +102,7 @@ describe("crate interaction buttons", async () => {
 	});
 
 	test("show remaining balance to open if user doesn't have enough balance", async () => {
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const remainingToOpen = crateMock.price - userMock.balance;
 		const button = await result.findByRole("button", {
 			name: `Add to open $${remainingToOpen}`,
@@ -112,7 +119,7 @@ describe("crate interaction buttons", async () => {
 				return HttpResponse.json(userWithBalance);
 			})
 		);
-		const result = renderWithClient(<Roller skins={crateMock.skins} />);
+		const result = renderWithClient(RollerComponent);
 		const button = await result.findByRole("button", {
 			name: `Open Case $${crateMock.price}`,
 		});

@@ -1,101 +1,76 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { CrateSkin, DrawnSkin } from "../../types/api";
-import { generateSkinsArray } from "../../../../utils/crate/generateSkinsArray";
+import { CrateSkin } from "../../types/api";
 import { rollCrate } from "../../../../services/rollApi";
 import { RollerModal } from "./rollerModal";
 import { CrateInteraction } from "../crateInteraction";
 import { HorizontalRoller } from "./horizontalRoller";
 import { VerticalRoller } from "./verticalRoller";
 import { queryClient } from "../../../../libs/queryClient";
+import { CrateContext } from "../../context/crateContext/crateContext";
+import { ActionTypes } from "../../types/crateContextTypes";
 
 export function Roller({ skins }: { skins?: CrateSkin[] }) {
-	const [searchParams] = useSearchParams();
-	const [isRolling, setIsRolling] = useState(false);
 	const [isFetching, setIsFetching] = useState(false);
-	const [items, setItems] = useState<CrateSkin[]>([]);
-	const [verticalItems, setVerticalItems] = useState<CrateSkin[][]>([[]]);
 	const [showModal, setShowModal] = useState(false);
-	const [crateNumber, setCrateNumber] = useState(1);
-	const [drawnSkins, setDrawnSkins] = useState<DrawnSkin[]>([]);
-
-	function resetAllSkinsArray() {
-		if (skins) {
-			const verticalSkins = [
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-			];
-			setItems(generateSkinsArray(skins));
-			setVerticalItems(verticalSkins);
-		}
-	}
+	const [searchParams] = useSearchParams();
+	const crateContext = useContext(CrateContext);
 
 	async function roll() {
 		const crateId = searchParams.get("crateId");
 		if (crateId) {
 			setIsFetching(true);
-			const skins = await rollCrate(crateId, crateNumber);
-			const array = items;
-			array[70] = skins[0];
-			setDrawnSkins(skins);
-			setItems(array);
-			const verticalItemsClone = verticalItems;
-			skins.forEach((skin, index) => {
-				verticalItemsClone[index][70] = skin;
+			const skins = await rollCrate(crateId, crateContext.state.totalCrates);
+			crateContext.dispatch({
+				type: ActionTypes.OPEN_CRATE,
+				payload: { crateId: crateId, skins },
 			});
-			setVerticalItems(verticalItemsClone);
+			queryClient.invalidateQueries({ queryKey: ["user"] });
 		}
 		setTimeout(() => {
 			setShowModal(true);
 			setIsFetching(false);
-			queryClient.invalidateQueries({ queryKey: ["user"] });
 		}, 8500);
-		setIsRolling(true);
 	}
-
 	useEffect(() => {
 		if (skins) {
-			const verticalSkins = [
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-				generateSkinsArray(skins),
-			];
-			setItems(generateSkinsArray(skins));
-			setVerticalItems(verticalSkins);
+			crateContext.dispatch({
+				type: ActionTypes.UPDATE_DEFAULT_SKINS,
+				payload: skins,
+			});
+			crateContext.dispatch({ type: ActionTypes.RESET_ALL_SKINS });
 		}
+		//eslint-disable-next-line
 	}, [skins]);
 	return (
-		<div className="w-full m-3 h-full gap-2 flex flex-col justify-center items-center overflow-hidden">
-			{crateNumber === 1 ? (
-				<HorizontalRoller items={items} isRolling={isRolling} />
-			) : (
-				<VerticalRoller
-					crateNumber={crateNumber}
-					items={verticalItems}
-					isRolling={isRolling}
+		<>
+			<div className="w-full m-3 h-full gap-2 flex flex-col justify-center items-center overflow-hidden">
+				{crateContext.state.totalCrates === 1 ? (
+					<HorizontalRoller items={crateContext.state.horizontalSkins} />
+				) : (
+					<VerticalRoller
+						crateNumber={crateContext.state.totalCrates}
+						items={crateContext.state.verticalSkins}
+					/>
+				)}
+				<CrateInteraction
+					disabled={crateContext.state.drawnSkins !== null || isFetching}
+					onClick={roll}
 				/>
-			)}
-			<CrateInteraction
-				disabled={isFetching}
-				onClick={roll}
-				setCrateNumber={setCrateNumber}
-				crateNumber={crateNumber}
-			/>
+			</div>
 			{showModal ? (
 				<RollerModal
 					closeModal={() => {
 						setShowModal(false);
-						setIsRolling(false);
-						resetAllSkinsArray();
+						crateContext.dispatch({ type: ActionTypes.RESET_ALL_SKINS });
+						crateContext.dispatch({
+							type: ActionTypes.UPDATE_DRAWN_SKINS,
+							payload: null,
+						});
 					}}
-					items={drawnSkins}
+					items={crateContext.state.drawnSkins || []}
 				/>
 			) : null}
-		</div>
+		</>
 	);
 }

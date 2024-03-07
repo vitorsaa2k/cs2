@@ -8,41 +8,47 @@ import { useSearchParams } from "react-router-dom";
 import { useContext } from "react";
 import { DepositModalContext } from "../../../../contexts/depositModalContext";
 import { URL } from "../../../../libs/axios";
+import { CrateContext } from "../../context/crateContext/crateContext";
+import { ActionTypes } from "../../types/crateContextTypes";
 
 export function CrateInteraction(props: CrateInteractionProps) {
 	const [urlSearchParams] = useSearchParams();
+	const crateContext = useContext(CrateContext);
 	const crateId = urlSearchParams.get("crateId");
 	const { data: user } = useGetLoggedUser();
 	const { data: crate } = useGetCrateById(crateId ?? "");
 	const modal = useContext(DepositModalContext);
 	const userHasBalance =
-		crate && user ? props.crateNumber * crate.price < user?.balance : null;
+		crate && user
+			? crateContext.state.totalCrates * crate.price < user?.balance
+			: null;
 	const remainigToOpen =
 		crate && user
 			? userHasBalance
 				? 0
-				: Number((props.crateNumber * crate.price - user?.balance).toFixed(2))
+				: Number(
+						(
+							crateContext.state.totalCrates * crate.price -
+							user?.balance
+						).toFixed(2)
+				  )
 			: 0;
 	return (
 		<section className="flex gap-7">
 			<div className="flex items-center justify-center gap-1">
 				<PlusButton
-					disabled={props.disabled}
+					disabled={props.disabled || crateContext.state.totalCrates === 5}
 					onClick={() =>
-						props.setCrateNumber(prevState =>
-							prevState < 5 ? prevState + 1 : prevState + 0
-						)
+						crateContext.dispatch({ type: ActionTypes.INCREASE_TOTAL_CRATES })
 					}
 				/>
 				<MinusButton
-					disabled={props.disabled}
+					disabled={props.disabled || crateContext.state.totalCrates === 1}
 					onClick={() =>
-						props.setCrateNumber(prevState =>
-							prevState >= 2 ? prevState - 1 : prevState - 0
-						)
+						crateContext.dispatch({ type: ActionTypes.DECREASE_TOTAL_CRATES })
 					}
 				/>
-				<p className="m-1 w-[8px]">{props.crateNumber}</p>
+				<p className="m-1 w-[8px]">{crateContext.state.totalCrates}</p>
 			</div>
 			<button
 				className={`${
@@ -73,7 +79,7 @@ export function CrateInteraction(props: CrateInteractionProps) {
 						user
 							? userHasBalance
 								? crate
-									? `$${crate.price * props.crateNumber}`
+									? `$${crate.price * crateContext.state.totalCrates}`
 									: "$0.00"
 								: `$${remainigToOpen}`
 							: ""

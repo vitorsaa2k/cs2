@@ -3,18 +3,10 @@ import { LineVertical } from "./lineVertical";
 import { RollerContainerVertical } from "./rollerContainerVertical";
 import { VerticalRollerInside } from "./rollerInsideVertical";
 
-export function VerticalRoller({
-	isRolling,
-	items,
-	crateNumber,
-}: VerticalRollerProps) {
+export function VerticalRoller({ items, crateNumber }: VerticalRollerProps) {
 	return (
 		<RollerContainerVertical>
-			<VerticalRollerInside
-				crateNumber={crateNumber}
-				isRolling={isRolling}
-				items={items}
-			/>
+			<VerticalRollerInside crateNumber={crateNumber} items={items} />
 			<LineVertical />
 		</RollerContainerVertical>
 	);
