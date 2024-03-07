@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { socket } from "../../../libs/socketIo";
+import { PiRss } from "react-icons/pi";
+import { IconContext } from "react-icons";
 
 export function PlayersOnline() {
 	const [onlineUsers, setOnlineUsers] = useState<string[]>([]);
@@ -11,5 +13,12 @@ export function PlayersOnline() {
 		}, 3000);
 	}, []);
 
-	return <p>{onlineUsers.length ?? 0} Online</p>;
+	return (
+		<div className="flex">
+			<IconContext.Provider value={{ className: "fill-[#46B858]", size: "24" }}>
+				<PiRss />
+			</IconContext.Provider>
+			<p>{onlineUsers.length ?? 0} Online</p>
+		</div>
+	);
 }
