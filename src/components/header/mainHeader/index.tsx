@@ -1,4 +1,3 @@
-import { Logo } from "./logo";
 import { LoginButton } from "./loginButton";
 import { UserHeader } from "./userHeader";
 import { useContext } from "react";
@@ -11,8 +10,7 @@ export function MainHeader() {
 	const modal = useContext(DepositModalContext);
 	const { data: user, isLoading } = useGetLoggedUser();
 	return (
-		<div className="flex justify-between mx-5">
-			<Logo />
+		<div className="flex bg-[#1E293B]/50 -z-50 relative justify-between">
 			<div className="flex items-center gap-2">
 				{isLoading ? null : (
 					<>
