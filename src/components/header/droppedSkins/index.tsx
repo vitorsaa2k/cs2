@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { socket } from "../../../libs/socketIo";
 import { LiveDropItem } from "../../../features/crate/types/api";
 import { DropsRow } from "./dropsRow";
-import { PiCrown, PiPackage } from "react-icons/pi";
+import { ToggleButtons } from "./toggleButtons";
 export function DroppedSkins() {
 	const [drops, setDrops] = useState<LiveDropItem[]>([]);
 	const [bestDrops, setBestDrops] = useState<LiveDropItem[]>([]);
@@ -56,28 +56,12 @@ export function DroppedSkins() {
 	}, [addDrop]);
 	return (
 		<div className="flex overflow-hidden h-[124px]">
-			<div className="flex flex-col items-center">
-				<button
-					className={`flex w-full h-full px-5 flex-col items-center justify-center hover:bg-white/25 ${
-						shouldShowBestDrops ? "" : "bg-white/25"
-					}`}
-					disabled={isToggleDisabled}
-					onClick={toggleBestDropsFalse}
-				>
-					<PiPackage />
-					All
-				</button>
-				<button
-					className={`flex w-full h-full px-5 flex-col items-center justify-center hover:bg-white/25 ${
-						shouldShowBestDrops ? "bg-white/25" : ""
-					}`}
-					disabled={isToggleDisabled}
-					onClick={toggleBestDropsTrue}
-				>
-					<PiCrown />
-					Best
-				</button>
-			</div>
+			<ToggleButtons
+				isToggleDisabled={isToggleDisabled}
+				shouldShowBestDrops={shouldShowBestDrops}
+				toggleBestDropsFalse={toggleBestDropsFalse}
+				toggleBestDropsTrue={toggleBestDropsTrue}
+			/>
 			<div className="w-full relative overflow-hidden">
 				{shouldShowBestDrops ? (
 					<DropsRow items={bestDrops} />
