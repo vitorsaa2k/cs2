@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { socket } from "../../../libs/socketIo";
+import { socket } from "../../../../libs/socketIo";
 import { PiRss } from "react-icons/pi";
 import { IconContext } from "react-icons";
 

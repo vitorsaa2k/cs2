@@ -9,6 +9,7 @@ export default {
 				"pink-item": "#DF5DEE",
 				"purple-item": "#A41AFF",
 				"blue-item": "#4482FF",
+				"green-font": "#46B858",
 			},
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],

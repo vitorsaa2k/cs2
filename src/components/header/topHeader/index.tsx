@@ -1,17 +1,17 @@
-import { FacebookIcon } from "./facebookIcon";
-import { InstagramIcon } from "./instagramIcon";
+import { Metrics } from "./metrics";
 import { Logo } from "./logo";
-import { TwitterIcon } from "./twitterIcon";
-import { YoutubeIcon } from "./youtubeIcon";
+import { Socials } from "./socials";
+import { BgSvg } from "./bgSvg";
 
 export function TopHeader() {
 	return (
-		<div className="hidden md:flex justify-end gap-3 items-center bg-slate-950 h-[38px]">
-			<Logo />
-			<InstagramIcon />
-			<FacebookIcon />
-			<YoutubeIcon />
-			<TwitterIcon />
-		</div>
+		<>
+			<div className="hidden md:flex gap-3 z-20 items-center bg-slate-950 h-[38px]">
+				<Logo />
+				<Metrics />
+				<Socials />
+			</div>
+			<BgSvg />
+		</>
 	);
 }

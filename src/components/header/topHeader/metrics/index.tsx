@@ -4,9 +4,9 @@ import { TotalBattles } from "./totalBattles";
 import { TotalCrates } from "./totalCrates";
 import { TotalUpgrades } from "./totalUpgrades";
 
-export function HeaderInfo() {
+export function Metrics() {
 	return (
-		<div className="flex flex-col gap-5 md:flex-row absolute ml-[17rem] mt-[0.5rem]">
+		<div className="flex flex-col gap-5 md:flex-row absolute ml-[17rem] mt-[0.2rem]">
 			<PlayersOnline />
 			<TotalAccounts />
 			<TotalBattles />
