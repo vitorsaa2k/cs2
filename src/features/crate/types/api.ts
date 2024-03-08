@@ -1,6 +1,7 @@
 export type CrateType = {
 	crateId: string;
 	name: string;
+	img: string;
 	limitRate: number;
 	price: number;
 	skins: CrateSkin[];

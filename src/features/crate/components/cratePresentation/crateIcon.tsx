@@ -1,3 +1,3 @@
-export function CrateIcon() {
-	return <img className="border border-black w-32 h-32"></img>;
+export function CrateIcon({ img }: { img: string }) {
+	return <img src={img} className="rounded max-w-[196px]"></img>;
 }

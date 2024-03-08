@@ -16,7 +16,7 @@ export default function Crate() {
 		<CrateContextProvider>
 			<div className="flex flex-col items-center m-3">
 				<CrateName name={name || "Crate Name"} />
-				<CrateIcon />
+				<CrateIcon img={crate?.img || ""} />
 				<Roller skins={crate?.skins} />
 				<CrateDesc items={crate?.skins} />
 			</div>
