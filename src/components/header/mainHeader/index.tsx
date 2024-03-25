@@ -14,16 +14,17 @@ export function MainHeader() {
 	return (
 		<div className="flex bg-[#1E293B]/50  justify-between pl-[17rem]">
 			<Nav />
-			<div className="flex items-center gap-4">
+			<div className="flex items-center gap-4 ">
 				{isLoading ? null : (
 					<>
 						{user ? (
-							<div onClick={() => modal.setShowDepositModal(true)}>
-								<UserBalance user={user} />
-							</div>
+							<>
+								<div onClick={() => modal.setShowDepositModal(true)}>
+									<UserBalance user={user} />
+								</div>
+								<Line />
+							</>
 						) : null}
-
-						<Line />
 
 						{user ? <UserHeader user={user} /> : <LoginButton />}
 					</>
