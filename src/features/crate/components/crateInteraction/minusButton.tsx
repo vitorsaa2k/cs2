@@ -7,9 +7,9 @@ export function MinusButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
 		<button
 			aria-label="Minus button"
 			{...props}
-			className="border rounded active:border-black"
+			className="rounded p-3 bg-slate-800 disabled:bg-slate-900"
 		>
-			<IconContext.Provider value={{ size: "36" }}>
+			<IconContext.Provider value={{ size: "24" }}>
 				<PiMinus />
 			</IconContext.Provider>
 		</button>
