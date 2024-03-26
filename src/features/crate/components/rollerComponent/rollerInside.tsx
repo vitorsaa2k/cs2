@@ -34,7 +34,7 @@ export function RollerInside() {
 			ref={rollerContainerRef}
 		>
 			{crateContext.state.horizontalSkins.map(skin => (
-				<RollerSkin skin={skin} />
+				<RollerSkin key={crypto.randomUUID()} skin={skin} />
 			))}
 		</div>
 	);
