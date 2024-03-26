@@ -20,7 +20,7 @@ export function BgVector({ item }: { item: SkinType }) {
 	}, [item.rarity_color]);
 	return (
 		<svg
-			className="absolute z-[0]"
+			className="absolute z-[0] group-hover:scale-125 transition-all"
 			width="66"
 			height="78"
 			viewBox="0 0 66 78"

@@ -5,6 +5,8 @@ import { parseItemColor } from "../../../../utils/crate/parseItemColor";
 import { BgVector } from "./bgVector";
 import { SkinInfo } from "./skinInfo";
 import { formatPrice } from "../../../../utils/formatPrice";
+import { SkinDetails } from "./details";
+
 export function CrateItem({ item }: { item: CrateSkin }) {
 	const parsedColor = useMemo(() => {
 		return parseItemColor(item);
@@ -15,11 +17,15 @@ export function CrateItem({ item }: { item: CrateSkin }) {
 			aria-label="Crate item"
 			className={`rounded border-${parsedColor}-item border group radialItem-${parsedColor} bg-slate-800 relative flex items-center w-[19.25rem] h-[11.5rem]`}
 		>
+			<SkinDetails item={item} />
 			<div className="flex flex-col absolute bottom-0 p-3 text-base">
 				<SkinInfo skin={item} />
 			</div>
 			<div className="relative w-full h-full flex items-center justify-center">
-				<SkinImage className="max-w-[12.5rem] z-[1]" skin={item} />
+				<SkinImage
+					className="max-w-[12.5rem] z-[1] group-hover:scale-75 transition-all"
+					skin={item}
+				/>
 				<BgVector item={item} />
 			</div>
 			<p className="top-0 left-0 p-2 absolute font-light">
