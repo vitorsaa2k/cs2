@@ -1,25 +1,31 @@
+import { useMemo } from "react";
 import { SkinImage } from "../../../../components/skin/skinImage";
-import { SkinName } from "../../../../components/skin/skinName";
-import { SkinExterior } from "../../../upgrade/components/selectableItem/skinExterior";
-import { SkinPrice } from "../../../upgrade/components/selectableItem/skinPrice";
 import { CrateSkin } from "../../types/api";
-
+import { parseItemColor } from "../../../../utils/crate/parseItemColor";
+import { BgVector } from "./bgVector";
+import { SkinInfo } from "./skinInfo";
+import { formatPrice } from "../../../../utils/formatPrice";
 export function CrateItem({ item }: { item: CrateSkin }) {
+	const parsedColor = useMemo(() => {
+		return parseItemColor(item);
+	}, [item]);
 	const itemChance = ((item.maxRate - item.minRate) / 10000).toFixed(2);
 	return (
 		<div
 			aria-label="Crate item"
-			className="bg-zinc-600 rounded -z-10 relative m-3 flex flex-col items-center w-[160px] justify-around text-white"
+			className={`rounded border-${parsedColor}-item border group radialItem-${parsedColor} bg-slate-800 relative flex items-center w-[19.25rem] h-[11.5rem]`}
 		>
-			<div className="flex flex-col items-center">
-				<SkinName name={item.name} />
-				<SkinExterior skin={item} />
-				<SkinPrice skin={item} />
+			<div className="flex flex-col absolute bottom-0 p-3 text-base">
+				<SkinInfo skin={item} />
 			</div>
-			<SkinImage className="max-w-[8rem]" skin={item} />
-			<p className="bottom-0 left-0 p-1 absolute bg-black/30 rounded-se">
-				{itemChance}%
+			<div className="relative w-full h-full flex items-center justify-center">
+				<SkinImage className="max-w-[12.5rem] z-[1]" skin={item} />
+				<BgVector item={item} />
+			</div>
+			<p className="top-0 left-0 p-2 absolute font-light">
+				{formatPrice(item.price)}
 			</p>
+			<p className="top-0 right-0 p-2 absolute font-light">{itemChance}%</p>
 		</div>
 	);
 }

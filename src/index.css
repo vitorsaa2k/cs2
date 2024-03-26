@@ -12,36 +12,6 @@
 	}
 }
 
-@layer utilities {
-	.rollerItem-blue {
-		background-image: linear-gradient(
-			transparent 60%,
-			rgba(68, 130, 255, 0.15)
-		);
-	}
-	.rollerItem-red {
-		background-image: linear-gradient(transparent 60%, rgba(255, 68, 93, 0.15));
-	}
-	.rollerItem-yellow {
-		background-image: linear-gradient(
-			transparent 60%,
-			rgba(220, 174, 100, 0.15)
-		);
-	}
-	.rollerItem-purple {
-		background-image: linear-gradient(
-			transparent 60%,
-			rgba(164, 26, 255, 0.15)
-		);
-	}
-	.rollerItem-pink {
-		background-image: linear-gradient(
-			transparent 60%,
-			rgba(223, 93, 238, 0.15)
-		);
-	}
-}
-
 .rollerItem-blue {
 	background-image: linear-gradient(transparent 0%, rgba(68, 130, 255, 0.2));
 }
@@ -56,6 +26,46 @@
 }
 .rollerItem-pink {
 	background-image: linear-gradient(transparent 0%, rgba(223, 93, 238, 0.2));
+}
+
+.radialItem-blue {
+	background-image: radial-gradient(
+		circle,
+		rgba(15, 23, 42, 0) 0%,
+		rgba(68, 130, 255, 0.2) 100%
+	);
+}
+
+.radialItem-red {
+	background-image: radial-gradient(
+		circle,
+		rgba(15, 23, 42, 0) 0%,
+		rgba(255, 68, 93, 0.2) 100%
+	);
+}
+
+.radialItem-purple {
+	background-image: radial-gradient(
+		circle,
+		rgba(15, 23, 42, 0) 0%,
+		rgba(164, 26, 255, 0.2) 100%
+	);
+}
+
+.radialItem-pink {
+	background-image: radial-gradient(
+		circle,
+		rgba(15, 23, 42, 0) 0%,
+		rgba(223, 93, 238, 0.2) 100%
+	);
+}
+
+.radialItem-yellow {
+	background-image: radial-gradient(
+		circle,
+		rgba(15, 23, 42, 0) 0%,
+		rgba(223, 93, 238, 0.2) 100%
+	);
 }
 
 .thinScrollBar::-webkit-scrollbar-track {

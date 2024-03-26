@@ -42,6 +42,11 @@ export default {
 		"border-b-pink-item",
 		"border-b-yellow-item",
 		"border-b-blue-item",
+		"border-blue-item",
+		"border-purple-item",
+		"border-red-item",
+		"border-pink-item",
+		"border-yellow-item",
 	],
 	plugins: [],
 };
