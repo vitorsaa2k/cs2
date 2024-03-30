@@ -6,6 +6,12 @@ import { CRATE_ANIMATION_DELAY_MS } from "../../../../consts/crate";
 export function RollerInside() {
 	const crateContext = useContext(CrateContext);
 	const rollerContainerRef = useRef<HTMLDivElement>(null);
+
+	function calculateTotalWidth(): number {
+		if (window.screen.width >= 1280) return -16580;
+		if (window.screen.width >= 640) return -16890;
+		return -17030;
+	}
 	const executeAnimation = useCallback(() => {
 		if (!rollerContainerRef.current) return;
 		if (crateContext.state.drawnSkins === null) {
@@ -18,7 +24,7 @@ export function RollerInside() {
 			}, 100);
 			return;
 		}
-		rollerContainerRef.current.style.transform = `translateX(-16580px)`;
+		rollerContainerRef.current.style.transform = `translateX(${calculateTotalWidth()}px)`;
 		setTimeout(() => {
 			if (!rollerContainerRef.current) return;
 			rollerContainerRef.current.style.transitionDuration = `0s`;

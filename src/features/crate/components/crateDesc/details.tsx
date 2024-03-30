@@ -9,7 +9,7 @@ interface SkinDetailsProps {
 export function SkinDetails({ item }: SkinDetailsProps) {
 	const itemChance = ((item.maxRate - item.minRate) / 10000).toFixed(2);
 	return (
-		<div className="w-full h-full flex gap-2 absolute z-50 bg-black/30 backdrop-blur transition-opacity group-hover:opacity-100 opacity-0 ">
+		<div className="w-full h-full flex gap-2 absolute z-40 bg-black/30 backdrop-blur transition-opacity group-hover:opacity-100 opacity-0 ">
 			<SkinExterior skin={item} />
 			<p>{formatPrice(item.price)}</p>
 			<p>
