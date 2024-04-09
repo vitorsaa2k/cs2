@@ -14,8 +14,14 @@ export function ToggleButtons({
 	toggleBestDropsFalse,
 	toggleBestDropsTrue,
 }: ToggleButtonsProps) {
+	const screenWidth = window.screen.width;
+
 	return (
-		<div className="flex flex-col items-center bg-slate-800 min-w-[148px]">
+		<div
+			className={`flex flex-col items-center bg-slate-800 ${
+				screenWidth > 640 ? "min-w-[148px]" : "min-w-[64px]"
+			}`}
+		>
 			<ToggleDropsButton
 				className={`${shouldShowBestDrops ? "" : "toggleButtonActive"}`}
 				disabled={isToggleDisabled}
@@ -26,7 +32,7 @@ export function ToggleButtons({
 					</IconContext.Provider>
 				}
 			>
-				All Drops
+				{screenWidth > 640 && "All Drops"}
 			</ToggleDropsButton>
 			<ToggleDropsButton
 				className={` ${shouldShowBestDrops ? "toggleButtonActive" : ""}`}
@@ -38,7 +44,7 @@ export function ToggleButtons({
 					</IconContext.Provider>
 				}
 			>
-				Best Drops
+				{screenWidth > 640 && "Best Drops"}
 			</ToggleDropsButton>
 		</div>
 	);
