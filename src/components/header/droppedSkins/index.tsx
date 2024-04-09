@@ -62,7 +62,7 @@ export function DroppedSkins() {
 				toggleBestDropsFalse={toggleBestDropsFalse}
 				toggleBestDropsTrue={toggleBestDropsTrue}
 			/>
-			<div className="w-full relative overflow-hidden">
+			<div className={`w-full bg-slate-950/70 relative overflow-hidden`}>
 				{shouldShowBestDrops ? (
 					<DropsRow items={bestDrops} />
 				) : (

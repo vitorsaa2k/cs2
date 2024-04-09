@@ -1,6 +1,8 @@
 import { animated, useTransition } from "@react-spring/web";
 import { Drop } from "./singleDrop";
 import { LiveDropItem } from "../../../features/crate/types/api";
+import { IconContext } from "react-icons";
+import { PiLinkBreak } from "react-icons/pi";
 
 export function DropsRow({ items }: { items: LiveDropItem[] }) {
 	const width = 198;
@@ -14,6 +16,17 @@ export function DropsRow({ items }: { items: LiveDropItem[] }) {
 			key: (item: LiveDropItem) => item?.rollId,
 		}
 	);
+
+	if (items.length === 0) {
+		return (
+			<div className="flex flex-col items-center">
+				<IconContext.Provider value={{ size: "32" }}>
+					<PiLinkBreak />
+				</IconContext.Provider>
+				<p>NO SKINS WERE DROPPED</p>
+			</div>
+		);
+	}
 
 	return (
 		<>
