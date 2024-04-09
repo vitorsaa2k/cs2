@@ -12,9 +12,9 @@ export function MainHeader() {
 	const modal = useContext(DepositModalContext);
 	const { data: user, isLoading } = useGetLoggedUser();
 	return (
-		<div className="flex bg-[#1E293B]/50  justify-between pl-[17rem]">
+		<div className="lg:flex-row max-lg:py-2 flex-col flex bg-[#1E293B]/50 lg:justify-between max-lg:gap-2 lg:pl-[17rem]">
 			<Nav />
-			<div className="flex items-center gap-4 ">
+			<div className="flex max-lg:mx-auto items-center gap-4 ">
 				{isLoading ? null : (
 					<>
 						{user ? (

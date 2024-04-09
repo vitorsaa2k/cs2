@@ -1,7 +1,7 @@
 export function BgSvg() {
 	return (
 		<svg
-			className="absolute z-10"
+			className="max-md:hidden z-10 absolute"
 			width="320"
 			height="68"
 			viewBox="0 0 320 68"

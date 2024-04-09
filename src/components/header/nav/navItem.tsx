@@ -8,7 +8,7 @@ type NavItemProps = HTMLAttributes<HTMLDivElement> & {
 export function NavItem(props: NavItemProps) {
 	return (
 		<a
-			className="bg-slate-900 flex gap-2 drop-shadow-[0_4px_25px_rgba(0,0,0,0.25)] px-10 py-2 rounded-full"
+			className="bg-slate-900 flex gap-2 whitespace-nowrap md:drop-shadow-[0_4px_25px_rgba(0,0,0,0.25)] px-10 py-2 rounded-full"
 			href={props.href}
 		>
 			{props.icon}

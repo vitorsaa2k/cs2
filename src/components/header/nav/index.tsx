@@ -4,7 +4,7 @@ import { PiCaretDoubleUp, PiShieldCheck } from "react-icons/pi";
 
 export function Nav() {
 	return (
-		<nav className="flex flex-col md:flex-row justify-center items-center my-3 gap-4">
+		<nav className="flex max-md:px-2 max-md:overflow-x-scroll items-center max-lg:justify-center lg:my-3 gap-4">
 			<NavItem
 				icon={
 					<IconContext.Provider
