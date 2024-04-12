@@ -4,7 +4,7 @@ import { RollerContainer } from "./rollerContainer";
 import { CrateContext } from "../../context/crateContext/crateContext";
 import { ActionTypes } from "../../types/crateContextTypes";
 import { Pointer } from "./pointer";
-import { RollerModal } from "../roller/rollerModal";
+import { RollerModal } from "../rollerModal";
 import { CRATE_ANIMATION_DELAY_MS } from "../../../../consts/crate";
 
 export function RollerComponent({ skins }: { skins?: CrateSkin[] }) {
