@@ -1,7 +1,7 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { CrateIcon } from "../features/crate/components/cratePresentation/crateIcon";
 import { CrateName } from "../features/crate/components/cratePresentation/crateName";
-import { Roller } from "../features/crate/components/roller";
+/* import { Roller } from "../features/crate/components/roller"; */
 import CrateDesc from "../features/crate/components/crateDesc";
 import { useGetCrateById } from "../hooks/useQuery/crate";
 import { CrateContextProvider } from "../features/crate/context/crateContext/crateContext";
