@@ -14,10 +14,13 @@ export function CrateInfo({
 	src: string;
 }) {
 	return (
-		<div>
-			<CrateImage crateId={crateId} name={name} src={src} />
+		<a
+			href={`/crate/${name}?crateId=${crateId}`}
+			className="hover:bg-slate-900 hover:cursor-pointer p-4 rounded"
+		>
+			<CrateImage src={src} />
 			<CrateName crateId={crateId} name={name} />
 			<CratePrice price={price} />
-		</div>
+		</a>
 	);
 }
