@@ -7,6 +7,7 @@ import { server } from "../../../../setupTests";
 import { HttpResponse, http } from "msw";
 import { userMock } from "../../../tests/mocks/userMock";
 import { CrateContextProvider } from "../context/crateContext/crateContext";
+import { formatPrice } from "../../../utils/formatPrice";
 
 const searchParams: { [key: string]: string } = { crateId: crateMock.crateId };
 
@@ -94,7 +95,7 @@ describe("crate interaction buttons", async () => {
 			})
 		);
 		const result = renderWithClient(RollerComponent);
-		const button = result.getByRole("button", {
+		const button = await result.findByRole("button", {
 			name: "Login to open",
 		});
 		expect(button).toBeInTheDocument();
@@ -105,7 +106,7 @@ describe("crate interaction buttons", async () => {
 		const result = renderWithClient(RollerComponent);
 		const remainingToOpen = crateMock.price - userMock.balance;
 		const button = await result.findByRole("button", {
-			name: `Add to open $${remainingToOpen}`,
+			name: `Add to open ${formatPrice(remainingToOpen)}`,
 		});
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveClass("bg-red-800");
@@ -121,7 +122,7 @@ describe("crate interaction buttons", async () => {
 		);
 		const result = renderWithClient(RollerComponent);
 		const button = await result.findByRole("button", {
-			name: `Open Case $${crateMock.price}`,
+			name: `OPEN ${formatPrice(crateMock.price)}`,
 		});
 		expect(button).toBeInTheDocument();
 		expect(button).toHaveClass("bg-green-800");
