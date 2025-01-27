@@ -4,18 +4,21 @@ import { UserHeader } from "../components/header/mainHeader/userHeader";
 import { userMock } from "./mocks/userMock";
 import { MainHeader } from "../components/header/mainHeader";
 import { waitFor } from "@testing-library/react";
+import { formatPrice } from "../utils/formatPrice";
+import { UserBalance } from "../components/header/mainHeader/userBalance";
 
 test("renders user info correctly on UserHeader", () => {
 	const result = renderWithClient(<UserHeader user={userMock} />);
+	const userBalance = renderWithClient(<UserBalance user={userMock} />);
 
-	expect(result.getByRole("button", { name: /Log Out/i })).toBeInTheDocument();
-	expect(result.getByText(`Balance: $${userMock.balance}`)).toBeInTheDocument();
+	expect(result.getByLabelText("logout")).toBeInTheDocument();
+	expect(
+		userBalance.getByText(`${formatPrice(userMock.balance)}`)
+	).toBeInTheDocument();
 });
 
 test("user hook", async () => {
 	const result = renderWithClient(<MainHeader />);
-	const element = await waitFor(() =>
-		result.findByRole("button", { name: /deposit/i })
-	);
+	const element = await waitFor(() => result.findByLabelText("Deposit Button"));
 	expect(element).toBeInTheDocument();
 });

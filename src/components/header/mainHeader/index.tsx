@@ -19,7 +19,10 @@ export function MainHeader() {
 					<>
 						{user ? (
 							<>
-								<div onClick={() => modal.setShowDepositModal(true)}>
+								<div
+									aria-label="Deposit Button"
+									onClick={() => modal.setShowDepositModal(true)}
+								>
 									<UserBalance user={user} />
 								</div>
 								<Line />

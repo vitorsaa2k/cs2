@@ -20,7 +20,11 @@ export function UserHeader({ user }: { user: UserType }) {
 					/>
 					{user.displayName}
 				</a>
-				<button className="bg-slate-900 p-1 rounded" onClick={LogOut}>
+				<button
+					aria-label="logout"
+					className="bg-slate-900 p-1 rounded"
+					onClick={LogOut}
+				>
 					<IconContext.Provider value={{ size: "24" }}>
 						<PiSignOut />
 					</IconContext.Provider>
