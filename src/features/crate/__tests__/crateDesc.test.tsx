@@ -9,6 +9,6 @@ test("renders crate items correctly", () => {
 	const uspPercentage = ((usp.maxRate - usp.minRate) / 10000).toFixed(2);
 	const ak = crateMock.skins[1];
 	const akPercentage = ((ak.maxRate - ak.minRate) / 10000).toFixed(2);
-	expect(result.getByText(`${uspPercentage}%`)).toBeInTheDocument();
-	expect(result.getByText(`${akPercentage}%`)).toBeInTheDocument();
+	expect(result.getAllByText(`${uspPercentage}%`).length).toBe(2);
+	expect(result.getAllByText(`${akPercentage}%`).length).toBe(2);
 });

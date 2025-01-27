@@ -25,7 +25,9 @@ beforeAll(() => {
 describe("display crate components", async () => {
 	test("display the correct crate name", async () => {
 		const result = renderWithClient(<Crate />);
-		const element = await waitFor(() => result.findByText(`${crateMock.name}`));
+		const element = await waitFor(() =>
+			result.findByText(`${crateMock.name.toUpperCase()}`)
+		);
 		expect(element).toBeInTheDocument();
 	});
 
