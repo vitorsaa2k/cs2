@@ -3,24 +3,26 @@ import { PaymentTypes } from "../types/payment";
 
 export function PaymentMethodBox({
 	children,
-	index,
 	method,
-	setIndex,
 	paymentMethod,
+	setPaymentMethod,
+	currentMethod,
 }: {
 	children: ReactNode;
-	index: number;
 	method: PaymentTypes;
-	setIndex: Dispatch<SetStateAction<number>>;
+	setPaymentMethod: Dispatch<SetStateAction<PaymentTypes>>;
 	paymentMethod: (method: PaymentTypes) => void;
+	currentMethod: PaymentTypes;
 }) {
 	return (
 		<div
 			onClick={() => {
 				paymentMethod(method);
-				setIndex(index);
+				setPaymentMethod(method);
 			}}
-			className="hover:cursor-pointer"
+			className={`border-slate-800 min-w-[124px] flex flex-col box-border ${
+				method === currentMethod ? "border-slate-950" : ""
+			} border-2 p-8 rounded justify-center items-center`}
 		>
 			{children}
 		</div>
