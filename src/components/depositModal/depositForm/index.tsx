@@ -17,7 +17,7 @@ export function DepositForm({
 	amount: number;
 	setFinalAmount: Dispatch<SetStateAction<number>>;
 	finalAmount: number;
-	goToCheckout: () => void;
+	goToCheckout: VoidFunction;
 	setCode: Dispatch<SetStateAction<string>>;
 	code: string;
 	isSubmitting: boolean;
