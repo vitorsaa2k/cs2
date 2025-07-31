@@ -1,4 +1,4 @@
-import { LoginButton } from "./loginButton";
+import { LoginButtons } from "./loginButtons";
 import { UserHeader } from "./userHeader";
 import { useContext } from "react";
 import { UserBalance } from "./userBalance";
@@ -29,7 +29,7 @@ export function MainHeader() {
 							</>
 						) : null}
 
-						{user ? <UserHeader user={user} /> : <LoginButton />}
+						{user ? <UserHeader user={user} /> : <LoginButtons />}
 					</>
 				)}
 			</div>
