@@ -1,5 +1,4 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import { AddAmount } from "./addAmountButton";
 
 export function AmountContainer({
 	amount,
@@ -15,17 +14,12 @@ export function AmountContainer({
 		numberRegex.test(value) ? setAmount(Number(value)) : null;
 	}
 	return (
-		<label className="border w-full flex flex-col items-center rounded p-2">
+		<label className="w-full flex flex-col">
 			<p>Amount</p>
-			<div className="flex gap-2">
-				<AddAmount amountToAdd={5} setAmount={setAmount} />
-				<AddAmount amountToAdd={15} setAmount={setAmount} />
-				<AddAmount amountToAdd={50} setAmount={setAmount} />
-				<AddAmount amountToAdd={100} setAmount={setAmount} />
-			</div>
+
 			<input
-				className="w-full outline-none p-1 bg-transparent border-b"
-				placeholder="Bonus Code"
+				className="w-full outline-none p-2 bg-transparent border rounded border-slate-400 focus:border-white transition-all"
+				placeholder="Amount to add"
 				value={amount}
 				onChange={handleAmountChange}
 				type="text"

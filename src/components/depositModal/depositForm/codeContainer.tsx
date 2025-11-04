@@ -8,10 +8,10 @@ export function BonusCode({
 	setCode: Dispatch<SetStateAction<string>>;
 }) {
 	return (
-		<label className="border w-full flex flex-col items-center rounded p-2">
+		<label className="w-full flex flex-col gap-1 rounded">
 			<p>Use your bonus code here:</p>
 			<input
-				className="w-full outline-none p-1 bg-transparent border-b"
+				className="w-full border border-slate-400 focus:border-white outline-none p-2 bg-transparent rounded transition-all"
 				placeholder="Bonus Code"
 				value={code}
 				onChange={e => {
