@@ -21,7 +21,7 @@ export function PaymentMethodBox({
 				setPaymentMethod(method);
 			}}
 			className={`border-slate-800 min-w-[124px] flex flex-col box-border ${
-				method === currentMethod ? "border-slate-950" : ""
+				method === currentMethod ? "border-white" : ""
 			} border-2 p-8 rounded justify-center items-center`}
 		>
 			{children}

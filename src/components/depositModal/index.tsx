@@ -33,7 +33,7 @@ export default function DepositModal({ onClose }: { onClose: () => void }) {
 			{createPortal(
 				<Modal>
 					<div className="flex flex-col justify-start items-center">
-						<div className="mt-10 animate-slide-up bg-slate-700 p-5 rounded">
+						<div className="mt-10 animate-slide-up bg-slate-900 p-5 rounded">
 							<div className="relative">
 								<DepositHeader />
 								<button
