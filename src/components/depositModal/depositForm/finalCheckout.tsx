@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TailSpinner } from "../../spinner";
 import { getBonus } from "../../../services/paymentApi";
 import { useDebounce } from "../../../hooks/useDebounce";
+import { formatPrice } from "../../../utils/formatPrice";
 
 export function FinalCheckout({
 	amount,
@@ -35,12 +36,12 @@ export function FinalCheckout({
 	}, [amount, code]);
 	return (
 		<div className="border w-full flex flex-col items-center rounded p-2">
-			<p>YOU GET</p>
+			<p>YOU WILL GET</p>
 			<p>
 				{isUpdating ? (
 					<TailSpinner height={24} width={24} visible />
 				) : (
-					`$${finalAmount}`
+					`${formatPrice(finalAmount)}`
 				)}
 			</p>
 			<p>MINIMUN TOP-UP AMOUNT: $2</p>
