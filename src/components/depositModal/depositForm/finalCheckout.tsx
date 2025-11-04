@@ -35,16 +35,16 @@ export function FinalCheckout({
 		debounceGetBonus();
 	}, [amount, code]);
 	return (
-		<div className="border w-full flex flex-col items-center rounded p-2">
+		<div className="border w-full flex flex-col items-center rounded p-2 font-semibold">
 			<p>YOU WILL GET</p>
-			<p>
+			<p className="text-2xl">
 				{isUpdating ? (
 					<TailSpinner height={24} width={24} visible />
 				) : (
 					`${formatPrice(finalAmount)}`
 				)}
 			</p>
-			<p>MINIMUN TOP-UP AMOUNT: $2</p>
+			<p className="text-xs text-white/60">MINIMUN TOP-UP AMOUNT: $2</p>
 			<button
 				className="bg-green-800 disabled:bg-green-900 w-full flex justify-center rounded p-2 m-2"
 				type="submit"
