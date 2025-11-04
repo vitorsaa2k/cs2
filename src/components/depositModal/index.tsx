@@ -15,6 +15,7 @@ export default function DepositModal({ onClose }: { onClose: () => void }) {
 	const [code, setCode] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [finalAmount, setFinalAmount] = useState(amount);
+
 	async function goToCheckout() {
 		setIsSubmitting(true);
 		const req = await createCheckout(paymentMethod, amount, code);
@@ -32,8 +33,8 @@ export default function DepositModal({ onClose }: { onClose: () => void }) {
 			{createPortal(
 				<Modal>
 					<div className="flex flex-col justify-start items-center">
-						<div className="mt-10 animate-slide-up bg-slate-700 p-5 rounded">
-							<div className="relative">
+						<div className="mt-10 animate-slide-up bg-slate-900 p-5 rounded">
+							<div className="relative pb-3">
 								<DepositHeader />
 								<button
 									className="absolute right-0 translate-y-[-200%] hover:bg-slate-800 rounded"
@@ -44,8 +45,11 @@ export default function DepositModal({ onClose }: { onClose: () => void }) {
 									</IconContext.Provider>
 								</button>
 							</div>
-							<div className="flex gap-3">
-								<PaymentMethod setPaymentMethod={setPaymentMethod} />
+							<div className="flex flex-col items-center gap-3">
+								<PaymentMethod
+									paymentMethod={paymentMethod}
+									setPaymentMethod={setPaymentMethod}
+								/>
 								<DepositForm
 									setFinalAmount={setFinalAmount}
 									finalAmount={finalAmount}

@@ -1,53 +1,45 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { CardPayment } from "./cardPayment";
-import { SkinsPayment } from "./skinsPayment";
+import { Dispatch, SetStateAction } from "react";
+import { CardPayment } from "./methods/cardPayment";
+import { SkinsPayment } from "./methods/skinsPayment";
 import { PaymentTypes } from "../types/payment";
-import { ZenPayment } from "./zenPayment";
-import { CryptoPayment } from "./cryptoPayment";
+import { OthersPayment } from "./methods/zenPayment";
 import { PaymentMethodBox } from "./paymentMethodBox";
 
 export function PaymentMethod({
+	paymentMethod,
 	setPaymentMethod,
 }: {
+	paymentMethod: PaymentTypes;
 	setPaymentMethod: Dispatch<SetStateAction<PaymentTypes>>;
 }) {
-	const [index, setIndex] = useState(0);
-	function paymentMethod(method: PaymentTypes) {
+	function updatePaymentMethod(method: PaymentTypes) {
 		setPaymentMethod(method);
 	}
 	return (
-		<div className="flex flex-col gap-2">
+		<div className="flex box-border gap-2">
 			<PaymentMethodBox
-				index={0}
 				method="Stripe"
-				paymentMethod={paymentMethod}
-				setIndex={setIndex}
+				paymentMethod={updatePaymentMethod}
+				setPaymentMethod={setPaymentMethod}
+				currentMethod={paymentMethod}
 			>
-				<CardPayment index={index} />
+				<CardPayment />
 			</PaymentMethodBox>
 			<PaymentMethodBox
-				index={1}
 				method="Skins"
-				paymentMethod={paymentMethod}
-				setIndex={setIndex}
+				paymentMethod={updatePaymentMethod}
+				setPaymentMethod={setPaymentMethod}
+				currentMethod={paymentMethod}
 			>
-				<SkinsPayment index={index} />
+				<SkinsPayment />
 			</PaymentMethodBox>
 			<PaymentMethodBox
-				index={2}
 				method="Zen"
-				paymentMethod={paymentMethod}
-				setIndex={setIndex}
+				paymentMethod={updatePaymentMethod}
+				setPaymentMethod={setPaymentMethod}
+				currentMethod={paymentMethod}
 			>
-				<ZenPayment index={index} />
-			</PaymentMethodBox>
-			<PaymentMethodBox
-				index={3}
-				method="Crypto"
-				paymentMethod={paymentMethod}
-				setIndex={setIndex}
-			>
-				<CryptoPayment index={index} />
+				<OthersPayment />
 			</PaymentMethodBox>
 		</div>
 	);

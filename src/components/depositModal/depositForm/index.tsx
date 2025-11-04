@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { BonusCode } from "./codeContainer";
 import { AmountContainer } from "./amountContainer";
 import { FinalCheckout } from "./finalCheckout";
+import { RecommendedValues } from "./recommendedValues";
 
 export function DepositForm({
 	setAmount,
@@ -17,14 +18,14 @@ export function DepositForm({
 	amount: number;
 	setFinalAmount: Dispatch<SetStateAction<number>>;
 	finalAmount: number;
-	goToCheckout: () => void;
+	goToCheckout: VoidFunction;
 	setCode: Dispatch<SetStateAction<string>>;
 	code: string;
 	isSubmitting: boolean;
 }) {
 	return (
 		<form
-			className="flex flex-col gap-6 w-[600px] items-center"
+			className="flex flex-col gap-2 w-[600px] items-center p-2"
 			onSubmit={e => {
 				e.preventDefault();
 				goToCheckout();
@@ -32,6 +33,7 @@ export function DepositForm({
 		>
 			<BonusCode code={code} setCode={setCode} />
 			<AmountContainer amount={amount} setAmount={setAmount} />
+			<RecommendedValues amount={amount} setAmount={setAmount} />
 			<FinalCheckout
 				setFinalAmount={setFinalAmount}
 				finalAmount={finalAmount}
