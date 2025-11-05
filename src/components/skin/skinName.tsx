@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { parseItemNameFull } from "../../utils/crate/parseItemName";
+import { cn } from "../../libs/utils";
 
 export function SkinName({
 	name,
@@ -13,7 +13,7 @@ export function SkinName({
 		<>
 			{parsedName.map((name, i) => (
 				<p
-					className={clsx({
+					className={cn({
 						"text-xs": i === 0,
 						"text-sm": variant === "sm",
 						"text-base": variant === "md",

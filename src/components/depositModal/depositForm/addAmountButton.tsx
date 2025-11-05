@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import { Dispatch, SetStateAction } from "react";
+import { cn } from "../../../libs/utils";
 
 export function AddAmount({
 	currentAmount,
@@ -12,12 +12,11 @@ export function AddAmount({
 }) {
 	return (
 		<button
-			className={clsx(
+			className={cn(
+				"p-2 rounded hover:border-white border border-transparent w-full transition-all",
 				{
 					"border-white": amountToAdd === currentAmount,
-					"border-transparent": amountToAdd !== currentAmount,
-				},
-				"p-2 rounded hover:border-white border w-full transition-all"
+				}
 			)}
 			onClick={() => {
 				setAmount(amountToAdd);
