@@ -8,32 +8,32 @@ export function FinalCheckout({
 	amount,
 	code,
 	isSubmitting,
-	setFinalAmount,
-	finalAmount,
+	codePercentage,
+	setCodePercentage,
 }: {
 	amount: number;
 	code: string;
 	isSubmitting: boolean;
-	setFinalAmount: Dispatch<SetStateAction<number>>;
-	finalAmount: number;
+	codePercentage: number;
+	setCodePercentage: Dispatch<SetStateAction<number>>;
 }) {
 	const [isUpdating, setIsUpdating] = useState(false);
 
-	const updateFinalAmount = async () => {
+	const fetchCodeInfo = async () => {
 		setIsUpdating(true);
 		await getBonus(code)
 			.then(res => {
-				setFinalAmount(amount * res.data.percentage + amount);
+				setCodePercentage(res.data.percentage);
 			})
 			.catch(() => {
-				setFinalAmount(amount);
+				setCodePercentage(0);
 			});
 		setIsUpdating(false);
 	};
-	const debounceGetBonus = useDebounce(updateFinalAmount, 600);
+	const debounceGetBonus = useDebounce(fetchCodeInfo, 600);
 	useEffect(() => {
 		debounceGetBonus();
-	}, [amount, code]);
+	}, [code]);
 	return (
 		<div className="border w-full flex flex-col items-center rounded p-2 font-semibold">
 			<p>YOU WILL GET</p>
@@ -41,7 +41,7 @@ export function FinalCheckout({
 				{isUpdating ? (
 					<TailSpinner height={24} width={24} visible />
 				) : (
-					`${formatPrice(finalAmount)}`
+					`${formatPrice(amount * codePercentage + amount)}`
 				)}
 			</p>
 			<p className="text-xs text-white/60">MINIMUN TOP-UP AMOUNT: $2</p>

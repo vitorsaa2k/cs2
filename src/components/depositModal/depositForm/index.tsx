@@ -11,17 +11,17 @@ export function DepositForm({
 	setCode,
 	code,
 	isSubmitting,
-	setFinalAmount,
-	finalAmount,
+	codePercentage,
+	setCodePercentage,
 }: {
 	setAmount: Dispatch<SetStateAction<number>>;
 	amount: number;
-	setFinalAmount: Dispatch<SetStateAction<number>>;
-	finalAmount: number;
 	goToCheckout: VoidFunction;
 	setCode: Dispatch<SetStateAction<string>>;
 	code: string;
 	isSubmitting: boolean;
+	codePercentage: number;
+	setCodePercentage: Dispatch<SetStateAction<number>>;
 }) {
 	return (
 		<form
@@ -35,11 +35,11 @@ export function DepositForm({
 			<AmountContainer amount={amount} setAmount={setAmount} />
 			<RecommendedValues amount={amount} setAmount={setAmount} />
 			<FinalCheckout
-				setFinalAmount={setFinalAmount}
-				finalAmount={finalAmount}
 				isSubmitting={isSubmitting}
 				amount={amount}
 				code={code}
+				codePercentage={codePercentage}
+				setCodePercentage={setCodePercentage}
 			/>
 		</form>
 	);

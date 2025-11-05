@@ -11,10 +11,10 @@ import { IconContext } from "react-icons";
 
 export default function DepositModal({ onClose }: { onClose: () => void }) {
 	const [paymentMethod, setPaymentMethod] = useState<PaymentTypes>("Stripe");
-	const [amount, setAmount] = useState(2);
+	const [amount, setAmount] = useState(5);
 	const [code, setCode] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [finalAmount, setFinalAmount] = useState(amount);
+	const [codePercentage, setCodePercentage] = useState(0);
 
 	async function goToCheckout() {
 		setIsSubmitting(true);
@@ -51,14 +51,14 @@ export default function DepositModal({ onClose }: { onClose: () => void }) {
 									setPaymentMethod={setPaymentMethod}
 								/>
 								<DepositForm
-									setFinalAmount={setFinalAmount}
-									finalAmount={finalAmount}
 									isSubmitting={isSubmitting}
 									amount={amount}
 									code={code}
 									setCode={setCode}
 									goToCheckout={goToCheckout}
 									setAmount={setAmount}
+									codePercentage={codePercentage}
+									setCodePercentage={setCodePercentage}
 								/>
 							</div>
 						</div>
