@@ -1,4 +1,8 @@
-import { PublicSeed, Seed } from "../features/provablyFair/types/api";
+import {
+	PublicSeed,
+	Seed,
+	SeedPaginated,
+} from "../features/provablyFair/types/api";
 import { instance } from "../libs/axios";
 import { InventoryType, UserType } from "../types/api";
 
@@ -22,6 +26,14 @@ export async function getUserPublicSeeds() {
 
 export async function getServerSeedHistory() {
 	return (await instance.get<Promise<Seed[]>>("/user/seeds/history")).data;
+}
+
+export async function getServerSeedHistoryPaginated(page: number) {
+	return (
+		await instance.get<Promise<SeedPaginated>>(
+			`/user/seeds/history/paginated?page=${page}`
+		)
+	).data;
 }
 
 export async function sellAllUserSkins() {

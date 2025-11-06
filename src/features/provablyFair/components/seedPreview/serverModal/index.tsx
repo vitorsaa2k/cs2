@@ -1,16 +1,19 @@
 import { createPortal } from "react-dom";
 import { Modal } from "../../../../../components/modal";
-import { useGetServerSeeds } from "../../../../../hooks/useQuery/seeds";
+import { useGetServerSeedsPaginated } from "../../../../../hooks/useQuery/seeds";
 import { SeedsModal } from "./seedsModal";
 import { PiX } from "react-icons/pi";
 import { IconContext } from "react-icons";
 import { TailSpinner } from "../../../../../components/spinner";
+import { PageSelector } from "./pageSelector";
+import { useState } from "react";
 
 export function ServerSeedHistoryModal({ onClose }: { onClose: () => void }) {
-	const { data: seeds, isLoading } = useGetServerSeeds();
+	const [page, setPage] = useState(1);
+	const { data: seeds, isLoading } = useGetServerSeedsPaginated(page);
 	return (
 		<>
-			{!isLoading ? (
+			{!isLoading && seeds ? (
 				createPortal(
 					<Modal>
 						<section className="flex flex-col max-h-[700px] overflow-y-auto thinScrollBar max-w-2xl bg-zinc-950 p-4 rounded">
@@ -25,7 +28,8 @@ export function ServerSeedHistoryModal({ onClose }: { onClose: () => void }) {
 									</div>
 								</IconContext.Provider>
 							</div>
-							{!isLoading && seeds ? <SeedsModal seeds={seeds} /> : null}
+							{!isLoading && seeds ? <SeedsModal seeds={seeds.data} /> : null}
+							<PageSelector seedPaginated={seeds} setPage={setPage} />
 						</section>
 					</Modal>,
 					document.getElementById("seedHistory-root")!

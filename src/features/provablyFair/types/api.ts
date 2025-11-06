@@ -22,3 +22,13 @@ export type RollType = {
 	nonce: number;
 	dateRange: string;
 };
+
+export interface SeedPaginated {
+	data: Seed[];
+	pagination: {
+		total: number;
+		page: number;
+		pageSize: number;
+		totalPages: number;
+	};
+}
