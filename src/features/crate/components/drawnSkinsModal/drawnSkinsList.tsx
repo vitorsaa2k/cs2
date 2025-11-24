@@ -16,7 +16,7 @@ export function DrawnSkinsList({
 		return <p>No skins were drawned</p>;
 	}
 	return (
-		<div className="p-1 md:p-2 text-center flex flex-col gap-2 items-center max-h-[468px] overflow-y-auto">
+		<div className="p-1 md:p-2 text-center flex max-md:flex-col gap-2 items-center max-md:max-h-80 overflow-y-auto">
 			{state.drawnSkins.map(item => {
 				return (
 					<Skin
