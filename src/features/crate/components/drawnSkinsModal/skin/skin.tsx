@@ -2,7 +2,7 @@ import { PiCurrencyDollarSimple } from "react-icons/pi";
 import { parseItemNameFull } from "../../../../../utils/crate/parseItemName";
 import { DrawnSkin } from "../../../types/api";
 import { IconContext } from "react-icons";
-import { DrawSkinTitle } from "./drawnSkinTitle";
+import { DrawnSkinTitle } from "./drawnSkinTitle";
 import { DrawnSkinImage } from "./drawnSkinImage";
 
 interface SkinProps {
@@ -12,14 +12,14 @@ interface SkinProps {
 }
 
 export function Skin({ item, soldSkins, sellDrawnSkins }: SkinProps) {
-	const [weapon, skinName] = parseItemNameFull(item.name);
+	const [weapon, skinName] = parseItemNameFull(item.name, 20);
 	return (
 		<div
 			key={item.rollId}
 			className="flex flex-col bg-slate-800 p-3 rounded gap-1"
 		>
 			<DrawnSkinImage iconUrl={item.icon_url} />
-			<DrawSkinTitle weapon={weapon} skinName={skinName} />
+			<DrawnSkinTitle weapon={weapon} skinName={skinName} />
 			<button
 				className="flex border-green-font border justify-center disabled:border-green-900 disabled:text-green-900 text-green-font px-2 py-1 rounded"
 				onClick={() => sellDrawnSkins([item.rollId])}
