@@ -33,12 +33,9 @@ export function DrawnSkinsModal({ items, closeModal }: RollerModalType) {
 	}
 	return (
 		<Modal>
-			<div className="relative animate-slide-up rounded-lg shadow bg-slate-900">
-				<div className="flex justify-end">
-					<button
-						className="hover:bg-gray-800 m-1 rounded"
-						onClick={closeModal}
-					>
+			<div className="relative animate-slide-up rounded-lg shadow bg-slate-900 md:p-12 p-10">
+				<div className="absolute right-0 top-0 p-2">
+					<button className="hover:bg-gray-800 rounded" onClick={closeModal}>
 						<IconContext.Provider value={{ size: "36" }}>
 							<PiX />
 						</IconContext.Provider>
