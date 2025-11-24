@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CrateContext } from "../../context/crateContext/crateContext";
-import { Skin } from "./skin";
+import { Skin } from "./skin/skin";
 
 interface DrawnSkinsListProps {
 	soldSkins: string[];
