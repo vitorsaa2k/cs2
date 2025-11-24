@@ -12,7 +12,7 @@ interface RollerModalType {
 	closeModal: () => void;
 }
 
-export function RollerModal({ items, closeModal }: RollerModalType) {
+export function DrawnSkinsModal({ items, closeModal }: RollerModalType) {
 	const [soldSkins, setSoldItems] = useState<string[]>([]);
 	const allSkinsTotalValue = Number(
 		items
@@ -33,7 +33,7 @@ export function RollerModal({ items, closeModal }: RollerModalType) {
 	}
 	return (
 		<Modal>
-			<div className="relative animate-slide-up rounded-lg shadow bg-gray-700">
+			<div className="relative animate-slide-up rounded-lg shadow bg-slate-900">
 				<div className="flex justify-end">
 					<button
 						className="hover:bg-gray-800 m-1 rounded"
