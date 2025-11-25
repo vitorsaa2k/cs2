@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { DrawnSkinTitle } from "./drawnSkinTitle";
 import { DrawnSkinImage } from "./drawnSkinImage";
 import { parseItemColor } from "../../../../../utils/crate/parseItemColor";
+import { SkinExterior } from "../../../../upgrade/components/selectableItem/skinExterior";
 
 interface SkinProps {
 	item: DrawnSkin;
@@ -18,8 +19,12 @@ export function Skin({ item, soldSkins, sellDrawnSkins }: SkinProps) {
 	return (
 		<div
 			key={item.rollId}
-			className="flex flex-col bg-slate-800 p-3 rounded gap-1"
+			className="flex relative flex-col bg-slate-800 p-3 rounded gap-1"
 		>
+			<SkinExterior
+				className="absolute top-0 right-0 text-xs m-1"
+				skin={item}
+			/>
 			<DrawnSkinImage iconUrl={item.icon_url} color={color} />
 			<DrawnSkinTitle weapon={weapon} skinName={skinName} />
 			<button
