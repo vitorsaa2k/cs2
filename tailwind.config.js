@@ -37,16 +37,16 @@ export default {
 		},
 	},
 	safelist: [
-		"border-b-red-item",
-		"border-b-purple-item",
-		"border-b-pink-item",
-		"border-b-yellow-item",
-		"border-b-blue-item",
-		"border-blue-item",
-		"border-purple-item",
-		"border-red-item",
-		"border-pink-item",
-		"border-yellow-item",
+		{
+			pattern: /bg-(red-item|purple-item|pink-item|yellow-item|blue-item)/,
+		},
+		{
+			pattern:
+				/border-(b|t|l|r)-(red-item|purple-item|pink-item|yellow-item|blue-item)/,
+		},
+		{
+			pattern: /border-(red-item|purple-item|pink-item|yellow-item|blue-item)/,
+		},
 	],
 	plugins: [],
 };
