@@ -6,6 +6,7 @@ import { sellSkins } from "../../../../services/userApi";
 import { useState } from "react";
 import { queryClient } from "../../../../libs/queryClient";
 import { DrawnSkinsList } from "./drawnSkinsList";
+import { Buttons } from "./buttons";
 
 interface RollerModalType {
 	items: DrawnSkin[];
@@ -14,17 +15,6 @@ interface RollerModalType {
 
 export function DrawnSkinsModal({ items, closeModal }: RollerModalType) {
 	const [soldSkins, setSoldItems] = useState<string[]>([]);
-	const allSkinsTotalValue = Number(
-		items
-			.map(item => item.price ?? 0)
-			.reduce((prevValue, currValue) => prevValue + currValue, 0)
-	);
-	const soldSkinsTotalValue = Number(
-		items
-			.filter(item => item.rollId === soldSkins.find(id => id === item.rollId))
-			.map(item => item.price ?? 0)
-			.reduce((prevValue, currValue) => prevValue + currValue, 0)
-	);
 
 	async function sellDrawnSkins(rollIds: string[]) {
 		setSoldItems(prevState => [...prevState, ...rollIds]);
@@ -42,18 +32,13 @@ export function DrawnSkinsModal({ items, closeModal }: RollerModalType) {
 					</button>
 				</div>
 				<DrawnSkinsList sellDrawnSkins={sellDrawnSkins} soldSkins={soldSkins} />
-				{items.length > 1 ? (
-					<div className="flex justify-center m-2">
-						<button
-							className="border border-green-800 disabled:border-green-950 px-2 py-1 rounded"
-							onClick={() => sellDrawnSkins(items.map(item => item.rollId))}
-							disabled={soldSkins.length >= items.length}
-						>
-							Sell all skins $
-							{(allSkinsTotalValue - soldSkinsTotalValue).toFixed(2)}
-						</button>
-					</div>
-				) : null}
+
+				<Buttons
+					items={items}
+					sellDrawnSkins={sellDrawnSkins}
+					soldSkins={soldSkins}
+					closeModal={closeModal}
+				/>
 			</div>
 		</Modal>
 	);
