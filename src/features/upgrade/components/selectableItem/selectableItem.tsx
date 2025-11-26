@@ -1,9 +1,13 @@
 import { HTMLAttributes } from "react";
-import { SkinName } from "../../../../components/skin/skinName";
 import { DrawnSkin, SkinType } from "../../../crate/types/api";
 import { SkinImage } from "../../../../components/skin/skinImage";
 import { SkinExterior } from "./skinExterior";
 import { SkinPrice } from "./skinPrice";
+import { SkinTitle } from "./skinTitle";
+import { parseItemColor } from "../../../../utils/crate/parseItemColor";
+import { IconContext } from "react-icons";
+import { PiCheckBold, PiPlusBold } from "react-icons/pi";
+import { cn } from "../../../../libs/utils";
 
 interface SelectableItemProps extends HTMLAttributes<HTMLDivElement> {
 	skin: DrawnSkin | SkinType;
@@ -15,18 +19,43 @@ export function SelectableItem({
 	skin,
 	...props
 }: SelectableItemProps) {
+	const color = parseItemColor(skin);
 	return (
 		<div
 			{...props}
-			className={`flex flex-col relative min-h-[13rem] max-w-[130px] items-center justify-around hover:cursor-pointer border rounded ${
-				isSelected ? "border-green-400 border-2" : ""
-			}`}
+			className={`flex flex-col relative items-center gap-4 hover:cursor-pointer border-t bg-slate-800 border-t-${color}-item rounded-lg text-xs group`}
 		>
-			<SkinImage className="max-w-[128px]" skin={skin} />
-			<SkinExterior className="absolute top-0 left-0 text-xs m-1" skin={skin} />
-			<SkinPrice className="absolute top-0 right-0 text-xs m-1" skin={skin} />
+			{isSelected && (
+				<div className="absolute flex items-center justify-center rounded-lg h-full w-full bg-black/40 z-10">
+					<div className="bg-green-font drop-shadow-[0_0_7px_rgba(70,184,88,0.25)] shadow-[0_0_30px_rgba(77,153,76)] p-2 rounded-full flex items-center justify-center">
+						<IconContext.Provider value={{ size: "28" }}>
+							<PiCheckBold />
+						</IconContext.Provider>
+					</div>
+				</div>
+			)}
+			{!isSelected && (
+				<div className="absolute opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-lg h-full w-full bg-black/40 z-10 transition-opacity">
+					<div className="bg-slate-400 p-2 rounded-full flex items-center justify-center">
+						<IconContext.Provider value={{ size: "28" }}>
+							<PiPlusBold />
+						</IconContext.Provider>
+					</div>
+				</div>
+			)}
+			<div className="flex justify-between w-full">
+				<SkinExterior className="m-1" skin={skin} />
+				<SkinPrice className="m-1" skin={skin} />
+			</div>
+			<SkinImage
+				className={cn(
+					"max-w-[128px] z-0 transition-all mx-1",
+					isSelected ? "" : "group-hover:scale-75"
+				)}
+				skin={skin}
+			/>
 			<div className="flex flex-col items-center">
-				<SkinName name={skin.name} />
+				<SkinTitle skinName={skin.name} />
 			</div>
 		</div>
 	);
