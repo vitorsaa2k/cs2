@@ -1,11 +1,12 @@
+import { SectionWrapper } from "../sectionWrapper";
 import { Inventory } from "./inventory";
 import { InventoryPageControl } from "./pageControl";
 
 export function UserInventory() {
 	return (
-		<div>
+		<SectionWrapper>
 			<Inventory />
 			<InventoryPageControl />
-		</div>
+		</SectionWrapper>
 	);
 }

@@ -1,11 +1,12 @@
+import { SectionWrapper } from "../sectionWrapper";
 import { AvaliableItemsList } from "./avaliableItemsList";
-import { InventoryPageControl } from "./pageControl";
+import { UpgradeSkinsPageControl } from "./pageControl";
 
 export function AvaliableSkins() {
 	return (
-		<div>
+		<SectionWrapper shouldBlockInteractionOnSelect>
 			<AvaliableItemsList />
-			<InventoryPageControl />
-		</div>
+			<UpgradeSkinsPageControl />
+		</SectionWrapper>
 	);
 }

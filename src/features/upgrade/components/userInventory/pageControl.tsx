@@ -3,6 +3,10 @@ import { UpgradeContext } from "../../../../contexts/upgradeContext";
 import { ActionTypes } from "../../contextTypes";
 import { useGetInventoryByPage } from "../../../../hooks/useQuery/inventory";
 import { PiArrowLeft, PiArrowRight } from "react-icons/pi";
+import { IconContext } from "react-icons";
+import { NavigateButton } from "../pageControl/navigateButton";
+import { PageControlWrapper } from "../pageControl/pageControlWrapper";
+import { Page } from "../pageControl/page";
 
 export function InventoryPageControl() {
 	const [page, setPage] = useState(1);
@@ -19,24 +23,26 @@ export function InventoryPageControl() {
 		//eslint-disable-next-line
 	}, [inventory]);
 	return (
-		<div className="flex justify-between m-3">
-			<button
+		<PageControlWrapper>
+			<NavigateButton
 				disabled={page === 1}
-				className="border rounded py-1 px-1 disabled:bg-black/50 disabled:border-white/25"
 				onClick={() =>
 					setPage(prevState => (prevState - 1 < 1 ? prevState : prevState - 1))
 				}
 			>
-				<PiArrowLeft />
-			</button>
-			<p>{page}</p>
-			<button
+				<IconContext.Provider value={{ size: "24" }}>
+					<PiArrowLeft />
+				</IconContext.Provider>
+			</NavigateButton>
+			<Page page={page} />
+			<NavigateButton
 				disabled={upgradeContext.state.userInventory.length < 15}
-				className="border rounded py-1 px-1 disabled:bg-black/50 disabled:border-white/25"
 				onClick={() => setPage(prevState => prevState + 1)}
 			>
-				<PiArrowRight />
-			</button>
-		</div>
+				<IconContext.Provider value={{ size: "24" }}>
+					<PiArrowRight />
+				</IconContext.Provider>
+			</NavigateButton>
+		</PageControlWrapper>
 	);
 }

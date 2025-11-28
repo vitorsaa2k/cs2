@@ -4,8 +4,12 @@ import { ActionTypes } from "../../contextTypes";
 import { getSkinByRange } from "../../../../services/skinsApi";
 import { useDebounce } from "../../../../hooks/useDebounce";
 import { PiArrowLeft, PiArrowRight } from "react-icons/pi";
+import { PageControlWrapper } from "../pageControl/pageControlWrapper";
+import { NavigateButton } from "../pageControl/navigateButton";
+import { Page } from "../pageControl/page";
+import { IconContext } from "react-icons";
 
-export function InventoryPageControl() {
+export function UpgradeSkinsPageControl() {
 	const [page, setPage] = useState(1);
 	const upgradeContext = useContext(UpgradeContext);
 	const fetchSkins = useCallback(() => {
@@ -41,23 +45,23 @@ export function InventoryPageControl() {
 		//eslint-disable-next-line
 	}, [fetchSkins]);
 	return (
-		<div className="flex justify-between m-3">
-			<button
+		<PageControlWrapper>
+			<NavigateButton
 				disabled={page === 1}
-				className="border rounded py-1 px-1 disabled:bg-black/50 disabled:border-white/25"
 				onClick={() =>
 					setPage(prevState => (prevState - 1 < 1 ? prevState : prevState - 1))
 				}
 			>
-				<PiArrowLeft />
-			</button>
-			<p>{page}</p>
-			<button
-				className="border rounded py-1 px-1 disabled:bg-black/50 disabled:border-white/25"
-				onClick={() => setPage(prevState => prevState + 1)}
-			>
-				<PiArrowRight />
-			</button>
-		</div>
+				<IconContext.Provider value={{ size: "24" }}>
+					<PiArrowLeft />
+				</IconContext.Provider>
+			</NavigateButton>
+			<Page page={page} />
+			<NavigateButton onClick={() => setPage(prevState => prevState + 1)}>
+				<IconContext.Provider value={{ size: "24" }}>
+					<PiArrowRight />
+				</IconContext.Provider>
+			</NavigateButton>
+		</PageControlWrapper>
 	);
 }
