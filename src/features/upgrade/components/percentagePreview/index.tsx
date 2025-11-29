@@ -42,11 +42,20 @@ export function PercentagePreview() {
 	}, [fetchChance]);
 
 	return (
-		<div className="flex relative items-center">
+		<div className="flex relative items-center justify-center bg-slate-900 rounded-full">
 			{IsFetching && (
-				<div className="w-[16rem] h-[16rem] absolute rounded-full animate-opacity-up bg-black/50 transition-all mx-6"></div>
+				<div className="w-[16rem] h-[16rem] absolute rounded-full animate-opacity-up bg-black/50 transition-all"></div>
 			)}
+			<div className="absolute z-10 flex flex-col items-center">
+				<p className="text-4xl font-bold">
+					{upgradeContext.state.successChance?.toFixed(2) ?? 0}%
+				</p>
+				<p>Chance</p>
+			</div>
 			<Circle chance={upgradeContext.state.successChance} />
+			<div className="w-[15rem] h-[15rem] absolute rounded-full animate-opacity-up bg-black/70 transition-all"></div>
+			<div className="w-[18.9rem] h-[18.9rem] absolute rounded-full animate-opacity-up border-2 border-white black transition-all"></div>
+			<div className="w-[16rem] h-[16rem] absolute rounded-full transition-all border-dashed border-2"></div>
 		</div>
 	);
 }

@@ -12,12 +12,9 @@ export function Circle({ chance }: { chance: number }) {
 	return (
 		<div
 			ref={containerRef}
-			className="w-[16rem] h-[16rem] flex items-center justify-center rounded-full transition-all mx-6 border"
+			className="w-[16rem] h-[16rem] flex items-center justify-center rounded-full transition-all"
 		>
 			<Triangle />
-			<p className="text-green-700 text-4xl font-semibold">
-				{chance?.toFixed(2) ?? 0}%
-			</p>
 		</div>
 	);
 }
