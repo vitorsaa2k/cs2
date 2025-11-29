@@ -4,6 +4,7 @@ import { getUpgradeChance } from "../../../../services/upgradeApi";
 import { ActionTypes } from "../../contextTypes";
 import { Circle } from "./circle";
 import { useDebounce } from "../../../../hooks/useDebounce";
+import { Triangle } from "../triangle/triangle";
 
 export function PercentagePreview() {
 	const upgradeContext = useContext(UpgradeContext);
@@ -42,7 +43,7 @@ export function PercentagePreview() {
 	}, [fetchChance]);
 
 	return (
-		<div className="flex relative items-center justify-center bg-slate-900 rounded-full">
+		<div className="w-[22rem] h-[22rem] flex absolute top-[-16px] items-center justify-center bg-slate-900 rounded-full">
 			{IsFetching && (
 				<div className="w-[16rem] h-[16rem] absolute rounded-full animate-opacity-up bg-black/50 transition-all"></div>
 			)}
@@ -56,6 +57,7 @@ export function PercentagePreview() {
 			<div className="w-[15rem] h-[15rem] absolute rounded-full animate-opacity-up bg-black/70 transition-all"></div>
 			<div className="w-[18.9rem] h-[18.9rem] absolute rounded-full animate-opacity-up border-2 border-white black transition-all"></div>
 			<div className="w-[16rem] h-[16rem] absolute rounded-full transition-all border-dashed border-2"></div>
+			<Triangle />
 		</div>
 	);
 }

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Triangle } from "../triangle/triangle";
 
 export function Circle({ chance }: { chance: number }) {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -13,8 +12,6 @@ export function Circle({ chance }: { chance: number }) {
 		<div
 			ref={containerRef}
 			className="w-[16rem] h-[16rem] flex items-center justify-center rounded-full transition-all"
-		>
-			<Triangle />
-		</div>
+		></div>
 	);
 }

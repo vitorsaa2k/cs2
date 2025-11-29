@@ -7,7 +7,10 @@ export function UserSelectedSkins() {
 	const upgradeContext = useContext(UpgradeContext);
 	return (
 		<SelectedSkinsWrapper>
-			<SelectedItems skins={upgradeContext.state.userSkins} />
+			<SelectedItems
+				pricePosition="bottomRight"
+				skins={upgradeContext.state.userSkins}
+			/>
 		</SelectedSkinsWrapper>
 	);
 }
