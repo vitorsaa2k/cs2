@@ -48,8 +48,8 @@ export function UpgradeSkinsName({
 			) : (
 				<div
 					className={cn("flex flex-col", {
-						"items-start": pricePosition === "bottomRight",
-						"items-end": pricePosition === "bottomLeft",
+						"items-start text-start": pricePosition === "bottomRight",
+						"items-end text-end": pricePosition === "bottomLeft",
 					})}
 				>
 					<p className="font-bold text-2xl leading-[29px]">{skinName}</p>
