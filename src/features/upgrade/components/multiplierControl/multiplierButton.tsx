@@ -1,31 +1,21 @@
-import { HTMLAttributes, useContext } from "react";
+import { ComponentProps, useContext } from "react";
 import { UpgradeContext } from "../../../../contexts/upgradeContext";
-import { ActionTypes } from "../../contextTypes";
-import { cn } from "../../../../libs/utils";
+import { PossibleMultipliers } from "../../contextTypes";
 
-interface MultiplierButtonProps extends HTMLAttributes<HTMLButtonElement> {
-	multiplier: 1.5 | 2 | 5 | 10 | 20;
+interface MultiplierButtonProps extends ComponentProps<"button"> {
+	multiplier: PossibleMultipliers;
 }
 
 export function MultiplierButton(props: MultiplierButtonProps) {
 	const upgradeContext = useContext(UpgradeContext);
 
-	function updateMultiplier() {
-		upgradeContext.dispatch({
-			type: ActionTypes.UPDATE_MULTIPLIER,
-			payload: props.multiplier,
-		});
-	}
-
 	return (
 		<button
 			disabled={upgradeContext.state.multiplier === props.multiplier}
-			onClick={updateMultiplier}
-			className={cn("border p-2 rounded min-w-[4rem]", {
-				"border-white/5": upgradeContext.state.multiplier === props.multiplier,
-			})}
+			{...props}
+			className="rounded-lg md:py-3 px-5 h-full flex justify-center items-center font-bold disabled:text-black"
 		>
-			{props.multiplier} x
+			{props.multiplier}x
 		</button>
 	);
 }

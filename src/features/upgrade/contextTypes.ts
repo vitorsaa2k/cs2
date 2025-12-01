@@ -45,7 +45,7 @@ export interface UpdateUserInventoryAction {
 }
 export interface UpdateMultiplierAction {
 	type: ActionTypes.UPDATE_MULTIPLIER;
-	payload: 1.5 | 2 | 5 | 10 | 20;
+	payload: PossibleMultipliers;
 }
 export interface ResetUpgraderAction {
 	type: ActionTypes.RESET_UPGRADER;
@@ -78,9 +78,11 @@ export interface UpgradeType {
 	avaliableSkins: { skins: SkinType[]; isFetching: boolean };
 	skinsUpgrade: SkinType[];
 	successChance: number;
-	multiplier: 1.5 | 2 | 5 | 10 | 20;
+	multiplier: PossibleMultipliers;
 	hasWon: boolean | null;
 }
+
+export type PossibleMultipliers = 1.5 | 2 | 5 | 10 | 20;
 
 export interface UpgradeContextType {
 	state: UpgradeType;

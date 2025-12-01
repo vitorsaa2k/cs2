@@ -34,10 +34,10 @@ export function UpgradeButton() {
 				upgradeContext.state.userSkins.length === 0 ||
 				upgradeContext.state.skinsUpgrade.length === 0
 			}
-			className="bg-green-800 disabled:bg-green-950 px-8 py-3 rounded"
+			className="bg-green-font disabled:bg-green-950 px-12 py-6 rounded-lg font-bold text-2xl"
 			onClick={excuteUpgrade}
 		>
-			{isFetching ? <TailSpinner height={30} width={60} visible /> : "Upgrade"}
+			{isFetching ? <TailSpinner height={24} width={68} visible /> : "Upgrade"}
 		</button>
 	);
 }
