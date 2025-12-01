@@ -14,7 +14,7 @@ export function SelectedItems({
 	pricePosition: PricePosition;
 }) {
 	return (
-		<div className="flex flex-col h-full w-full justify-between items-center ">
+		<div className="flex flex-col h-full w-full justify-between items-center">
 			<SkinsImages pricePosition={pricePosition} skins={skins} />
 			<div className="flex justify-between pb-6 w-full">
 				<UpgradeSkinsName skins={skins} pricePosition={pricePosition} />
