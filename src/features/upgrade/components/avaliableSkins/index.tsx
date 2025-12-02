@@ -1,11 +1,15 @@
 import { SectionWrapper } from "../sectionWrapper";
 import { AvaliableItemsList } from "./avaliableItemsList";
+import { AvaliableSkinsHeader } from "./header";
 import { UpgradeSkinsPageControl } from "./pageControl";
 
 export function AvaliableSkins() {
 	return (
 		<SectionWrapper shouldBlockInteractionOnSelect>
-			<AvaliableItemsList />
+			<div>
+				<AvaliableSkinsHeader />
+				<AvaliableItemsList />
+			</div>
 			<UpgradeSkinsPageControl />
 		</SectionWrapper>
 	);

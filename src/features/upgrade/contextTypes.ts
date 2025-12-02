@@ -84,6 +84,15 @@ export interface UpgradeType {
 
 export type PossibleMultipliers = 1.5 | 2 | 5 | 10 | 20;
 
+export type RarityNames =
+	| "Consumer Grade"
+	| "Industrial Grade"
+	| "Mil-Spec Grade"
+	| "Restricted"
+	| "Classified"
+	| "Covert"
+	| "Contraband";
+
 export interface UpgradeContextType {
 	state: UpgradeType;
 	dispatch: Dispatch<Actions>;
