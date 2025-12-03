@@ -10,6 +10,7 @@ import { Page } from "../pageControl/page";
 
 export function InventoryPageControl() {
 	const [page, setPage] = useState(1);
+	const [maxPages, setMaxPages] = useState(1);
 	const upgradeContext = useContext(UpgradeContext);
 	const { data: inventory } = useGetInventoryByPage(page);
 	useEffect(() => {
@@ -18,6 +19,7 @@ export function InventoryPageControl() {
 				type: ActionTypes.UPDATE_USER_INVENTORY,
 				payload: inventory.inventory,
 			});
+			setMaxPages(inventory.pagination.maxPages);
 		}
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
@@ -34,7 +36,7 @@ export function InventoryPageControl() {
 					<PiArrowLeft />
 				</IconContext.Provider>
 			</NavigateButton>
-			<Page page={page} maxPages={inventory?.pagination.maxPages ?? 1} />
+			<Page page={page} maxPages={maxPages} />
 			<NavigateButton
 				disabled={upgradeContext.state.userInventory.length < 15}
 				onClick={() => setPage(prevState => prevState + 1)}
