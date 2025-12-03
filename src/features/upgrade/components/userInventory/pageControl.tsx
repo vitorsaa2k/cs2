@@ -12,7 +12,12 @@ export function InventoryPageControl() {
 	const [page, setPage] = useState(1);
 	const [maxPages, setMaxPages] = useState(1);
 	const upgradeContext = useContext(UpgradeContext);
-	const { data: inventory } = useGetInventoryByPage(page);
+	const { data: inventory } = useGetInventoryByPage(
+		page,
+		upgradeContext.state.userInventoryFilter
+	);
+
+	console.log(upgradeContext.state.userInventoryFilter);
 	useEffect(() => {
 		if (inventory) {
 			upgradeContext.dispatch({
@@ -23,7 +28,7 @@ export function InventoryPageControl() {
 		}
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
-	}, [inventory]);
+	}, [inventory, page, upgradeContext.state.userInventoryFilter]);
 	return (
 		<PageControlWrapper>
 			<NavigateButton
@@ -38,7 +43,7 @@ export function InventoryPageControl() {
 			</NavigateButton>
 			<Page page={page} maxPages={maxPages} />
 			<NavigateButton
-				disabled={upgradeContext.state.userInventory.length < 15}
+				disabled={page === maxPages}
 				onClick={() => setPage(prevState => prevState + 1)}
 			>
 				<IconContext.Provider value={{ size: "24" }}>

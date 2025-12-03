@@ -8,6 +8,7 @@ export enum ActionTypes {
 	REMOVE_UPGRADE_SKIN = "REMOVE_UPGRADE_SKIN",
 	UPDATE_AVALIABLE_SKINS = "UPDATE_AVALIABLE_SKINS",
 	UPDATE_USER_INVENTORY = "UPDATE_USER_INVENTORY",
+	SWITCH_USER_INVENTORY_SORT = "SWITCH_USER_INVENTORY_SORT",
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
 	RESET_UPGRADER = "RESET_UPGRADER",
 	UPDATE_MULTIPLIER = "UPDATE_MULTIPLIER",
@@ -43,6 +44,9 @@ export interface UpdateUserInventoryAction {
 	type: ActionTypes.UPDATE_USER_INVENTORY;
 	payload: DrawnSkin[];
 }
+export interface SwitchUserInventorySortAction {
+	type: ActionTypes.SWITCH_USER_INVENTORY_SORT;
+}
 export interface UpdateMultiplierAction {
 	type: ActionTypes.UPDATE_MULTIPLIER;
 	payload: PossibleMultipliers;
@@ -67,6 +71,7 @@ export type Actions =
 	| UpdateSuccessChanceAction
 	| UpdateAvaliableSkinsAction
 	| UpdateUserInventoryAction
+	| SwitchUserInventorySortAction
 	| ResetUpgraderAction
 	| UpdateMultiplierAction
 	| UpdateResultAction
@@ -75,14 +80,18 @@ export type Actions =
 export interface UpgradeType {
 	userSkins: DrawnSkin[];
 	userInventory: DrawnSkin[];
+	userInventoryFilter: UserInvetoryFilter;
 	avaliableSkins: { skins: SkinType[]; isFetching: boolean };
 	skinsUpgrade: SkinType[];
 	successChance: number;
 	multiplier: PossibleMultipliers;
 	hasWon: boolean | null;
 }
-
+export interface UserInvetoryFilter {
+	sort: SortOptions;
+}
 export type PossibleMultipliers = 1.5 | 2 | 5 | 10 | 20;
+export type SortOptions = "DESC" | "ASC";
 
 export type RarityNames =
 	| "Consumer Grade"

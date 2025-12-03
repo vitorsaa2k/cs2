@@ -5,6 +5,7 @@ import {
 	getUserInventoryByPage,
 } from "../../services/userApi";
 import { InventoryType } from "../../types/api";
+import { SortOptions } from "../../features/upgrade/contextTypes";
 
 export interface Pagination {
 	pagination: {
@@ -15,10 +16,13 @@ export interface Pagination {
 	};
 }
 
-export function useGetInventoryByPage(page: number) {
+export function useGetInventoryByPage(
+	page: number,
+	filter: { sort: SortOptions }
+) {
 	const query = useQuery<InventoryType & Pagination>({
-		queryKey: ["inventory", page],
-		queryFn: () => getUserInventoryByPage(page),
+		queryKey: ["inventory", page, filter],
+		queryFn: () => getUserInventoryByPage(page, filter),
 	});
 	return query;
 }
