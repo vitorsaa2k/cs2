@@ -34,7 +34,7 @@ export function InventoryPageControl() {
 					<PiArrowLeft />
 				</IconContext.Provider>
 			</NavigateButton>
-			<Page page={page} />
+			<Page page={page} maxPages={inventory?.pagination.maxPages ?? 1} />
 			<NavigateButton
 				disabled={upgradeContext.state.userInventory.length < 15}
 				onClick={() => setPage(prevState => prevState + 1)}
