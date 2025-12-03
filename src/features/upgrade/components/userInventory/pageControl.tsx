@@ -17,7 +17,6 @@ export function InventoryPageControl() {
 		upgradeContext.state.userInventoryFilter
 	);
 
-	console.log(upgradeContext.state.userInventoryFilter);
 	useEffect(() => {
 		if (inventory) {
 			upgradeContext.dispatch({
