@@ -1,7 +1,22 @@
+import { ChangeEvent, useContext } from "react";
 import { IconContext } from "react-icons";
 import { PiMagnifyingGlass } from "react-icons/pi";
+import { UpgradeContext } from "../../../../../../contexts/upgradeContext";
+import { ActionTypes } from "../../../../contextTypes";
 
 export function SearchByNameInput() {
+	const { state, dispatch } = useContext(UpgradeContext);
+	function handleNameChange(e: ChangeEvent<HTMLInputElement>) {
+		dispatch({
+			type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER,
+			payload: {
+				...state.avaliableSkinsFilter,
+				name: e.currentTarget.value,
+				page: 1,
+			},
+		});
+	}
+
 	return (
 		<label className="flex items-center gap-1 bg-slate-900 py-2 pl-3 pr-6 rounded">
 			<IconContext.Provider value={{ size: "22" }}>
@@ -10,6 +25,7 @@ export function SearchByNameInput() {
 			<input
 				placeholder="Name"
 				className="bg-transparent p-0 border-none shadow-none focus:outline-none max-w-[144px]"
+				onChange={handleNameChange}
 			/>
 		</label>
 	);

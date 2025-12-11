@@ -51,6 +51,11 @@ function reducer(
 					isFetching: state.avaliableSkins.isFetching,
 				},
 			};
+		case ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER:
+			return {
+				...state,
+				avaliableSkinsFilter: action.payload,
+			};
 		case ActionTypes.UPDATE_USER_INVENTORY:
 			return {
 				...state,
@@ -104,6 +109,14 @@ const initialValue: UpgradeType = {
 	userInventory: [],
 	userInventoryFilter: { sort: "DESC" },
 	avaliableSkins: { skins: [], isFetching: false },
+	avaliableSkinsFilter: {
+		maxPrice: 0,
+		name: "",
+		page: 1,
+		rarity: false,
+		sort: "ASC",
+		shouldShowSelected: false,
+	},
 	skinsUpgrade: [],
 	successChance: 0,
 	multiplier: 1.5,

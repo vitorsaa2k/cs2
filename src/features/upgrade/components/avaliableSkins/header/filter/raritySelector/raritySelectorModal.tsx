@@ -1,23 +1,19 @@
-import { Dispatch, SetStateAction } from "react";
 import { RarityNames } from "../../../../../contextTypes";
 import { RaritySelectorItem } from "./raritySelectorItem";
 
 interface RaritySelectorModalProps {
 	currentRarity: RarityNames | false;
-	setSelectedRarity: Dispatch<SetStateAction<RarityNames | false>>;
-	setShouldShow: Dispatch<SetStateAction<boolean>>;
+	handleRaritySelection: (rarity: RarityNames | false) => void;
 }
 
 export function RaritySelectorModal({
 	currentRarity,
-	setSelectedRarity,
-	setShouldShow,
+	handleRaritySelection,
 }: RaritySelectorModalProps) {
 	return (
 		<div className="absolute right-0 text-xs z-50 bg-slate-900 p-3 flex flex-col items-start gap-2 rounded">
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				currentRarity={currentRarity}
 				rarity="All"
 				className="border-transparent"
@@ -25,8 +21,7 @@ export function RaritySelectorModal({
 				ALL
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Consumer Grade"
 				currentRarity={currentRarity}
 				className="border-l-gray-700"
@@ -34,8 +29,7 @@ export function RaritySelectorModal({
 				CONSUMER GRADE
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Industrial Grade"
 				currentRarity={currentRarity}
 				className="border-l-[#5e98d9]"
@@ -43,8 +37,7 @@ export function RaritySelectorModal({
 				INDUSTRIAL GRADE
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Mil-Spec Grade"
 				currentRarity={currentRarity}
 				className="border-l-blue-item"
@@ -52,8 +45,7 @@ export function RaritySelectorModal({
 				MIL-SPEC
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Restricted"
 				currentRarity={currentRarity}
 				className="border-l-purple-item"
@@ -61,8 +53,7 @@ export function RaritySelectorModal({
 				RESTRICTED
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Classified"
 				currentRarity={currentRarity}
 				className="border-l-pink-item"
@@ -70,8 +61,7 @@ export function RaritySelectorModal({
 				CLASSIFIED
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Covert"
 				currentRarity={currentRarity}
 				className="border-l-red-item"
@@ -79,8 +69,7 @@ export function RaritySelectorModal({
 				COVERT
 			</RaritySelectorItem>
 			<RaritySelectorItem
-				setShouldShow={setShouldShow}
-				setSelectedRarity={setSelectedRarity}
+				handleRaritySelection={handleRaritySelection}
 				rarity="Contraband"
 				currentRarity={currentRarity}
 				className="border-l-yellow-item"

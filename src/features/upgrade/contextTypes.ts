@@ -7,6 +7,7 @@ export enum ActionTypes {
 	ADD_UPGRADE_SKIN = "ADD_UPGRADE_SKIN",
 	REMOVE_UPGRADE_SKIN = "REMOVE_UPGRADE_SKIN",
 	UPDATE_AVALIABLE_SKINS = "UPDATE_AVALIABLE_SKINS",
+	UPDATE_AVALIABLE_SKINS_FILTER = "UPDATE_AVALIABLE_SKINS_FILTER",
 	UPDATE_USER_INVENTORY = "UPDATE_USER_INVENTORY",
 	SWITCH_USER_INVENTORY_SORT = "SWITCH_USER_INVENTORY_SORT",
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
@@ -40,6 +41,10 @@ export interface UpdateAvaliableSkinsAction {
 	type: ActionTypes.UPDATE_AVALIABLE_SKINS;
 	payload: SkinType[];
 }
+export interface UpdateAvaliableSkinsFilterAction {
+	type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER;
+	payload: AvaliableSkinsFilter;
+}
 export interface UpdateUserInventoryAction {
 	type: ActionTypes.UPDATE_USER_INVENTORY;
 	payload: DrawnSkin[];
@@ -70,6 +75,7 @@ export type Actions =
 	| RemoveUpgradeSkinAction
 	| UpdateSuccessChanceAction
 	| UpdateAvaliableSkinsAction
+	| UpdateAvaliableSkinsFilterAction
 	| UpdateUserInventoryAction
 	| SwitchUserInventorySortAction
 	| ResetUpgraderAction
@@ -82,10 +88,19 @@ export interface UpgradeType {
 	userInventory: DrawnSkin[];
 	userInventoryFilter: UserInvetoryFilter;
 	avaliableSkins: { skins: SkinType[]; isFetching: boolean };
+	avaliableSkinsFilter: AvaliableSkinsFilter;
 	skinsUpgrade: SkinType[];
 	successChance: number;
 	multiplier: PossibleMultipliers;
 	hasWon: boolean | null;
+}
+export interface AvaliableSkinsFilter {
+	page: number;
+	sort: SortOptions;
+	name: string;
+	maxPrice: number;
+	rarity: RarityNames | false;
+	shouldShowSelected: boolean;
 }
 export interface UserInvetoryFilter {
 	sort: SortOptions;

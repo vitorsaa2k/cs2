@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IconContext } from "react-icons";
 import { PiSlidersHorizontal } from "react-icons/pi";
 import { RaritySelectorModal } from "./raritySelectorModal";
-import { RarityNames } from "../../../../../contextTypes";
+import { ActionTypes, RarityNames } from "../../../../../contextTypes";
+import { UpgradeContext } from "../../../../../../../contexts/upgradeContext";
 
 export function RaritySelector() {
 	const [shouldShow, setShouldShow] = useState(false);
 	const [selectedRarity, setSelectedRarity] = useState<RarityNames | false>(
 		false
 	);
+	const { state, dispatch } = useContext(UpgradeContext);
+	function handleRaritySelection(rarity: RarityNames | false) {
+		setSelectedRarity(rarity);
+		dispatch({
+			type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER,
+			payload: {
+				...state.avaliableSkinsFilter,
+				page: 1,
+				rarity: rarity,
+			},
+		});
+		setShouldShow(false);
+	}
 	return (
 		<div className="relative">
 			<button
@@ -21,9 +35,8 @@ export function RaritySelector() {
 			</button>
 			{shouldShow && (
 				<RaritySelectorModal
+					handleRaritySelection={handleRaritySelection}
 					currentRarity={selectedRarity}
-					setSelectedRarity={setSelectedRarity}
-					setShouldShow={setShouldShow}
 				/>
 			)}
 		</div>

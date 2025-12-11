@@ -1,27 +1,24 @@
-import { ComponentProps, Dispatch, SetStateAction } from "react";
+import { ComponentProps } from "react";
 import { RarityNames } from "../../../../../contextTypes";
 import { cn } from "../../../../../../../libs/utils";
 
 interface RaritySelectorProps extends ComponentProps<"button"> {
 	currentRarity: RarityNames | false;
 	rarity: RarityNames | "All";
-	setSelectedRarity: Dispatch<SetStateAction<RarityNames | false>>;
-	setShouldShow: Dispatch<SetStateAction<boolean>>;
+	handleRaritySelection: (rarity: RarityNames | false) => void;
 }
 
 export function RaritySelectorItem({
 	currentRarity,
 	rarity,
-	setSelectedRarity,
-	setShouldShow,
+	handleRaritySelection,
 	...props
 }: RaritySelectorProps) {
 	return (
 		<button
 			{...props}
 			onClick={() => {
-				setSelectedRarity(rarity === "All" ? false : rarity);
-				setShouldShow(false);
+				handleRaritySelection(rarity === "All" ? false : rarity);
 			}}
 			className={cn(
 				"border-l-2 p-2 w-full text-start whitespace-nowrap hover:bg-slate-600",

@@ -1,21 +1,37 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { cn } from "../../../../../../libs/utils";
 import { UpgradeContext } from "../../../../../../contexts/upgradeContext";
+import { ActionTypes } from "../../../../contextTypes";
 
 export function ShowOnlySelectedButton() {
-	const [shouldShowSelected, setShouldShowSelected] = useState<boolean>(false);
-	const { state } = useContext(UpgradeContext);
+	const { state, dispatch } = useContext(UpgradeContext);
+	function switchShouldShowSelected(value: boolean) {
+		dispatch({
+			type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER,
+			payload: {
+				...state.avaliableSkinsFilter,
+				shouldShowSelected: value,
+			},
+		});
+	}
+
 	useEffect(() => {
-		if (state.skinsUpgrade.length === 0) setShouldShowSelected(false);
+		if (state.skinsUpgrade.length === 0) switchShouldShowSelected(false);
+		//eslint-disable-next-line
 	}, [state.skinsUpgrade.length]);
 	return (
 		<button
 			disabled={state.skinsUpgrade.length === 0}
-			onClick={() => setShouldShowSelected(prevState => !prevState)}
+			onClick={() => {
+				switchShouldShowSelected(
+					state.avaliableSkinsFilter.shouldShowSelected ? false : true
+				);
+			}}
 			className={cn(
-				"bg-slate-900 p-2 border border-slate-900/40 rounded hover:cursor-pointer disabled:bg-slate-900/40 disabled:text-white/40",
+				"bg-slate-900 p-2 border border-transparent rounded hover:cursor-pointer disabled:bg-slate-900/40 disabled:text-white/40",
 				{
-					"border border-green-font text-green-font": shouldShowSelected,
+					"border border-green-font text-green-font":
+						state.avaliableSkinsFilter.shouldShowSelected,
 				}
 			)}
 		>
