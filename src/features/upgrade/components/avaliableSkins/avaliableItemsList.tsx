@@ -10,7 +10,7 @@ export function AvaliableItemsList() {
 		? upgradeContext.state.skinsUpgrade
 		: upgradeContext.state.avaliableSkins.skins;
 	return (
-		<div className="w-full relative p-2">
+		<div className="w-full relative">
 			<SkinsWrapper>
 				{itemsToDisplay.map(skin => (
 					<AvaliableItem key={skin.name} skin={skin} />

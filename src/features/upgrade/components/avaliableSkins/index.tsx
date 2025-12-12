@@ -6,7 +6,7 @@ import { UpgradeSkinsPageControl } from "./pageControl";
 export function AvaliableSkins() {
 	return (
 		<SectionWrapper shouldBlockInteractionOnSelect>
-			<div>
+			<div className="flex flex-col gap-2">
 				<AvaliableSkinsHeader />
 				<AvaliableItemsList />
 			</div>
