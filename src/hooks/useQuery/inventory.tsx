@@ -21,7 +21,7 @@ export function useGetInventoryByPage(
 	filter: { sort: SortOptions }
 ) {
 	const query = useQuery<InventoryType & Pagination>({
-		queryKey: ["inventory", page, filter],
+		queryKey: ["inventory", page, filter.sort],
 		queryFn: () => getUserInventoryByPage(page, filter),
 	});
 	return query;

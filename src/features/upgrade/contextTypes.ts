@@ -9,7 +9,7 @@ export enum ActionTypes {
 	UPDATE_AVALIABLE_SKINS = "UPDATE_AVALIABLE_SKINS",
 	UPDATE_AVALIABLE_SKINS_FILTER = "UPDATE_AVALIABLE_SKINS_FILTER",
 	UPDATE_USER_INVENTORY = "UPDATE_USER_INVENTORY",
-	SWITCH_USER_INVENTORY_SORT = "SWITCH_USER_INVENTORY_SORT",
+	UPDATE_USER_INVENTORY_FILTER = "UPDATE_USER_INVENTORY_FILTER",
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
 	RESET_UPGRADER = "RESET_UPGRADER",
 	UPDATE_MULTIPLIER = "UPDATE_MULTIPLIER",
@@ -50,7 +50,8 @@ export interface UpdateUserInventoryAction {
 	payload: DrawnSkin[];
 }
 export interface SwitchUserInventorySortAction {
-	type: ActionTypes.SWITCH_USER_INVENTORY_SORT;
+	type: ActionTypes.UPDATE_USER_INVENTORY_FILTER;
+	payload: UserInvetoryFilter;
 }
 export interface UpdateMultiplierAction {
 	type: ActionTypes.UPDATE_MULTIPLIER;
@@ -104,6 +105,7 @@ export interface AvaliableSkinsFilter {
 }
 export interface UserInvetoryFilter {
 	sort: SortOptions;
+	shouldShowSelected: boolean;
 }
 export type PossibleMultipliers = 1.5 | 2 | 5 | 10 | 20;
 export type SortOptions = "DESC" | "ASC";

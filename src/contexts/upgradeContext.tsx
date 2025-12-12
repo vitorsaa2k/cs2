@@ -61,11 +61,11 @@ function reducer(
 				...state,
 				userInventory: action.payload as DrawnSkin[],
 			};
-		case ActionTypes.SWITCH_USER_INVENTORY_SORT:
+		case ActionTypes.UPDATE_USER_INVENTORY_FILTER:
 			return {
 				...state,
 				userInventoryFilter: {
-					sort: state.userInventoryFilter.sort === "ASC" ? "DESC" : "ASC",
+					...action.payload,
 				},
 			};
 		case ActionTypes.UPDATE_SUCCESS_CHANCE:
@@ -107,7 +107,7 @@ function reducer(
 const initialValue: UpgradeType = {
 	userSkins: [],
 	userInventory: [],
-	userInventoryFilter: { sort: "DESC" },
+	userInventoryFilter: { sort: "DESC", shouldShowSelected: false },
 	avaliableSkins: { skins: [], isFetching: false },
 	avaliableSkinsFilter: {
 		maxPrice: 0,

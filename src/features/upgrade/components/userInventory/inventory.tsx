@@ -5,9 +5,15 @@ import { SkinsWrapper } from "../skinsSection/skinsWrapper";
 
 export function Inventory() {
 	const upgradeContext = useContext(UpgradeContext);
+
+	const itemsToDisplay = upgradeContext.state.userInventoryFilter
+		.shouldShowSelected
+		? upgradeContext.state.userSkins
+		: upgradeContext.state.userInventory;
+
 	return (
 		<SkinsWrapper>
-			{upgradeContext.state.userInventory.map(skin => (
+			{itemsToDisplay.map(skin => (
 				<InventoryItem key={skin.rollId} skin={skin} />
 			))}
 		</SkinsWrapper>

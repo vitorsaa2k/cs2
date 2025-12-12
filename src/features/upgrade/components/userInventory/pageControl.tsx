@@ -27,7 +27,7 @@ export function InventoryPageControl() {
 		}
 		//eslint disabled due to specific needs
 		//eslint-disable-next-line
-	}, [inventory, page, upgradeContext.state.userInventoryFilter]);
+	}, [inventory, page, upgradeContext.state.userInventoryFilter.sort]);
 	return (
 		<PageControlWrapper>
 			<NavigateButton
