@@ -8,7 +8,11 @@ export function UserInventorySortButton() {
 		<button
 			onClick={() =>
 				dispatch({
-					type: ActionTypes.SWITCH_USER_INVENTORY_SORT,
+					type: ActionTypes.UPDATE_USER_INVENTORY_FILTER,
+					payload: {
+						...state.userInventoryFilter,
+						sort: state.userInventoryFilter.sort === "ASC" ? "DESC" : "ASC",
+					},
 				})
 			}
 			className="bg-slate-900 p-2 rounded hover:cursor-pointer"
