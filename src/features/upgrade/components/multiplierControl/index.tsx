@@ -26,6 +26,19 @@ export function MultiplierControl() {
 			type: ActionTypes.UPDATE_MULTIPLIER,
 			payload: multiplier,
 		});
+		if (upgradeContext.state.userSkins.length > 0) {
+			upgradeContext.dispatch({
+				type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER,
+				payload: {
+					...upgradeContext.state.avaliableSkinsFilter,
+					maxPrice:
+						upgradeContext.state.userSkins
+							.map(s => s.price)
+							.reduce((prevValue, currValue) => prevValue + currValue, 0) *
+						multiplier,
+				},
+			});
+		}
 	}
 
 	useEffect(() => {
