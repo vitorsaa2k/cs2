@@ -17,10 +17,16 @@ export function AvaliableSkinsSortButton() {
 					},
 				})
 			}
-			className="bg-slate-900 p-2 rounded hover:cursor-pointer"
+			className="bg-slate-900 p-2 rounded hover:cursor-pointer flex gap-1"
 		>
-			Price{" "}
-			{state.avaliableSkinsFilter.sort === "DESC" ? <>&uarr;</> : <>&#8595;</>}
+			Price
+			<p>
+				{state.avaliableSkinsFilter.sort === "DESC" ? (
+					<>&uarr;</>
+				) : (
+					<>&#8595;</>
+				)}
+			</p>
 		</button>
 	);
 }

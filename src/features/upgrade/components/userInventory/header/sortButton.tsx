@@ -15,10 +15,12 @@ export function UserInventorySortButton() {
 					},
 				})
 			}
-			className="bg-slate-900 p-2 rounded hover:cursor-pointer"
+			className="bg-slate-900 p-2 rounded hover:cursor-pointer flex gap-1"
 		>
 			Price
-			{state.userInventoryFilter.sort === "DESC" ? <>&#8595;</> : <>&uarr;</>}
+			<p>
+				{state.userInventoryFilter.sort === "DESC" ? <>&#8595;</> : <>&uarr;</>}
+			</p>
 		</button>
 	);
 }
