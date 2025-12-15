@@ -1,5 +1,5 @@
-import { UserInventory } from "../userInventory";
-import { AvaliableSkins } from "../avaliableSkins";
+import { UserInventory } from "./userInventory";
+import { AvaliableSkins } from "./avaliableSkins";
 import { SkinsSectionMobile } from "./mobile";
 
 export function SkinsSection() {

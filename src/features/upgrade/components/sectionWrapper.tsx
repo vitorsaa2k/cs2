@@ -1,5 +1,5 @@
 import { ComponentProps, useContext } from "react";
-import { UpgradeContext } from "../../../contexts/upgradeContext";
+import { UpgradeContext } from "@/contexts/upgradeContext";
 
 interface SectionWrapperProps extends ComponentProps<"div"> {
 	shouldBlockInteractionOnSelect?: boolean;

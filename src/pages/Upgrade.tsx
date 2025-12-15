@@ -1,14 +1,10 @@
-import { UpgradeContextProvider } from "../contexts/upgradeContext";
-import { ControlSection } from "../features/upgrade/components/controlSection";
-import { SkinsSection } from "../features/upgrade/components/skinsSection/skinsSection";
-import { UpgradeSection } from "../features/upgrade/components/upgradeSection";
+import { UpgradeContextProvider } from "@/contexts/upgradeContext";
+import { Upgrade } from "../features/upgrade";
 
-export default function Upgrade() {
+export default function UpgradePage() {
 	return (
 		<UpgradeContextProvider>
-			<UpgradeSection />
-			<ControlSection />
-			<SkinsSection />
+			<Upgrade />
 		</UpgradeContextProvider>
 	);
 }
