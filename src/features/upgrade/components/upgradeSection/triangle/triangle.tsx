@@ -53,7 +53,7 @@ export function Triangle() {
 	return (
 		<div
 			ref={triangleContainerRef}
-			className={`absolute w-full h-full flex justify-center transition-all duration-[8s] ease-out`}
+			className={`absolute h-full flex justify-center transition-all duration-[8s] ease-out`}
 		>
 			<TriangleSVG />
 		</div>
