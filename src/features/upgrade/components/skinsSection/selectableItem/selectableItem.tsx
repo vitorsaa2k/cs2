@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import { SkinExterior } from "./skinExterior";
+import { SkinExterior } from "@/components/skin/skinExterior";
 import { SkinPrice } from "./skinPrice";
 import { SkinTitle } from "./skinTitle";
 import { IconContext } from "react-icons";
