@@ -13,10 +13,10 @@ export function SkinsImages({
 	return (
 		<div
 			className={cn(
-				"flex flex-wrap justify-center items-center w-full h-full overflow-hidden",
+				"flex flex-wrap justify-center items-center w-full h-full overflow-hidden p-1",
 				{
-					"pl-24": pricePosition === "bottomLeft",
-					"pr-24": pricePosition === "bottomRight",
+					"lg:pl-24": pricePosition === "bottomLeft",
+					"lg:pr-24": pricePosition === "bottomRight",
 				}
 			)}
 		>

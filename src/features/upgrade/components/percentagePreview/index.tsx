@@ -43,7 +43,7 @@ export function PercentagePreview() {
 	}, [fetchChance]);
 
 	return (
-		<div className="w-[22rem] h-[22rem] flex absolute top-[-16px] items-center justify-center bg-slate-900 rounded-full">
+		<div className="w-[22rem] h-[22rem] flex relative lg:absolute top-[-16px] items-center justify-center bg-slate-900 rounded-full max-lg:mt-3 max-lg:order-3">
 			{IsFetching && (
 				<div className="w-[16rem] h-[16rem] absolute rounded-full animate-opacity-up bg-black/50 transition-all"></div>
 			)}

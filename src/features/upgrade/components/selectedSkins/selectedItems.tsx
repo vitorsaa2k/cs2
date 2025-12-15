@@ -22,8 +22,9 @@ export function SelectedItems({
 					className={cn(
 						"bg-slate-900 flex items-center font-bold px-6 text-2xl",
 						{
-							"order-1 pl-24 rounded-r-full": pricePosition === "bottomLeft",
-							"order-2 pr-24 rounded-l-full": pricePosition === "bottomRight",
+							"order-1 lg:pl-24 rounded-r-full": pricePosition === "bottomLeft",
+							"order-2 lg:pr-24 rounded-l-full":
+								pricePosition === "bottomRight",
 							hidden: skins.length === 0,
 						}
 					)}
