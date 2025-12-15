@@ -12,7 +12,7 @@ export function SectionWrapper({
 	const upgradeContext = useContext(UpgradeContext);
 
 	return (
-		<div className="relative p-4 rounded-lg bg-slate-950 w-full flex flex-col justify-between">
+		<div className="relative p-4 md:rounded-lg max-md:rounded-b-lg bg-slate-950 w-full flex flex-col justify-between">
 			{props.children}
 			{upgradeContext.state.avaliableSkins.isFetching &&
 				shouldBlockInteractionOnSelect && (

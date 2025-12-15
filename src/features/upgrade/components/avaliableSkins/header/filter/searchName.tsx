@@ -18,7 +18,7 @@ export function SearchByNameInput() {
 	}
 
 	return (
-		<label className="flex items-center gap-1 bg-slate-900 py-2 pl-3 pr-6 rounded">
+		<label className="flex items-center gap-1 bg-slate-900 py-2 pl-3 pr-6 rounded max-md:w-full">
 			<IconContext.Provider value={{ size: "22" }}>
 				<PiMagnifyingGlass />
 			</IconContext.Provider>
