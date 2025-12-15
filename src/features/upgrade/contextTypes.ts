@@ -7,7 +7,9 @@ export enum ActionTypes {
 	ADD_UPGRADE_SKIN = "ADD_UPGRADE_SKIN",
 	REMOVE_UPGRADE_SKIN = "REMOVE_UPGRADE_SKIN",
 	UPDATE_AVALIABLE_SKINS = "UPDATE_AVALIABLE_SKINS",
+	UPDATE_AVALIABLE_SKINS_FILTER = "UPDATE_AVALIABLE_SKINS_FILTER",
 	UPDATE_USER_INVENTORY = "UPDATE_USER_INVENTORY",
+	UPDATE_USER_INVENTORY_FILTER = "UPDATE_USER_INVENTORY_FILTER",
 	UPDATE_SUCCESS_CHANCE = "UPDATE_SUCCESS_CHANCE",
 	RESET_UPGRADER = "RESET_UPGRADER",
 	UPDATE_MULTIPLIER = "UPDATE_MULTIPLIER",
@@ -39,13 +41,21 @@ export interface UpdateAvaliableSkinsAction {
 	type: ActionTypes.UPDATE_AVALIABLE_SKINS;
 	payload: SkinType[];
 }
+export interface UpdateAvaliableSkinsFilterAction {
+	type: ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER;
+	payload: AvaliableSkinsFilter;
+}
 export interface UpdateUserInventoryAction {
 	type: ActionTypes.UPDATE_USER_INVENTORY;
 	payload: DrawnSkin[];
 }
+export interface SwitchUserInventorySortAction {
+	type: ActionTypes.UPDATE_USER_INVENTORY_FILTER;
+	payload: UserInvetoryFilter;
+}
 export interface UpdateMultiplierAction {
 	type: ActionTypes.UPDATE_MULTIPLIER;
-	payload: 1.5 | 2 | 5 | 10 | 20;
+	payload: PossibleMultipliers;
 }
 export interface ResetUpgraderAction {
 	type: ActionTypes.RESET_UPGRADER;
@@ -66,7 +76,9 @@ export type Actions =
 	| RemoveUpgradeSkinAction
 	| UpdateSuccessChanceAction
 	| UpdateAvaliableSkinsAction
+	| UpdateAvaliableSkinsFilterAction
 	| UpdateUserInventoryAction
+	| SwitchUserInventorySortAction
 	| ResetUpgraderAction
 	| UpdateMultiplierAction
 	| UpdateResultAction
@@ -75,12 +87,37 @@ export type Actions =
 export interface UpgradeType {
 	userSkins: DrawnSkin[];
 	userInventory: DrawnSkin[];
+	userInventoryFilter: UserInvetoryFilter;
 	avaliableSkins: { skins: SkinType[]; isFetching: boolean };
+	avaliableSkinsFilter: AvaliableSkinsFilter;
 	skinsUpgrade: SkinType[];
 	successChance: number;
-	multiplier: 1.5 | 2 | 5 | 10 | 20;
+	multiplier: PossibleMultipliers;
 	hasWon: boolean | null;
 }
+export interface AvaliableSkinsFilter {
+	page: number;
+	sort: SortOptions;
+	name: string;
+	maxPrice: number;
+	rarity: RarityNames | false;
+	shouldShowSelected: boolean;
+}
+export interface UserInvetoryFilter {
+	sort: SortOptions;
+	shouldShowSelected: boolean;
+}
+export type PossibleMultipliers = 1.5 | 2 | 5 | 10 | 20;
+export type SortOptions = "DESC" | "ASC";
+
+export type RarityNames =
+	| "Consumer Grade"
+	| "Industrial Grade"
+	| "Mil-Spec Grade"
+	| "Restricted"
+	| "Classified"
+	| "Covert"
+	| "Contraband";
 
 export interface UpgradeContextType {
 	state: UpgradeType;

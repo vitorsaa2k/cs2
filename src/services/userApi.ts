@@ -3,6 +3,8 @@ import {
 	Seed,
 	SeedPaginated,
 } from "../features/provablyFair/types/api";
+import { SortOptions } from "../features/upgrade/contextTypes";
+import { Pagination } from "../hooks/useQuery/inventory";
 import { instance } from "../libs/axios";
 import { InventoryType, UserType } from "../types/api";
 
@@ -14,9 +16,14 @@ export async function getUserInventory() {
 	return (await instance.get<Promise<InventoryType>>(`/user/inventory`)).data;
 }
 
-export async function getUserInventoryByPage(page: number) {
+export async function getUserInventoryByPage(
+	page: number,
+	filter: { sort: SortOptions }
+) {
 	return (
-		await instance.get<Promise<InventoryType>>(`/user/inventory?page=${page}`)
+		await instance.get<Promise<InventoryType & Pagination>>(
+			`/user/inventory?page=${page}&sort=${filter.sort}`
+		)
 	).data;
 }
 

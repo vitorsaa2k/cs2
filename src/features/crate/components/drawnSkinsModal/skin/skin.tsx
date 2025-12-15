@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 import { DrawnSkinTitle } from "./drawnSkinTitle";
 import { DrawnSkinImage } from "./drawnSkinImage";
 import { parseItemColor } from "../../../../../utils/crate/parseItemColor";
-import { SkinExterior } from "../../../../upgrade/components/selectableItem/skinExterior";
+import { SkinExterior } from "@/components/skin/skinExterior";
 
 interface SkinProps {
 	item: DrawnSkin;

@@ -7,6 +7,29 @@ import {
 	UpgradeType,
 } from "../features/upgrade/contextTypes";
 
+const initialValue: UpgradeType = {
+	userSkins: [],
+	userInventory: [],
+	userInventoryFilter: { sort: "DESC", shouldShowSelected: false },
+	avaliableSkins: { skins: [], isFetching: false },
+	avaliableSkinsFilter: {
+		maxPrice: 0,
+		name: "",
+		page: 1,
+		rarity: false,
+		sort: "ASC",
+		shouldShowSelected: false,
+	},
+	skinsUpgrade: [],
+	successChance: 0,
+	multiplier: 1.5,
+	hasWon: null,
+};
+const initialContextValue: UpgradeContextType = {
+	state: initialValue,
+	dispatch: () => {},
+};
+
 function reducer(
 	state: UpgradeType = initialValue,
 	action: Actions
@@ -51,10 +74,22 @@ function reducer(
 					isFetching: state.avaliableSkins.isFetching,
 				},
 			};
+		case ActionTypes.UPDATE_AVALIABLE_SKINS_FILTER:
+			return {
+				...state,
+				avaliableSkinsFilter: action.payload,
+			};
 		case ActionTypes.UPDATE_USER_INVENTORY:
 			return {
 				...state,
 				userInventory: action.payload as DrawnSkin[],
+			};
+		case ActionTypes.UPDATE_USER_INVENTORY_FILTER:
+			return {
+				...state,
+				userInventoryFilter: {
+					...action.payload,
+				},
 			};
 		case ActionTypes.UPDATE_SUCCESS_CHANCE:
 			return {
@@ -68,6 +103,9 @@ function reducer(
 				successChance: 0,
 				userSkins: [],
 				skinsUpgrade: [],
+				avaliableSkinsFilter: {
+					...initialValue.avaliableSkinsFilter,
+				},
 			};
 		case ActionTypes.UPDATE_MULTIPLIER:
 			return {
@@ -91,20 +129,6 @@ function reducer(
 			return state;
 	}
 }
-
-const initialValue: UpgradeType = {
-	userSkins: [],
-	userInventory: [],
-	avaliableSkins: { skins: [], isFetching: false },
-	skinsUpgrade: [],
-	successChance: 0,
-	multiplier: 1.5,
-	hasWon: null,
-};
-const initialContextValue: UpgradeContextType = {
-	state: initialValue,
-	dispatch: () => {},
-};
 
 const UpgradeContext = createContext<UpgradeContextType>(initialContextValue);
 

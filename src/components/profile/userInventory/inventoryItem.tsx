@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
-import { SkinExterior } from "../../../features/upgrade/components/selectableItem/skinExterior";
+import { SkinExterior } from "@/components/skin/skinExterior";
 
 export function InventoryItem({
 	item,

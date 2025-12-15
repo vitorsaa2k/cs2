@@ -1,5 +1,5 @@
+import { SkinExterior } from "@/components/skin/skinExterior";
 import { formatPrice } from "../../../../utils/formatPrice";
-import { SkinExterior } from "../../../upgrade/components/selectableItem/skinExterior";
 import { CrateSkin } from "../../types/api";
 
 interface SkinDetailsProps {

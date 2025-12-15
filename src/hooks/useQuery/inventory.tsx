@@ -5,11 +5,24 @@ import {
 	getUserInventoryByPage,
 } from "../../services/userApi";
 import { InventoryType } from "../../types/api";
+import { SortOptions } from "../../features/upgrade/contextTypes";
 
-export function useGetInventoryByPage(page: number) {
-	const query = useQuery<InventoryType>({
-		queryKey: ["inventory", page],
-		queryFn: () => getUserInventoryByPage(page),
+export interface Pagination {
+	pagination: {
+		page: number;
+		itemsPerPage: number;
+		totalItems: number;
+		maxPages: number;
+	};
+}
+
+export function useGetInventoryByPage(
+	page: number,
+	filter: { sort: SortOptions }
+) {
+	const query = useQuery<InventoryType & Pagination>({
+		queryKey: ["inventory", page, filter.sort],
+		queryFn: () => getUserInventoryByPage(page, filter),
 	});
 	return query;
 }
