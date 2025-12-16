@@ -14,10 +14,7 @@ export function UserHeader({ user }: { user: UserType }) {
 		<div className="flex flex-col items-center justify-center">
 			<div className="flex gap-3">
 				<a href="/profile" className="flex items-center gap-3">
-					<img
-						className="rounded-full max-w-[40px]"
-						src={user.photos[0].value}
-					/>
+					<img className="rounded-full max-w-[40px]" src={user.photo} />
 					{user.displayName}
 				</a>
 				<button

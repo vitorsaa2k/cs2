@@ -7,7 +7,7 @@ export function UserInfo() {
 		<section className="border min-w-[840px] p-12 rounded m-6 flex">
 			{user ? (
 				<>
-					<UserImage src={user.photos[0].value} />
+					<UserImage src={user.photo} />
 					<div className="flex w-full border p-2 m-4 rounded flex-col items-start">
 						<div>
 							<p className="text-xl">{user?.displayName}</p>
