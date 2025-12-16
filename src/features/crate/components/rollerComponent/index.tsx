@@ -28,7 +28,7 @@ export function RollerComponent({ skins }: { skins?: CrateSkin[] }) {
 		}
 	}, [crateContext.state.drawnSkins]);
 	return (
-		<div className="relative my-12">
+		<div className="relative my-12 w-full">
 			{showModal && (
 				<DrawnSkinsModal
 					closeModal={() => {
@@ -42,7 +42,9 @@ export function RollerComponent({ skins }: { skins?: CrateSkin[] }) {
 					items={crateContext.state.drawnSkins ?? []}
 				/>
 			)}
-			<RollerContainer />
+			<div className="w-full flex flex-col justify-center items-center overflow-hidden">
+				<RollerContainer />
+			</div>
 			<Pointer />
 		</div>
 	);
