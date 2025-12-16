@@ -11,7 +11,7 @@ export function UserInfo() {
 				<>
 					{user ? (
 						<>
-							<UserImage src={user.photos[0].value} />
+							<UserImage src={user.photo} />
 							<div className="flex w-full border p-2 m-4 rounded flex-col items-start">
 								<p className="text-xl">{user?.displayName}</p>
 							</div>
