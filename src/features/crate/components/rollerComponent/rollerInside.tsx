@@ -8,9 +8,10 @@ export function RollerInside() {
 	const rollerContainerRef = useRef<HTMLDivElement>(null);
 
 	function calculateTotalWidth(): number {
-		if (window.screen.width >= 1280) return -16580;
-		if (window.screen.width >= 640) return -16890;
-		return -17030;
+		const firstChild = rollerContainerRef.current?.children[0] as HTMLElement;
+		const totalGapSize = 4 * 70;
+		const translatePx = (firstChild?.offsetWidth ?? 0) * 70 - totalGapSize + 60;
+		return -translatePx;
 	}
 	const executeAnimation = useCallback(() => {
 		if (!rollerContainerRef.current) return;
