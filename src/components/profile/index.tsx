@@ -8,7 +8,7 @@ export function FullProfile() {
 	return (
 		<Suspense fallback={<Fallback />}>
 			{isLoading || !user ? null : (
-				<div className="flex flex-col items-center justify-center">
+				<div className="flex flex-col items-center justify-center px-16">
 					<UserInfo isPublic={false} user={user} />
 					<UserInventory />
 				</div>

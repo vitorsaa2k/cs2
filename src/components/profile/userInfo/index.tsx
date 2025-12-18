@@ -9,19 +9,15 @@ export function UserInfo({
 	isPublic: boolean;
 }) {
 	return (
-		<section className="border min-w-[840px] p-12 rounded m-6 flex">
-			{user ? (
-				<>
-					<UserImage src={user.photo} />
-					<div className="flex w-full border p-2 m-4 rounded flex-col items-start">
-						<div>
-							<p className="text-xl">{user?.displayName}</p>
-							{isPublic ? null : <p>${user.balance}</p>}
-						</div>
-						<div></div>
-					</div>
-				</>
-			) : null}
+		<section className="flex items-center">
+			<UserImage src={user.photo} />
+			<div className="flex-col p-6 items-start -ml-6 -z-10 bg-slate-800 rounded-r-lg">
+				<div>
+					<p className="text-xl font-bold">{user?.displayName}</p>
+					{isPublic ? null : <p>Balance: ${user.balance}</p>}
+				</div>
+				<div></div>
+			</div>
 		</section>
 	);
 }
