@@ -1,17 +1,20 @@
+import { PageSelectorProfile } from "@/components/profile/pageSelector";
 import { DrawnSkin } from "../../../features/crate/types/api";
-import { useGetUserInventoryById } from "../../../hooks/useQuery/inventory";
+import { useGetUserInventoryByIdPaginated } from "../../../hooks/useQuery/inventory";
 import { InventoryItem } from "../../profile/userInventory/inventoryItem";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 export function UserInventory() {
 	const { id } = useParams();
-	const { data: inventory } = useGetUserInventoryById(id ?? "");
+	const [searchParams] = useSearchParams();
+	const page = Number(searchParams.get("page") ?? "1");
+	const { data: inventory } = useGetUserInventoryByIdPaginated(id ?? "", page);
 	const bestSkin = inventory?.inventory.sort(
 		(a: DrawnSkin, b: DrawnSkin) => b.price - a.price
 	)[0];
 
 	return (
-		<div className="w-full">
+		<div className="w-full flex flex-col gap-2">
 			<div className="flex justify-end">
 				{bestSkin ? <InventoryItem isPublic item={bestSkin} /> : null}
 			</div>
@@ -25,6 +28,7 @@ export function UserInventory() {
 					);
 				})}
 			</section>
+			{inventory && <PageSelectorProfile inventory={inventory} />}
 		</div>
 	);
 }

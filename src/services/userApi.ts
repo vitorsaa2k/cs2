@@ -23,9 +23,9 @@ export async function getUserInventoryByPage(
 	filter: { sort: SortOptions }
 ) {
 	return (
-		await instance.get<Promise<InventoryType & Pagination>>(
-			`/user/inventory?page=${page}&sort=${filter.sort}`
-		)
+		await instance.get<
+			Promise<InventoryType & Pagination & { totalPrice: number }>
+		>(`/user/inventory?page=${page}&sort=${filter.sort}`)
 	).data;
 }
 
@@ -61,6 +61,17 @@ export async function getUserInventoryById(userId: string) {
 	return (
 		await instance.get<Promise<InventoryType>>(
 			`/user/inventory/public/${userId}`
+		)
+	).data;
+}
+
+export async function getUserInventoryByIdPaginated(
+	userId: string,
+	page: number
+) {
+	return (
+		await instance.get<Promise<InventoryType & Pagination>>(
+			`/user/inventory/public/${userId}?page=${page}`
 		)
 	).data;
 }
