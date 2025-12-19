@@ -47,6 +47,9 @@ export default {
 		{
 			pattern: /border-(red-item|purple-item|pink-item|yellow-item|blue-item)/,
 		},
+		{
+			pattern: /text-(red-item|purple-item|pink-item|yellow-item|blue-item)/,
+		},
 	],
 	plugins: [],
 };

@@ -6,17 +6,17 @@ import { useParams } from "react-router-dom";
 export function UserInventory() {
 	const { id } = useParams();
 	const { data: inventory } = useGetUserInventoryById(id ?? "");
-	const bestSkin = inventory?.inventory
-		.sort((a: DrawnSkin, b: DrawnSkin) => a.price - b.price)
-		.reverse()[0];
+	const bestSkin = inventory?.inventory.sort(
+		(a: DrawnSkin, b: DrawnSkin) => b.price - a.price
+	)[0];
 
 	return (
-		<div>
+		<div className="w-full">
 			<div className="flex justify-end">
 				{bestSkin ? <InventoryItem isPublic item={bestSkin} /> : null}
 			</div>
 			<p className="text-xl border-b m-4">Inventory</p>
-			<section className="grid xl:grid-cols-6 md:grid-cols-3 lg:grid-cols-4 gap-1 min-[320px]:grid-cols-2 ">
+			<section className="grid-cols-[repeat(auto-fill,minmax(132px,1fr))] grid gap-2 w-full">
 				{inventory?.inventory.map((item, index) => {
 					return (
 						<div key={index}>

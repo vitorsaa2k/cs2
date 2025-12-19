@@ -13,7 +13,9 @@ export async function getUser() {
 }
 
 export async function getUserInventory() {
-	return (await instance.get<Promise<InventoryType>>(`/user/inventory`)).data;
+	return (
+		await instance.get<Promise<InventoryType>>(`/user/inventory?sort=DESC`)
+	).data;
 }
 
 export async function getUserInventoryByPage(
