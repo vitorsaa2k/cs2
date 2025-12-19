@@ -23,11 +23,11 @@ export function UserInventory() {
 		) || 0;
 
 	return (
-		<div>
+		<div className="w-full flex flex-col gap-2 items-start">
 			<button
 				disabled={sellAllSkins.isPending || totalToSell === 0}
 				onClick={() => sellAllSkins.mutate()}
-				className="bg-red-800 p-2 rounded m-2"
+				className="bg-red-600 p-2 rounded font-bold"
 			>
 				{sellAllSkins.isPending ? (
 					<TailSpinner height={30} width={30} visible />
@@ -35,7 +35,7 @@ export function UserInventory() {
 					`Sell all skins $${totalToSell}`
 				)}
 			</button>
-			<section className="grid xl:grid-cols-6 md:grid-cols-3 lg:grid-cols-4 gap-1 min-[320px]:grid-cols-2 ">
+			<section className="grid-cols-[repeat(auto-fill,minmax(132px,1fr))] grid gap-2 w-full">
 				{inventory?.inventory.map((item, index) => {
 					return (
 						<div key={index}>

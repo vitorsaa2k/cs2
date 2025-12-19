@@ -10,7 +10,7 @@ export function FullPublicProfile() {
 	return (
 		<Suspense fallback={<Fallback />}>
 			{isLoading || !user ? null : (
-				<div className="flex flex-col items-center justify-center px-16">
+				<div className="flex flex-col items-center justify-center px-16 py-3">
 					<UserInfo isPublic user={user} />
 					<UserInventory />
 				</div>
