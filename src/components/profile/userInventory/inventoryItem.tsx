@@ -38,7 +38,7 @@ export function InventoryItem({
 					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
 				/>
 				<p className="line-clamp-1 text-sm">{itemName[0]}</p>
-				<div className="flex items-center gap-1">
+				<div className="flex items-center text-center gap-1">
 					<p
 						className={`font-bold text-sm text-${itemColor}-item line-clamp-1`}
 						title={itemName[1]}
