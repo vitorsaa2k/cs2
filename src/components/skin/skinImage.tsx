@@ -6,10 +6,5 @@ interface SkinImageProps extends HTMLAttributes<HTMLImageElement> {
 }
 
 export function SkinImage({ skin, ...props }: SkinImageProps) {
-	return (
-		<img
-			{...props}
-			src={`https://steamcommunity-a.akamaihd.net/economy/image/${skin.icon_url}`}
-		/>
-	);
+	return <img {...props} src={`${skin.image}`} />;
 }

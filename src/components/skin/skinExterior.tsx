@@ -9,21 +9,21 @@ interface SkinExteriorProps extends HTMLAttributes<HTMLParagraphElement> {
 export function SkinExterior({ skin, ...props }: SkinExteriorProps) {
 	const parsedSkin = parseItemNameExterior(skin.name);
 	const skinName = useMemo(() => {
-		switch (parsedSkin.exterior) {
+		switch (skin.wear.name) {
 			case "Factory New":
 				return "FN";
 			case "Minimal Wear":
 				return "MW";
 			case "Field-Tested":
 				return "FT";
-			case "Well Worn":
+			case "Well-Worn":
 				return "WW";
 			case "Battle-Scarred":
 				return "BS";
 			default:
-				return "FN";
+				return "NA";
 		}
-	}, [parsedSkin.exterior]);
+	}, [skin.wear.name]);
 	return (
 		<p
 			{...props}

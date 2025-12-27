@@ -6,6 +6,7 @@ import { sellSkins } from "../../../services/userApi";
 import { queryClient } from "../../../libs/queryClient";
 import { SkinExterior } from "@/components/skin/skinExterior";
 import { parseItemColor } from "@/utils/crate/parseItemColor";
+import { SkinImage } from "@/components/skin/skinImage";
 
 const colorMap: Record<string, string> = {
 	red: "hover:border-red-item",
@@ -33,10 +34,7 @@ export function InventoryItem({
 			className={`flex border border-transparent rounded relative transition-all bg-slate-800 ${colorMap[itemColor]} p-2`}
 		>
 			<div className="flex w-full h-full relative flex-col items-center">
-				<img
-					className="max-w-[132px]"
-					src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
-				/>
+				<SkinImage className="max-w-[132px]" skin={item} />
 				<p className="line-clamp-1 text-sm">{itemName[0]}</p>
 				<div className="flex items-center text-center gap-1">
 					<p

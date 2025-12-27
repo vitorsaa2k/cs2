@@ -3,21 +3,22 @@ import { SkinType } from "../../types/api";
 
 export function BgVector({ item }: { item: SkinType }) {
 	const strokeColor = useMemo(() => {
-		switch (item.rarity_color) {
-			case "5e98d9":
+		if (item.category.name === "Knives") return "DCAE64";
+		switch (item.rarity.name) {
+			case "Mil-Spec Grade":
 				return "4482FF";
-			case "8847ff":
+			case "Restricted":
 				return "A41AFF";
-			case "eb4b4b":
+			case "Covert":
 				return "FF445D";
-			case "d32ce6":
+			case "Classified":
 				return "DF5DEE";
-			case "e4ae39":
+			case "Extraordinary":
 				return "DCAE64";
 			default:
 				return "4482FF";
 		}
-	}, [item.rarity_color]);
+	}, [item.category.name, item.rarity.name]);
 	return (
 		<svg
 			className="absolute z-[0] group-hover:scale-125 transition-all"
