@@ -26,19 +26,46 @@ export type LiveDropItem = DrawnSkin & {
 
 export type SkinType = {
 	name: string;
-	marketable: number;
-	tradable: number;
-	classid: string;
-	icon_url: string;
-	icon_url_large: string;
-	type: string;
-	weapon_type: string;
-	gun_type: string;
-	exterior: string;
-	rarity: string;
-	rarity_color: string;
+	image: string;
+	wear: { name: Wear };
+	rarity: {
+		id: string;
+		name: RarityNames;
+		color: string;
+	};
+	weapon: {
+		name: string;
+		weapon_id: number;
+	};
+	category: {
+		id: string;
+		name: string;
+	};
+	pattern: {
+		id: string;
+		name: string;
+	};
+	market_hash_name: string;
+	stattrak: boolean;
 	price: number;
 };
+
+export type RarityNames =
+	| "Consumer Grade"
+	| "Industrial Grade"
+	| "Mil-Spec Grade"
+	| "Restricted"
+	| "Classified"
+	| "Covert"
+	| "Extraordinary";
+
+export type Wear =
+	| "Factory New"
+	| "Minimal Wear"
+	| "Field-Tested"
+	| "Well-Worn"
+	| "Battle-Scarred";
+
 export type WearType = {
 	wearType: string;
 	wearRate: number;

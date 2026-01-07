@@ -6,6 +6,7 @@ import { Modal } from "../../../../../components/modal";
 import { sellSkins } from "../../../../../services/userApi";
 import { useState } from "react";
 import { queryClient } from "../../../../../libs/queryClient";
+import { SkinImage } from "@/components/skin/skinImage";
 
 type RollerModalType = {
 	items: DrawnSkin[];
@@ -54,10 +55,7 @@ export function RollerModal({ items, closeModal }: RollerModalType) {
 								<h3 className="font-normal text-gray-300">
 									{decodeEntities(item.name)}
 								</h3>
-								<img
-									className="max-w-[200px]"
-									src={`https://steamcommunity-a.akamaihd.net/economy/image/${item.icon_url}`}
-								/>
+								<SkinImage className="max-w-[200px]" skin={item} />
 								<button
 									className="border border-green-800 disabled:border-green-950 px-2 py-1 rounded"
 									onClick={() => sellDrawnSkins([item.rollId])}
