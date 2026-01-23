@@ -92,7 +92,7 @@ describe("crate interaction buttons", async () => {
 		server.use(
 			http.get("http://localhost:3001/user", () => {
 				return HttpResponse.error();
-			})
+			}),
 		);
 		const result = renderWithClient(RollerComponent);
 		const button = await result.findByRole("button", {
@@ -118,14 +118,14 @@ describe("crate interaction buttons", async () => {
 		server.use(
 			http.get("http://localhost:3001/user", () => {
 				return HttpResponse.json(userWithBalance);
-			})
+			}),
 		);
 		const result = renderWithClient(RollerComponent);
 		const button = await result.findByRole("button", {
 			name: `OPEN ${formatPrice(crateMock.price)}`,
 		});
 		expect(button).toBeInTheDocument();
-		expect(button).toHaveClass("bg-green-800");
+		expect(button).toHaveClass("bg-green-font");
 		await userEvent.click(button);
 		expect(button).toBeDisabled();
 	});
