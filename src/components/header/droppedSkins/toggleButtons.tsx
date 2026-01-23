@@ -2,6 +2,7 @@ import { IconContext } from "react-icons";
 import { ToggleDropsButton } from "./toggleDropsButton";
 import { PiCrownSimple, PiPackage } from "react-icons/pi";
 import "./liveDrop.css";
+import { cn } from "@/libs/utils";
 interface ToggleButtonsProps {
 	shouldShowBestDrops: boolean;
 	isToggleDisabled: boolean;
@@ -23,7 +24,7 @@ export function ToggleButtons({
 			}`}
 		>
 			<ToggleDropsButton
-				className={`${shouldShowBestDrops ? "" : "toggleButtonActive"}`}
+				className={cn({ toggleButtonActive: !shouldShowBestDrops })}
 				disabled={isToggleDisabled}
 				onClick={toggleBestDropsFalse}
 				icon={
@@ -35,7 +36,7 @@ export function ToggleButtons({
 				{screenWidth > 640 && "All Drops"}
 			</ToggleDropsButton>
 			<ToggleDropsButton
-				className={` ${shouldShowBestDrops ? "toggleButtonActive" : ""}`}
+				className={cn({ toggleButtonActive: shouldShowBestDrops })}
 				disabled={isToggleDisabled}
 				onClick={toggleBestDropsTrue}
 				icon={

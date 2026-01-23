@@ -11,6 +11,7 @@ import { ActionTypes } from "../../types/crateContextTypes";
 import { queryClient } from "../../../../libs/queryClient";
 import { formatPrice } from "../../../../utils/formatPrice";
 import { CRATE_ANIMATION_DELAY_MS } from "../../../../consts/crate";
+import { cn } from "@/libs/utils";
 
 export function OpenButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
 	const { state, dispatch } = useContext(CrateContext);
@@ -62,9 +63,13 @@ export function OpenButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
 	return (
 		<button
 			{...props}
-			className={`${
-				user ? (userHasBalance ? "bg-green-800" : "bg-red-800") : "bg-red-800"
-			} disabled:bg-green-950 items-center transition-all rounded flex justify-center min-w-[156px] p-2`}
+			className={cn(
+				`disabled:bg-green-950 items-center transition-all rounded flex justify-center min-w-[156px] p-2`,
+				{
+					"bg-green-font": user && userHasBalance,
+					"bg-red-800": !(user && userHasBalance),
+				},
+			)}
 			onClick={handleClick}
 			disabled={state.drawnSkins !== null || isFetching}
 		>
@@ -79,7 +84,7 @@ export function OpenButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
 					${
 						user
 							? (!userHasBalance && formatPrice(remainigToOpen)) ||
-							  formatPrice(crate.price * state.totalCrates)
+								formatPrice(crate.price * state.totalCrates)
 							: ""
 					}`
 			)}

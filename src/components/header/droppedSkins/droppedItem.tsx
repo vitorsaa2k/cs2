@@ -2,6 +2,7 @@ import { CrateSkin } from "../../../features/crate/types/api";
 import { parseItemColor } from "@/utils/crate/parseItemColor";
 import { getItemExterior } from "@/utils/crate/getItemExterior";
 import { SkinImage } from "@/components/skin/skinImage";
+import { cn } from "@/libs/utils";
 
 export function DroppedItem({ item }: { item: CrateSkin }) {
 	const parsedColor = parseItemColor(item);
@@ -15,9 +16,9 @@ export function DroppedItem({ item }: { item: CrateSkin }) {
 				<SkinImage className="max-w-[135px]" skin={item} />
 			</div>
 			<p
-				className={`absolute right-0 p-1 text-xs ${
-					item.stattrak ? "text-orange-500" : ""
-				}`}
+				className={cn(`absolute right-0 p-1 text-xs`, {
+					"text-orange-500": item.stattrak,
+				})}
 			>
 				{exterior}
 			</p>

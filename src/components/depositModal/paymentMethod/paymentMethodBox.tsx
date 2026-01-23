@@ -1,5 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { PaymentTypes } from "../types/payment";
+import { cn } from "@/libs/utils";
 
 export function PaymentMethodBox({
 	children,
@@ -20,9 +21,12 @@ export function PaymentMethodBox({
 				paymentMethod(method);
 				setPaymentMethod(method);
 			}}
-			className={`border-slate-800 min-w-[124px] flex flex-col box-border ${
-				method === currentMethod ? "border-white" : ""
-			} border-2 p-8 rounded justify-center items-center`}
+			className={cn(
+				`border-slate-800 min-w-[124px] flex flex-col box-border border-2 p-8 rounded justify-center items-center`,
+				{
+					"border-white": method === currentMethod,
+				},
+			)}
 		>
 			{children}
 		</div>
