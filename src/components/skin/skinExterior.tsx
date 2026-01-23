@@ -1,4 +1,5 @@
 import { SkinType } from "@/features/crate/types/api";
+import { cn } from "@/libs/utils";
 import { parseItemNameExterior } from "@/utils/crate/parseItemName";
 import { HTMLAttributes, useMemo } from "react";
 
@@ -27,9 +28,12 @@ export function SkinExterior({ skin, ...props }: SkinExteriorProps) {
 	return (
 		<p
 			{...props}
-			className={`${parsedSkin.isStatTrak ? "text-orange-500" : ""} ${
-				props.className
-			}`}
+			className={cn(
+				{
+					"text-orange-500": parsedSkin.isStatTrak,
+				},
+				props.className,
+			)}
 		>
 			{skinName}
 		</p>

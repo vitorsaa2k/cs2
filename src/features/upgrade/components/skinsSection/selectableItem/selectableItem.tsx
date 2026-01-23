@@ -48,10 +48,9 @@ export function SelectableItem({
 				<SkinPrice className="m-1" skin={skin} />
 			</div>
 			<SkinImage
-				className={cn(
-					"max-w-[128px] z-0 transition-all mx-1",
-					isSelected ? "" : "group-hover:scale-75"
-				)}
+				className={cn("max-w-[128px] z-0 transition-all mx-1", {
+					"group-hover:scale-75": !isSelected,
+				})}
 				skin={skin}
 			/>
 			<div className="flex flex-col items-center">
