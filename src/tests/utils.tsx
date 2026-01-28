@@ -3,6 +3,7 @@ import { http, HttpResponse } from "msw";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { userMock } from "./mocks/userMock";
 import { crateMock } from "./mocks/crateMock";
+import { sectionMock } from "./mocks/sectionMock";
 
 export const handlers = [
 	http.get("http://localhost:3001/user", () => {
@@ -13,6 +14,9 @@ export const handlers = [
 	}),
 	http.post("http://localhost:3001/crate/open/1", () => {
 		return HttpResponse.json([crateMock.skins[0]]);
+	}),
+	http.get("http://localhost:3001/sections", () => {
+		return HttpResponse.json(sectionMock);
 	}),
 ];
 
@@ -28,7 +32,7 @@ const createTestQueryClient = () =>
 export function renderWithClient(ui: React.ReactElement) {
 	const testQueryClient = createTestQueryClient();
 	const { rerender, ...result } = render(
-		<QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
+		<QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>,
 	);
 	return {
 		...result,
@@ -36,7 +40,7 @@ export function renderWithClient(ui: React.ReactElement) {
 			rerender(
 				<QueryClientProvider client={testQueryClient}>
 					{rerenderUi}
-				</QueryClientProvider>
+				</QueryClientProvider>,
 			),
 	};
 }
